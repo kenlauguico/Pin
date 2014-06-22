@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var registerviewController: RegisterViewController!
     var mainViewController: MainViewController!
     var locationManager = CLLocationManager()
-    var didGetLocation: Bool = false
+    var socketManager: SocketManager = SocketManager()
     
+    var didGetLocation: Bool = false
     var sendingTo: NSString? = nil
     var sendingFrom: NSString? = NSUserDefaults.standardUserDefaults().stringForKey("sendingFrom")
     var sendingFromHandle: NSString? = NSUserDefaults.standardUserDefaults().stringForKey("sendingFromHandle")
@@ -203,7 +204,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if coordinates.latitude != 0 && !didGetLocation && sendingTo {
             
-            let socketManager: SocketManager! = SocketManager()
             var currentPosition = Location(lat: coordinates.latitude, long: coordinates.longitude, acc: accuracy)
             
             socketManager.sendLocation(sendingTo, position: currentPosition)
