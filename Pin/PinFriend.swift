@@ -10,19 +10,19 @@ import Foundation
 
 class PinFriend: NSObject {
     
-    var name: NSString!
-    var number: NSString!
-    var location: Location!
-    var map: UIImage!
+    var name: NSString? = nil
+    var number: NSString? = nil
+    var location: Location? = nil
+    var map: UIImage? = nil
     
     
-    init(friendName: NSString!, friendNumber: NSString!, friendLocation: Location!) {
+    init(friendName: NSString?, friendNumber: NSString?, friendLocation: Location?) {
         name = friendName
         number = friendNumber
-        
-        if friendLocation.latitude == 0 || friendLocation.latitude == nil { return }
-        
         location = friendLocation
+        
+        if friendLocation?.latitude == 0 || friendLocation?.latitude == nil { return }
+        
         map = MapUtil().makeMapThumb(cellImageSize, location: friendLocation, zoom: 16)
     }
 }

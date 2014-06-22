@@ -10,10 +10,13 @@ import Foundation
 
 class Location: NSObject {
     
-    var latitude: Double
-    var longitude: Double
-    var accuracy: Int
-    var location: NSDictionary
+    var latitude: Double = 0
+    var longitude: Double = 0
+    var accuracy: Int = 0
+    var location: NSDictionary = [:]
+    
+    
+    init() {}
     
     init(lat: Double, long: Double, acc: Int) {
         latitude = lat
@@ -23,6 +26,17 @@ class Location: NSObject {
             "latitude": lat,
             "longitude": long,
             "accuracy": acc
+        ]
+    }
+    
+    init(dictionary: NSDictionary) {
+        latitude = dictionary["latitude"] as Double
+        longitude = dictionary["longitude"] as Double
+        accuracy = dictionary["accuracy"] as Int
+        location = [
+            "latitude": latitude,
+            "longitude": longitude,
+            "accuracy": accuracy
         ]
     }
 }

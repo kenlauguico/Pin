@@ -84,7 +84,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
         
         
         if let currentCell = RegistrationCellTypes.fromRaw(indexPath.row) {
-            var textBoxFrame = CGRectMake(0, 0, cell.bounds.size.width, 60)
+            var textBoxFrame = CGRectMake(0, 0, cell.bounds.size.width, cellImageSize.height)
             
             switch currentCell {
             case .UserTextbox:
@@ -97,6 +97,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
                 userTextBox.backgroundColor = UIColor.clearColor()
                 userTextBox.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
                 userTextBox.placeholder = cellPlaceholders[indexPath.row].uppercaseString
+                userTextBox.adjustsFontSizeToFitWidth = true
                 userTextBox.delegate = self
                 
                 cell.addSubview(userTextBox)
@@ -117,6 +118,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
                 phoneTextBox.backgroundColor = UIColor.clearColor()
                 phoneTextBox.keyboardType = UIKeyboardType.PhonePad
                 phoneTextBox.placeholder = cellPlaceholders[indexPath.row].uppercaseString
+                phoneTextBox.adjustsFontSizeToFitWidth = true
                 phoneTextBox.delegate = self
                 
                 cell.addSubview(phoneTextBox)
