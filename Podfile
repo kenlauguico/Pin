@@ -1,0 +1,5 @@
+platform :ios, '7.0'
+pod 'SHSPhoneComponent', '~> 2.11'
+pod 'AFNetworking', '~> 2.3'
+pod 'SocketRocket'
+pod 'socket.IO'
