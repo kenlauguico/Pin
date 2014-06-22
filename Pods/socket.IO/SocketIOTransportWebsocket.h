@@ -20,7 +20,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SRWebSocket.h"
+#import <SocketRocket/SRWebSocket.h>
 #import "SocketIOTransport.h"
 
 @interface SocketIOTransportWebsocket : NSObject <SocketIOTransport, SRWebSocketDelegate>

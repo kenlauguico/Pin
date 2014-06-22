@@ -61,7 +61,7 @@ typedef enum {
     NSString *_endpoint;
     NSDictionary *_params;
     
-    __weak id<SocketIODelegate> _delegate;
+    //__weak id<SocketIODelegate> _delegate;
     
     NSObject <SocketIOTransport> *_transport;
     
@@ -97,7 +97,7 @@ typedef enum {
 @property (nonatomic) BOOL useSecure;
 @property (nonatomic) NSArray *cookies;
 @property (nonatomic, readonly) BOOL isConnected, isConnecting;
-@property (nonatomic, weak) id<SocketIODelegate> delegate;
+@property (nonatomic, retain) id<SocketIODelegate> delegate;
 @property (nonatomic) BOOL returnAllDataFromAck;
 
 - (id) initWithDelegate:(id<SocketIODelegate>)delegate;

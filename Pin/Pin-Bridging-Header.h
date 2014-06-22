@@ -11,4 +11,6 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <socket.IO/SocketIO.h>
+#import <socket.IO/SocketIOPacket.h>
+#import <socket.IO/SocketIOJSONSerialization.h>
 #import <SHSPhoneComponent/SHSPhoneTextField.h>

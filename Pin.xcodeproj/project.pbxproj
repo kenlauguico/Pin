@@ -43,6 +43,7 @@
 		825D5312195412600075494E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Pin/Location.swift; sourceTree = "<group>"; };
 		82683D2F19539BC20063FCB1 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Pin/NetworkManager.swift; sourceTree = "<group>"; };
 		82683D321953A12A0063FCB1 /* Pin-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Pin-Bridging-Header.h"; path = "Pin/Pin-Bridging-Header.h"; sourceTree = "<group>"; };
+		82BF55FE1956BEDA00EBB4F3 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Pin/MyPlayground.playground; sourceTree = "<group>"; };
 		82CA31B819536DB000AECC7A /* Pin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82CA31BC19536DB000AECC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Pin/Info.plist; sourceTree = "<group>"; };
 		82CA31BD19536DB000AECC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Pin/AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				82683D321953A12A0063FCB1 /* Pin-Bridging-Header.h */,
+				82BF55FE1956BEDA00EBB4F3 /* MyPlayground.playground */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
