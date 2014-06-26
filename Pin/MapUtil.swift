@@ -25,7 +25,7 @@ class MapUtil: NSObject {
     }
     
     func launchMapApp(location: Location!) {
-        var mapURL: NSURL = NSURL(string: "http://maps.apple.com/?ll=\(location.latitude),\(location.longitude)")
+        var mapURL: NSURL = NSURL(string: "http://maps.apple.com/?ll=\(location.latitude),\(location.longitude)&z=20")
         UIApplication.sharedApplication().openURL(mapURL)
         
     }

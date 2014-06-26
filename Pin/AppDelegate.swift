@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var didGetLocation: Bool = false
     var sendingTo: NSString? = nil
     var sendingFrom: NSString? = NSUserDefaults.standardUserDefaults().stringForKey("sendingFrom")
-    var sendingFromHandle: NSString? = NSUserDefaults.standardUserDefaults().stringForKey("sendingFromHandle")
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {

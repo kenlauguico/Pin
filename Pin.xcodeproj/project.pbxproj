@@ -13,7 +13,7 @@
 		825022B919562B3400483403 /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825022B819562B3400483403 /* MapUtil.swift */; };
 		825D531119540CD20075494E /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D531019540CD20075494E /* SocketManager.swift */; };
 		825D5313195412600075494E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D5312195412600075494E /* Location.swift */; };
-		82683D3019539BC20063FCB1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82683D2F19539BC20063FCB1 /* NetworkManager.swift */; };
+		826075941959C839001DECBA /* AddressBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826075931959C839001DECBA /* AddressBookManager.swift */; };
 		82CA31BE19536DB000AECC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA31BD19536DB000AECC7A /* AppDelegate.swift */; };
 		82CA31C119536DB000AECC7A /* Pin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82CA31BF19536DB000AECC7A /* Pin.xcdatamodeld */; };
 		82CA31C319536DB000AECC7A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA31C219536DB000AECC7A /* MainViewController.swift */; };
@@ -41,7 +41,7 @@
 		825022B819562B3400483403 /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUtil.swift; path = Pin/MapUtil.swift; sourceTree = "<group>"; };
 		825D531019540CD20075494E /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketManager.swift; path = Pin/SocketManager.swift; sourceTree = "<group>"; };
 		825D5312195412600075494E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Pin/Location.swift; sourceTree = "<group>"; };
-		82683D2F19539BC20063FCB1 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Pin/NetworkManager.swift; sourceTree = "<group>"; };
+		826075931959C839001DECBA /* AddressBookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressBookManager.swift; path = Pin/AddressBookManager.swift; sourceTree = "<group>"; };
 		82683D321953A12A0063FCB1 /* Pin-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Pin-Bridging-Header.h"; path = "Pin/Pin-Bridging-Header.h"; sourceTree = "<group>"; };
 		82BF55FE1956BEDA00EBB4F3 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Pin/MyPlayground.playground; sourceTree = "<group>"; };
 		82CA31B819536DB000AECC7A /* Pin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,9 +160,9 @@
 			children = (
 				825D5312195412600075494E /* Location.swift */,
 				825022B819562B3400483403 /* MapUtil.swift */,
-				82683D2F19539BC20063FCB1 /* NetworkManager.swift */,
 				825022B6195622FD00483403 /* PinFriend.swift */,
 				825D531019540CD20075494E /* SocketManager.swift */,
+				826075931959C839001DECBA /* AddressBookManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -259,6 +259,14 @@
 					82CA31B719536DB000AECC7A = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = HKHH2U395C;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					82CA31CC19536DB000AECC7A = {
 						CreatedOnToolsVersion = 6.0;
@@ -342,10 +350,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82683D3019539BC20063FCB1 /* NetworkManager.swift in Sources */,
 				825D531119540CD20075494E /* SocketManager.swift in Sources */,
 				820911F5195540F600A0544B /* RegisterViewController.swift in Sources */,
 				820911F719554ED500A0544B /* Styles.swift in Sources */,
+				826075941959C839001DECBA /* AddressBookManager.swift in Sources */,
 				825D5313195412600075494E /* Location.swift in Sources */,
 				82CA31C319536DB000AECC7A /* MainViewController.swift in Sources */,
 				825022B919562B3400483403 /* MapUtil.swift in Sources */,

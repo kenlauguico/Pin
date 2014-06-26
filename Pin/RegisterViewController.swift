@@ -11,18 +11,15 @@ import Foundation
 class RegisterViewController: UITableViewController, UITextFieldDelegate {
     
     enum RegistrationCellTypes: Int {
-        case UserTextbox = 0
-        case PhoneTextbox
+        case PhoneTextbox = 0
         case Button
     }
     
     var cellPlaceholders: NSString[] = [
-        "Choose a username",
         "Enter you phone number",
         "GO!"
     ]
     
-    var userName: NSString? = nil
     var userPhone: NSString? = nil
     var userTextBox: UITextField!
     var phoneTextBox: SHSPhoneTextField!
@@ -32,12 +29,12 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.appDelegate.sendingFrom && self.appDelegate.sendingFrom {
-            self.performSegueWithIdentifier("toMain", sender: nil)
+        if appDelegate.sendingFrom {
+            performSegueWithIdentifier("toMain", sender: nil)
         }
         
-        self.tableView.backgroundColor = UIColor.clearColor()
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -46,7 +43,6 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     
     
     func closeKeyboard() {
-        userTextBox.resignFirstResponder()
         phoneTextBox.resignFirstResponder()
     }
     
@@ -54,9 +50,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     //#pragma mark - UITextFieldDelegate
     
     func textFieldDidEndEditing(textField: UITextField!) {
-        if textField == userTextBox {
-            userName = userTextBox.text
-        } else if textField == phoneTextBox {
+        if textField == phoneTextBox {
             userPhone = phoneTextBox.phoneNumber()
         }
     }
@@ -87,21 +81,6 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
             var textBoxFrame = CGRectMake(0, 0, cell.bounds.size.width, cellImageSize.height)
             
             switch currentCell {
-            case .UserTextbox:
-                userTextBox = UITextField(frame: textBoxFrame)
-                
-                userTextBox.font = defaultFont
-                userTextBox.textColor = UIColor.whiteColor()
-                userTextBox.textAlignment = NSTextAlignment.Center
-                userTextBox.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-                userTextBox.backgroundColor = UIColor.clearColor()
-                userTextBox.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
-                userTextBox.placeholder = cellPlaceholders[indexPath.row].uppercaseString
-                userTextBox.adjustsFontSizeToFitWidth = true
-                userTextBox.delegate = self
-                
-                cell.addSubview(userTextBox)
-
             case .PhoneTextbox:
                 phoneTextBox = SHSPhoneTextField(frame: textBoxFrame)
                 
@@ -139,9 +118,8 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
         closeKeyboard()
     
         if indexPath.row == RegistrationCellTypes.Button.toRaw() {
-            if userName == "" || userPhone == "" { return }
-            var currentCell = self.tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell
-            var networkManager: NetworkManager! = NetworkManager()
+            if !userPhone || userPhone == "" { return }
+            var currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell
             var loader: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
             
             loader.center = CGPointMake(currentCell.frame.width/2, currentCell.frame.height/2)
@@ -151,15 +129,9 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
             currentCell.text = ""
             currentCell.addSubview(loader)
             
-            networkManager.createUser(userName!, phoneNumber: userPhone!, handler: { (handle: NSString?) in
-                self.appDelegate.sendingFrom = self.userPhone
-                self.appDelegate.sendingFromHandle = self.userName
-                
-                NSUserDefaults.standardUserDefaults().setValue(self.userPhone, forKey: "sendingFrom")
-                NSUserDefaults.standardUserDefaults().setValue(self.userName, forKey: "sendingFromHandle")
-                
-                self.performSegueWithIdentifier("toMain", sender: nil)
-                })
+            appDelegate.sendingFrom = userPhone
+            performSegueWithIdentifier("toMain", sender: nil)
+
         }
     }
     

@@ -11,19 +11,22 @@ import AudioToolbox
 
 class MainViewController: UITableViewController {
                             
-    var friendList: PinFriend[] = [] //NSUserDefaults.standardUserDefaults().objectForKey("friendList") as PinFriend[]
+    var friendList: PinFriend[] = []
     var addTextBox: SHSPhoneTextField!
     var newUserPhone: NSString?
+    var addressBook: AddressBookManager = AddressBookManager()
+    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initiateConnection()
         addObservers()
+        addressBook.checkAddressBookAccess()
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.backgroundColor = UIColor.clearColor()
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -34,45 +37,7 @@ class MainViewController: UITableViewController {
     //#pragma mark - Private Methods -
     
     func initiateConnection() {
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        appDelegate.socketManager.connect(appDelegate.sendingFromHandle, phone: appDelegate.sendingFrom)
-    }
-    
-    func addOrUpdateFriend(friend: PinFriend!) {
-        var indexOfFriend: Int? = checkIfFriendExists(friend)
-        var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-        var lastFriend: NSIndexPath = NSIndexPath(forRow: friendList.count-1, inSection: 0)
-        
-        
-        if indexOfFriend {
-            var rowToHandle: NSIndexPath = NSIndexPath(forRow: indexOfFriend!, inSection: 0)
-            
-            self.tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Fade)
-            friendList.removeAtIndex(indexOfFriend!)
-            friendList.insert(friend, atIndex: 0)
-            self.tableView.moveRowAtIndexPath(rowToHandle, toIndexPath: firstRow)
-        } else {
-            friendList.insert(friend, atIndex: 0)
-            self.tableView.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Top)
-        }
-        
-        self.tableView.reloadRowsAtIndexPaths([lastFriend], withRowAnimation: UITableViewRowAnimation.Fade)
-        syncFriends()
-    }
-    
-    func checkIfFriendExists(friend: PinFriend!) -> Int? {
-        for (index: Int, myFriend: PinFriend) in enumerate(friendList) {
-            if myFriend.number == friend.number {
-                friendList[index] = friend
-                return index
-            }
-        }
-        
-        return nil
-    }
-    
-    func syncFriends() {
-        //NSUserDefaults.standardUserDefaults().setObject(friendList, forKey: "friendList")
+        appDelegate.socketManager.connect(appDelegate.sendingFrom)
     }
     
     func tappedOnMap(recognizer: UIGestureRecognizer!) {
@@ -84,14 +49,32 @@ class MainViewController: UITableViewController {
     
     func gotNewPin(notification: NSNotification) {
         var pinResponse: NSDictionary = notification.userInfo
-        var fromName: NSString = pinResponse["from_username"] as NSString
         var fromNumber: NSString = pinResponse["from_cellphone_number"] as NSString
         var fromLocation: Location  = Location(dictionary: pinResponse["location"] as NSDictionary)
-        var friendToAdd: PinFriend = PinFriend(friendName: fromName.uppercaseString, friendNumber: fromNumber, friendLocation: fromLocation)
+        var fromFriend: PinFriend = PinFriend(friendNumber: fromNumber, friendLocation: fromLocation)
         
-        addOrUpdateFriend(friendToAdd)
-        showPushAlert(fromName)
+        if friendList.exists(fromFriend) {
+            updateFriend(fromFriend)
+        } else {
+            addFriend(fromFriend)
+        }
+        
+        showPushAlert(fromFriend.name!)
         AudioServicesPlaySystemSound(1007)
+        
+        syncFriends(friendList)
+    }
+    
+    func requestContacts() {
+        appDelegate.socketManager.requestContactList(addressBook.getContactsWithMobileNumbers())
+    }
+    
+    func gotContacts(notification: NSNotification) {
+        var pinResponse: NSArray = notification.userInfo["numbers"] as NSArray
+        if pinResponse.count == 0 { return }
+        friendList = friendListWithNumbersArray(self.addressBook.contactList, pinResponse)
+        tableView.reloadData()
+        syncFriends(friendList)
     }
     
     func showPushAlert(from: NSString) {
@@ -107,8 +90,56 @@ class MainViewController: UITableViewController {
     }
     
     func addObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotNewPin:", name: "gotNewPin", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "initiateConnection", name: "disconnected", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "requestContacts", name: "connected", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotNewPin:", name: "gotNewPin", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotContacts:", name: "gotContacts", object: nil)
+    }
+    
+    func addFriend(friend: PinFriend) {
+        var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        
+        friendList.insert(friend, atIndex: 0)
+        tableView.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Top)
+    }
+    
+    func updateFriend(friend: PinFriend) {
+        var currentFriend: PinFriend = getFriendWithNumber(addressBook.contactList, friend.number!)
+        var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        var rowToHandle: NSIndexPath = firstRow
+        var rowsToRemove: NSIndexPath[] = []
+        var foundAtIndex: Int = 0
+        var foundYet: Bool = false
+        
+        currentFriend.updateLocation(friend.location)
+        
+        func indexPathRow(index: Int) -> NSIndexPath {
+            return NSIndexPath(forRow: index, inSection: 0)
+        }
+        
+        for (index, myFriend: PinFriend) in enumerate(friendList) {
+            let frnd: PinFriend = myFriend as PinFriend
+            
+            if frnd.number == currentFriend.number && foundYet {
+                friendList.removeAtIndex(index)
+                rowsToRemove.append(indexPathRow(index))
+                continue
+            }
+            
+            if frnd.number == currentFriend.number {
+                friendList[index] = currentFriend
+                rowToHandle = indexPathRow(index)
+                foundYet = true
+                foundAtIndex = index
+            }
+        }
+        
+        tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.moveRowAtIndexPath(rowToHandle, toIndexPath: firstRow)
+        tableView.deleteRowsAtIndexPaths(rowsToRemove, withRowAnimation: UITableViewRowAnimation.Top)
+        
+        friendList.removeAtIndex(foundAtIndex)
+        friendList.insert(currentFriend, atIndex: 0)
     }
 }
 
@@ -118,7 +149,7 @@ class MainViewController: UITableViewController {
 extension MainViewController {
     
     func setupAddTextBox(tag: Int) {
-        var textBoxFrame = CGRectMake(0, 0, self.view.frame.size.width, cellImageSize.height)
+        var textBoxFrame = CGRectMake(0, 0, view.frame.size.width, cellImageSize.height)
         addTextBox = SHSPhoneTextField(frame: textBoxFrame)
         
         if NSLocale.currentLocale().localeIdentifier == "en_US" {
@@ -144,12 +175,12 @@ extension MainViewController {
         override func layoutSubviews() {
             super.layoutSubviews()
             
-            var imageFrame: CGRect = self.imageView.frame
+            var imageFrame: CGRect = imageView.frame
             imageFrame.origin = CGPointZero
             imageFrame.size = cellImageSize
             imageFrame.size.width += 12
             
-            self.imageView.frame = imageFrame
+            imageView.frame = imageFrame
         }
     }
     
@@ -164,6 +195,7 @@ extension MainViewController {
         
         if indexPath.row != friendList.count {
             let currentFriend = friendList[indexPath.row] as PinFriend
+            cell.backgroundColor = cellColors[(currentFriend.number as NSString).integerValue % cellColors.count]
             var tapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedOnMap:")
             tapped.numberOfTapsRequired = 1
             
@@ -180,7 +212,7 @@ extension MainViewController {
                 cell.addSubview(addTextBox)
             }
         } else {
-            cell.text = "+"
+            cell.text = "Refresh".uppercaseString
         }
         
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: cell.bounds.size.width*2)
@@ -192,24 +224,27 @@ extension MainViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if indexPath.row != friendList.count {
-            let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             var friendTapped: PinFriend = friendList[indexPath.row] as PinFriend
-            
             appDelegate.getLocation(friendTapped.number)
-            addOrUpdateFriend(friendTapped)
+            updateFriend(friendTapped)
         } else {
-            var emptyFriend: PinFriend = PinFriend(friendName: nil, friendNumber: nil, friendLocation: Location())
-            addOrUpdateFriend(emptyFriend)
+            addressBook.requestAddressBookAccess()
+            requestContacts()
+            
+            /*var emptyFriend: PinFriend = PinFriend(friendNumber: nil, friendLocation: Location())
+            if !friendList.exists(emptyFriend) {
+                addFriend(emptyFriend)
+            }
             
             var lastIndexPath: NSIndexPath = NSIndexPath(forRow: friendList.count, inSection: 0)
-            var currentCell = self.tableView.cellForRowAtIndexPath(lastIndexPath) as UITableViewCell
+            var currentCell = tableView.cellForRowAtIndexPath(lastIndexPath) as UITableViewCell
             currentCell.text = "Done".uppercaseString
             
             if addTextBox.text != "" {
                 addTextBox.resignFirstResponder()
                 currentCell.text = "+"
                 return
-            }
+            }*/
         }
     }
     
@@ -231,7 +266,7 @@ extension MainViewController {
     
     override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         friendList.removeAtIndex(indexPath.row)
-        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
 }
 
@@ -244,17 +279,74 @@ extension MainViewController: UITextFieldDelegate {
         if textField == addTextBox {
             newUserPhone = addTextBox?.phoneNumber()
             friendList[0].number = newUserPhone
+            updateFriend(friendList[0])
         }
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
-        if textField == addTextBox {
-            var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-            
-            newUserPhone = textField.text
-            self.tableView.reloadRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Fade)
+        return false
+    }
+}
+
+
+extension Array {
+    
+    mutating func add(friend: T, table: UITableView) {
+        var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        
+        insert(friend, atIndex: 0)
+        table.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Top)
+    }
+    
+    mutating func update(friend: T, table: UITableView) {
+        var currentFriend: PinFriend = friend as PinFriend
+        var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        var rowToHandle: NSIndexPath = firstRow
+        var rowsToRemove: NSIndexPath[] = []
+        var foundAtIndex: Int = 0
+        var foundYet: Bool = false
+        
+        func indexPathRow(index: Int) -> NSIndexPath {
+            return NSIndexPath(forRow: index, inSection: 0)
         }
+        
+        for (index, myFriend: T) in enumerate(self) {
+            let frnd: PinFriend = myFriend as PinFriend
+            
+            if frnd.number == currentFriend.number && foundYet {
+                removeAtIndex(index)
+                rowsToRemove.append(indexPathRow(index))
+                continue
+            }
+            
+            if frnd.number == currentFriend.number {
+                self[index] = friend
+                rowToHandle = indexPathRow(index)
+                foundYet = true
+                foundAtIndex = index
+            }
+        }
+        
+        table.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Fade)
+        table.moveRowAtIndexPath(rowToHandle, toIndexPath: firstRow)
+        table.deleteRowsAtIndexPaths(rowsToRemove, withRowAnimation: UITableViewRowAnimation.Top)
+        
+        removeAtIndex(foundAtIndex)
+        insert(friend, atIndex: 0)
+    }
+    
+    mutating func exists(friend: T) -> Bool {
+        var currentFriend: PinFriend = friend as PinFriend
+        
+        if isEmpty { return false }
+        for (index, myFriend: T) in enumerate(self) {
+            let frnd: PinFriend = myFriend as PinFriend
+            if frnd.number == currentFriend.number {
+                return true
+            }
+        }
+        
         return false
     }
 }
