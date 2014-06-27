@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Location: NSObject {
+class Location: NSObject, NSCoding {
     
     var latitude: Double = 0
     var longitude: Double = 0
@@ -38,5 +38,19 @@ class Location: NSObject {
             "longitude": longitude,
             "accuracy": accuracy
         ]
+    }
+    
+    init(coder aDecoder: NSCoder!) {
+        latitude = aDecoder.decodeObjectForKey("latitude") as Double
+        longitude = aDecoder.decodeObjectForKey("longitude") as Double
+        accuracy = aDecoder.decodeObjectForKey("accuracy") as Int
+        location = aDecoder.decodeObjectForKey("location") as NSDictionary
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder!) {
+        aCoder.encodeObject(latitude, forKey: "latitude")
+        aCoder.encodeObject(longitude, forKey: "longitude")
+        aCoder.encodeObject(accuracy, forKey: "accuracy")
+        aCoder.encodeObject(location, forKey: "location")
     }
 }

@@ -84,10 +84,10 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
             case .PhoneTextbox:
                 phoneTextBox = SHSPhoneTextField(frame: textBoxFrame)
                 
-                if NSLocale.currentLocale().localeIdentifier == "en_US" {
-                    phoneTextBox.formatter.setDefaultOutputPattern("+# (###) ###-####")
-                } else {
+                if NSTimeZone.localTimeZone().name == "America/Sao_Paulo" {
                     phoneTextBox.formatter.setDefaultOutputPattern("+## (##) ####-####")
+                } else {
+                    phoneTextBox.formatter.setDefaultOutputPattern("+# (###) ###-####")
                 }
                 
                 phoneTextBox.font = defaultFont
@@ -129,7 +129,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
             currentCell.text = ""
             currentCell.addSubview(loader)
             
-            appDelegate.sendingFrom = userPhone
+            appDelegate.sendingFrom = "+\(userPhone)"
             performSegueWithIdentifier("toMain", sender: nil)
 
         }

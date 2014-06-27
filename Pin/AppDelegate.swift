@@ -29,8 +29,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if ( ios8() ) {
             locationManager.requestAlwaysAuthorization()
+
+            // Register notifications - Actions
+            var viewMapAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+            viewMapAction.identifier = "ACTION_VIEWMAP"
+            viewMapAction.title = "View Map"
+            viewMapAction.activationMode = UIUserNotificationActivationMode.Foreground
+            viewMapAction.destructive = false
             
+            // Register notifications - Category
+            var viewMapCategory: UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+            viewMapCategory.identifier = "DEFAULT_CATEGORY"
+            
+            let defaultActions: NSArray = [viewMapAction]
+            viewMapCategory.setActions(defaultActions, forContext: UIUserNotificationActionContext.Default)
+            viewMapCategory.setActions(defaultActions, forContext: UIUserNotificationActionContext.Minimal)
+            
+            let categories: NSSet = NSSet(objects: viewMapCategory)
+            
+            // Register notifications
+            let alertTypes: UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge
+            let alertSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: alertTypes, categories: categories)
+            
+            UIApplication.sharedApplication().registerUserNotificationSettings(alertSettings)
+        } else {
+            let alertTypes: UIRemoteNotificationType = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes(alertTypes)
         }
+        
+        
         
         // Set root view controller
         let nav = application.windows[0].rootViewController as UINavigationController
@@ -38,6 +65,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         nav.view.backgroundColor = cellColors[0]
         
         return true
+    }
+    
+    func application(application: UIApplication!, handleActionWithIdentifier identifier: String!, forLocalNotification notification: UILocalNotification!, completionHandler: (() -> Void)!) {
+        
+        if identifier == "ACTION_VIEWMAP" {
+            NSNotificationCenter.defaultCenter().postNotificationName("pressedViewMapAction", object: nil, userInfo: notification.userInfo)
+        }
+        
+        completionHandler()
     }
 
     func applicationWillResignActive(application: UIApplication) {

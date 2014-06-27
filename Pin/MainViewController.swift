@@ -11,7 +11,7 @@ import AudioToolbox
 
 class MainViewController: UITableViewController {
                             
-    var friendList: PinFriend[] = []
+    var friendList: PinFriend[] = getFriends()
     var addTextBox: SHSPhoneTextField!
     var newUserPhone: NSString?
     var addressBook: AddressBookManager = AddressBookManager()
@@ -40,11 +40,22 @@ class MainViewController: UITableViewController {
         appDelegate.socketManager.connect(appDelegate.sendingFrom)
     }
     
+    func connected() {
+        if friendList.isEmpty {
+            requestContacts()
+        }
+    }
+    
     func tappedOnMap(recognizer: UIGestureRecognizer!) {
         var cellImageViewTapped: UIImageView = recognizer.view as UIImageView
         var friendTapped: PinFriend = friendList[cellImageViewTapped.tag] as PinFriend
         
         MapUtil().launchMapApp(friendTapped.location)
+    }
+    
+    func pressedViewMapAction(notification: NSNotification) {
+        var location: Location = Location(dictionary: notification.userInfo)
+        MapUtil().launchMapApp(location)
     }
     
     func gotNewPin(notification: NSNotification) {
@@ -59,41 +70,44 @@ class MainViewController: UITableViewController {
             addFriend(fromFriend)
         }
         
-        showPushAlert(fromFriend.name!)
+        showPushAlert(fromFriend)
         AudioServicesPlaySystemSound(1007)
         
         syncFriends(friendList)
     }
     
     func requestContacts() {
-        appDelegate.socketManager.requestContactList(addressBook.getContactsWithMobileNumbers())
+        appDelegate.socketManager.requestContactList(addressBook.getMobileNumbersArray())
     }
     
     func gotContacts(notification: NSNotification) {
         var pinResponse: NSArray = notification.userInfo["numbers"] as NSArray
         if pinResponse.count == 0 { return }
-        friendList = friendListWithNumbersArray(self.addressBook.contactList, pinResponse)
+        friendList = friendListFromNumbersArray(self.addressBook.contactList, pinResponse)
         tableView.reloadData()
         syncFriends(friendList)
     }
     
-    func showPushAlert(from: NSString) {
+    func showPushAlert(from: PinFriend) {
         if UIApplication.sharedApplication().applicationState != UIApplicationState.Background { return }
         
         var pushAlert: UILocalNotification = UILocalNotification()
         var now: NSDate = NSDate()
         
-        pushAlert.alertBody = "from \(from.uppercaseString)"
+        pushAlert.category = "DEFAULT_CATEGORY"
+        pushAlert.alertBody = "from \(from.name!.uppercaseString)"
         pushAlert.fireDate = now.dateByAddingTimeInterval(0)
+        pushAlert.userInfo = from.location?.location
         
         UIApplication.sharedApplication().scheduleLocalNotification(pushAlert)
     }
     
     func addObservers() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "initiateConnection", name: "disconnected", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "requestContacts", name: "connected", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "connected", name: "connected", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotNewPin:", name: "gotNewPin", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotContacts:", name: "gotContacts", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pressedViewMapAction:", name: "pressedViewMapAction", object: nil)
     }
     
     func addFriend(friend: PinFriend) {
@@ -134,7 +148,7 @@ class MainViewController: UITableViewController {
             }
         }
         
-        tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Automatic)
         tableView.moveRowAtIndexPath(rowToHandle, toIndexPath: firstRow)
         tableView.deleteRowsAtIndexPaths(rowsToRemove, withRowAnimation: UITableViewRowAnimation.Top)
         
@@ -228,23 +242,9 @@ extension MainViewController {
             appDelegate.getLocation(friendTapped.number)
             updateFriend(friendTapped)
         } else {
-            addressBook.requestAddressBookAccess()
-            requestContacts()
-            
-            /*var emptyFriend: PinFriend = PinFriend(friendNumber: nil, friendLocation: Location())
-            if !friendList.exists(emptyFriend) {
-                addFriend(emptyFriend)
-            }
-            
-            var lastIndexPath: NSIndexPath = NSIndexPath(forRow: friendList.count, inSection: 0)
-            var currentCell = tableView.cellForRowAtIndexPath(lastIndexPath) as UITableViewCell
-            currentCell.text = "Done".uppercaseString
-            
-            if addTextBox.text != "" {
-                addTextBox.resignFirstResponder()
-                currentCell.text = "+"
-                return
-            }*/
+            appDelegate.socketManager.disconnectSocket()
+            addressBook.checkAddressBookAccess()
+            friendList = []
         }
     }
     
@@ -267,6 +267,7 @@ extension MainViewController {
     override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         friendList.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        syncFriends(friendList)
     }
 }
 

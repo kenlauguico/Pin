@@ -11,7 +11,7 @@ import Foundation
 
 class SocketManager: SocketIO {
     
-    var socketHost = "192.168.254.100"
+    var socketHost = "192.168.254.102"
     var socketPort: Int = 8080
     var socketManager: SocketIO!
     var userPhone: NSString! = nil
@@ -27,6 +27,10 @@ class SocketManager: SocketIO {
         userPhone = phone
         
         socketManager.connectToHost(socketHost, onPort: socketPort)
+    }
+    
+    func disconnectSocket() {
+        socketManager.disconnect()
     }
     
     func reconnect() {
@@ -46,6 +50,16 @@ class SocketManager: SocketIO {
         var params = numbersArray
         socketManager.sendEvent("filter_contact_list", withData: params)
     }
+    
+    
+    //#pragma mark - Private Methods
+    
+    func startTimer() {
+        reconnectTimer.invalidate()
+        UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
+        reconnectTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "reconnect", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(reconnectTimer, forMode: NSRunLoopCommonModes)
+    }
 }
 
 
@@ -60,17 +74,18 @@ extension SocketManager: SocketIODelegate {
         
         socketManager.sendEvent("login", withData: params)
         NSNotificationCenter.defaultCenter().postNotificationName("connected", object: nil)
-        reconnectTimer.invalidate()
         NSUserDefaults.standardUserDefaults().setValue(userPhone, forKey: "sendingFrom")
+        reconnectTimer.invalidate()
     }
     
     func socketIODidDisconnect(socket: SocketIO, disconnectedWithError error: NSError) {
         NSNotificationCenter.defaultCenter().postNotificationName("disconnected", object: nil)
         
-        reconnectTimer.invalidate()
-        UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
-        reconnectTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "reconnect", userInfo: nil, repeats: true)
-        NSRunLoop.currentRunLoop().addTimer(reconnectTimer, forMode: NSRunLoopCommonModes)
+        startTimer()
+    }
+    
+    func socketIO(socket: SocketIO, onError error: NSError) {
+        startTimer()
     }
     
     func socketIO(socket: SocketIO, didReceiveEvent packet: SocketIOPacket) {

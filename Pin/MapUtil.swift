@@ -19,13 +19,11 @@ class MapUtil: NSObject {
         var imageData: NSData = NSData(contentsOfURL: url)
         var mapImage: UIImage = UIImage(data: imageData)
         
-        println(mapThumbURL)
-        
         return mapImage
     }
     
     func launchMapApp(location: Location!) {
-        var mapURL: NSURL = NSURL(string: "http://maps.apple.com/?ll=\(location.latitude),\(location.longitude)&z=20")
+        var mapURL: NSURL = NSURL(string: "http://maps.apple.com/?ll=\(location.latitude),\(location.longitude)&z=17")
         UIApplication.sharedApplication().openURL(mapURL)
         
     }

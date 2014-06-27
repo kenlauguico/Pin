@@ -18,16 +18,17 @@ func getFriends() -> PinFriend[] {
 }
 
 func syncFriends(friends: PinFriend[]) {
-    //var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(friends) as NSData
-    //NSUserDefaults.standardUserDefaults().setObject(data, forKey: "friendList")
+    var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(friends) as NSData
+    NSUserDefaults.standardUserDefaults().setObject(data, forKey: "friendList")
 }
 
-func friendListWithNumbersArray(contactList: NSArray, numbersArray: NSArray) -> PinFriend[] {
+func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> PinFriend[] {
     var newFriendList: PinFriend[] = []
     
     for number: AnyObject in numbersArray {
         for person: NSDictionary! in contactList {
             var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
+            phone = "+\(phone)"
             if phone == number as NSString {
                 var newFriend: PinFriend = PinFriend(friendName: person["name"] as? NSString, friendNumber: number as? NSString, friendLocation: nil)
                 newFriendList.insert(newFriend, atIndex: 0)
@@ -41,7 +42,9 @@ func friendListWithNumbersArray(contactList: NSArray, numbersArray: NSArray) -> 
 
 func getFriendWithNumber(contactList: NSArray, number: NSString) -> PinFriend {
     for person: NSDictionary! in contactList {
+        if !person.objectForKey("phone") { break }
         var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
+        phone = "+\(phone)"
         if phone == number {
             var newFriend: PinFriend = PinFriend(friendName: person["name"] as? NSString, friendNumber: number as? NSString, friendLocation: nil)
             return newFriend
@@ -96,8 +99,8 @@ class PinFriend: NSObject, NSCoding {
     
     func encodeWithCoder(aCoder: NSCoder!) {
         aCoder.encodeObject(name, forKey: "name")
-        aCoder.encodeObject(name, forKey: "number")
-        aCoder.encodeObject(name, forKey: "location")
-        aCoder.encodeObject(name, forKey: "map")
+        aCoder.encodeObject(number, forKey: "number")
+        aCoder.encodeObject(location, forKey: "location")
+        aCoder.encodeObject(map, forKey: "map")
     }
 }

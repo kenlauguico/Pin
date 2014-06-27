@@ -78,13 +78,13 @@ class AddressBookManager: NSObject {
         }
     }
     
-    func getContactsWithMobileNumbers() -> NSMutableArray {
+    func getMobileNumbersArray() -> NSMutableArray {
         var newContactsList: NSMutableArray = []
         
         for person: NSDictionary! in self.contactList {
             if person.valueForKey("phone") {
                 var digitOnlyNumber: NSString = SHSPhoneNumberFormatter.digitOnlyString(person.valueForKey("phone") as NSString)
-                newContactsList.addObject(digitOnlyNumber)
+                newContactsList.addObject("+\(digitOnlyNumber)")
             }
         }
         
