@@ -9,7 +9,6 @@
 #undef __weak
 #define __weak /* nothing */
 
-#import <AFNetworking/AFNetworking.h>
 #import <socket.IO/SocketIO.h>
 #import <socket.IO/SocketIOPacket.h>
 #import <socket.IO/SocketIOJSONSerialization.h>

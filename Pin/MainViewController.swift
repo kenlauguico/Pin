@@ -16,6 +16,7 @@ class MainViewController: UITableViewController {
     var newUserPhone: NSString?
     var addressBook: AddressBookManager = AddressBookManager()
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    var silentRefreshTimer: NSTimer = NSTimer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,6 @@ class MainViewController: UITableViewController {
         
         showPushAlert(fromFriend)
         AudioServicesPlaySystemSound(1007)
-        
         syncFriends(friendList)
     }
     
@@ -115,6 +115,8 @@ class MainViewController: UITableViewController {
         
         friendList.insert(friend, atIndex: 0)
         tableView.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Top)
+        
+        silentRefresh()
     }
     
     func updateFriend(friend: PinFriend) {
@@ -154,6 +156,19 @@ class MainViewController: UITableViewController {
         
         friendList.removeAtIndex(foundAtIndex)
         friendList.insert(currentFriend, atIndex: 0)
+        
+        silentRefresh()
+    }
+    
+    func refreshTable() {
+        tableView.reloadData()
+    }
+    
+    func silentRefresh() {
+        silentRefreshTimer.invalidate()
+        UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
+        silentRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refreshTable", userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(silentRefreshTimer, forMode: NSRunLoopCommonModes)
     }
 }
 
@@ -208,9 +223,11 @@ extension MainViewController {
         cell.textLabel.adjustsFontSizeToFitWidth = true
         
         if indexPath.row != friendList.count {
-            let currentFriend = friendList[indexPath.row] as PinFriend
-            cell.backgroundColor = cellColors[(currentFriend.number as NSString).integerValue % cellColors.count]
+            var currentFriend = friendList[indexPath.row] as PinFriend
+            var uniqueColor = ((currentFriend.number as NSString).substringWithRange(NSMakeRange(1, 9)) as NSString).integerValue
             var tapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedOnMap:")
+            
+            cell.backgroundColor = cellColors[uniqueColor % cellColors.count]
             tapped.numberOfTapsRequired = 1
             
             if currentFriend.number {

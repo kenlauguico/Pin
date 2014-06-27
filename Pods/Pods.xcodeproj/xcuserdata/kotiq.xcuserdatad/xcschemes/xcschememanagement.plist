@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AFNetworking.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-SHSPhoneComponent.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>55ABD18B509744EE82AE8CFA</key>
+		<key>076414350D3242CC82335511</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD7DFFAB53AC45A8B89016BA</key>
+		<key>2C48574F349B4AB9A56F2B7B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA636AF41B0044D185B63BBE</key>
+		<key>585A549A6DB44377B25ABA29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D6780ED6065648A880BB0BD1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F33AC939B6D14067A9281B65</key>
+		<key>72A4D77DC7904F2AA7D4180F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
