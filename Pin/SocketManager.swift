@@ -11,7 +11,7 @@ import Foundation
 
 class SocketManager: SocketIO {
     
-    var socketHost = "192.168.254.102"
+    var socketHost = "104.131.237.85"
     var socketPort: Int = 8080
     var socketManager: SocketIO!
     var userPhone: NSString! = nil

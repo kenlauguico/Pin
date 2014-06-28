@@ -94,7 +94,10 @@ class MainViewController: UITableViewController {
         var pushAlert: UILocalNotification = UILocalNotification()
         var now: NSDate = NSDate()
         
-        pushAlert.category = "DEFAULT_CATEGORY"
+        if appDelegate.ios8() {
+            pushAlert.category = "DEFAULT_CATEGORY"
+        }
+        
         pushAlert.alertBody = "from \(from.name!.uppercaseString)"
         pushAlert.fireDate = now.dateByAddingTimeInterval(0)
         pushAlert.userInfo = from.location?.location
