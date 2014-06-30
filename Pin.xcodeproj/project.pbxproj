@@ -41,7 +41,7 @@
 		825022B6195622FD00483403 /* PinFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinFriend.swift; path = Pin/PinFriend.swift; sourceTree = "<group>"; };
 		825022B819562B3400483403 /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUtil.swift; path = Pin/MapUtil.swift; sourceTree = "<group>"; };
 		825D531019540CD20075494E /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketManager.swift; path = Pin/SocketManager.swift; sourceTree = "<group>"; };
-		825D5312195412600075494E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Pin/Location.swift; sourceTree = "<group>"; };
+		825D5312195412600075494E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Pin/Location.swift; sourceTree = "<group>"; usesTabs = 0; };
 		826075931959C839001DECBA /* AddressBookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressBookManager.swift; path = Pin/AddressBookManager.swift; sourceTree = "<group>"; };
 		8264ED34195CFEEA00E84974 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		82683D321953A12A0063FCB1 /* Pin-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Pin-Bridging-Header.h"; path = "Pin/Pin-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -131,7 +131,9 @@
 				82CA31E019536F2100AECC7A /* Resources */,
 				82CA31E119536F2700AECC7A /* Supporting Files */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		82CA31B919536DB000AECC7A /* Products */ = {
 			isa = PBXGroup;
