@@ -180,7 +180,9 @@ class MainViewController: UITableViewController {
   }
 
   func refreshTable() {
-    tableView.reloadData()
+    UIView.transitionWithView(tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+        self.tableView.reloadData()
+      }, completion: nil)
   }
 
   func silentRefresh() {
