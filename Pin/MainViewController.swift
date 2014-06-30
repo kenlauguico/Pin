@@ -12,6 +12,7 @@ import AudioToolbox
 class MainViewController: UITableViewController {
 
   var friendList: PinFriend[] = getFriends()
+  var friends = Dictionary<String, PinFriend>()
   var addTextBox: SHSPhoneTextField!
   var newUserPhone: NSString?
   var addressBook: AddressBookManager = AddressBookManager()
@@ -24,6 +25,8 @@ class MainViewController: UITableViewController {
     initiateConnection()
     addObservers()
     addressBook.checkAddressBookAccess()
+    syncFriends(friendList)
+    friendListToDict()
 
     tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     tableView.backgroundColor = UIColor.clearColor()
@@ -71,13 +74,25 @@ class MainViewController: UITableViewController {
       addFriend(fromFriend)
     }
 
-    showPushAlert(fromFriend)
     AudioServicesPlaySystemSound(1007)
     syncFriends(friendList)
+    friendListToDict()
+    
+    if friends[fromFriend.number!] {
+      fromFriend = friends[fromFriend.number!] as PinFriend
+    }
+    
+    showPushAlert(fromFriend)
   }
 
   func requestContacts() {
     appDelegate.socketManager.requestContactList(addressBook.getMobileNumbersArray())
+  }
+  
+  func friendListToDict() {
+    for friend: PinFriend in friendList {
+      friends[friend.number!] = friend
+    }
   }
 
   func gotContacts(notification: NSNotification) {
@@ -86,11 +101,12 @@ class MainViewController: UITableViewController {
     friendList = friendListFromNumbersArray(self.addressBook.contactList, pinResponse)
     tableView.reloadData()
     syncFriends(friendList)
+    friendListToDict()
   }
 
   func showPushAlert(from: PinFriend) {
     if UIApplication.sharedApplication().applicationState != UIApplicationState.Background { return }
-
+    
     var pushAlert: UILocalNotification = UILocalNotification()
     var now: NSDate = NSDate()
 
@@ -288,6 +304,7 @@ extension MainViewController {
     friendList.removeAtIndex(indexPath.row)
     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     syncFriends(friendList)
+    friendListToDict()
   }
 }
 

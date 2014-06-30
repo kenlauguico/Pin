@@ -17,8 +17,8 @@ func getFriends() -> PinFriend[] {
   return friends ? friends as PinFriend[] : []
 }
 
-func syncFriends(friends: PinFriend[]) {
-  var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(friends) as NSData
+func syncFriends(friendList: PinFriend[]) {
+  var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(friendList) as NSData
   NSUserDefaults.standardUserDefaults().setObject(data, forKey: "friendList")
 }
 
