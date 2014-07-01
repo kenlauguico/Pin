@@ -27,6 +27,7 @@ func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> 
 
   for number: AnyObject in numbersArray {
     for person: NSDictionary! in contactList {
+      if !person.valueForKey("phone") { continue }
       var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
       phone = "+\(phone)"
       if phone == number as NSString {
