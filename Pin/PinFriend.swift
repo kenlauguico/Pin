@@ -43,7 +43,7 @@ func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> 
 
 func getFriendWithNumber(contactList: NSArray, number: NSString) -> PinFriend {
   for person: NSDictionary! in contactList {
-    if !person.objectForKey("phone") { break }
+    if !person.objectForKey("phone") { continue }
     var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
     phone = "+\(phone)"
     if phone == number {

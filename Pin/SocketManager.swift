@@ -103,4 +103,5 @@ extension SocketManager: SocketIODelegate {
       NSNotificationCenter.defaultCenter().postNotificationName("gotContacts", object: self, userInfo: numbers)
     }
   }
+  
 }
