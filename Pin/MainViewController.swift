@@ -69,7 +69,7 @@ class MainViewController: UITableViewController {
     var fromFriend: PinFriend = PinFriend(friendNumber: fromNumber, friendLocation: fromLocation)
 
     if friendList.exists(fromFriend) {
-      updateFriend(fromFriend)
+      updateFriend(fromFriend, mentionSent: false)
     } else {
       addFriend(fromFriend)
     }
@@ -140,7 +140,7 @@ class MainViewController: UITableViewController {
     silentRefresh()
   }
 
-  func updateFriend(friend: PinFriend) {
+  func updateFriend(friend: PinFriend, mentionSent: Bool) {
     var currentFriend: PinFriend = getFriendWithNumber(addressBook.contactList, friend.number!)
     var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     var rowToHandle: NSIndexPath = firstRow
@@ -171,7 +171,11 @@ class MainViewController: UITableViewController {
       }
     }
 
-    tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Automatic)
+    if mentionSent {
+      tableView.cellForRowAtIndexPath(rowToHandle).text = "Sent!".uppercaseString
+    } else {
+      tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
     tableView.moveRowAtIndexPath(rowToHandle, toIndexPath: firstRow)
     tableView.deleteRowsAtIndexPaths(rowsToRemove, withRowAnimation: UITableViewRowAnimation.Top)
 
@@ -284,7 +288,7 @@ extension MainViewController {
     if indexPath.row != friendList.count {
       var friendTapped: PinFriend = friendList[indexPath.row] as PinFriend
       appDelegate.getLocation(friendTapped.number)
-      updateFriend(friendTapped)
+      updateFriend(friendTapped, mentionSent: true)
     } else {
       appDelegate.socketManager.disconnectSocket()
       addressBook.checkAddressBookAccess()
@@ -325,7 +329,7 @@ extension MainViewController: UITextFieldDelegate {
     if textField == addTextBox {
       newUserPhone = addTextBox?.phoneNumber()
       friendList[0].number = newUserPhone
-      updateFriend(friendList[0])
+      updateFriend(friendList[0], mentionSent: false)
     }
   }
 
