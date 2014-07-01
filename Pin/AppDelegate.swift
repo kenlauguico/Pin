@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
     locationManager.delegate = self;
+    application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
 
     if ( ios8() ) {
       locationManager.requestAlwaysAuthorization()
@@ -75,6 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     completionHandler()
   }
+  
+  func application(application: UIApplication!, performFetchWithCompletionHandler completionHandler: ((UIBackgroundFetchResult) -> Void)!) {
+    NSNotificationCenter.defaultCenter().postNotificationName("reconnect", object: nil)
+    completionHandler(UIBackgroundFetchResult.NewData)
+  }
 
   func applicationWillResignActive(application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -84,6 +90,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
   func applicationDidEnterBackground(application: UIApplication) {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    NSNotificationCenter.defaultCenter().postNotificationName("backupFriends", object: nil)
   }
 
   func applicationWillEnterForeground(application: UIApplication) {
@@ -92,6 +100,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
   func applicationDidBecomeActive(application: UIApplication) {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    application.applicationIconBadgeNumber = 0
+    application.cancelAllLocalNotifications()
   }
 
   func applicationWillTerminate(application: UIApplication) {

@@ -21,6 +21,7 @@ class SocketManager: SocketIO {
   init() {
     super.init()
     socketManager = SocketIO(delegate: self)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "startTimer", name: "reconnect", object: nil)
   }
 
   func connect(phone: NSString!) {

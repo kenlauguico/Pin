@@ -119,6 +119,7 @@ class MainViewController: UITableViewController {
     pushAlert.userInfo = from.location?.location
 
     UIApplication.sharedApplication().scheduleLocalNotification(pushAlert)
+    UIApplication.sharedApplication().applicationIconBadgeNumber += 1
   }
 
   func addObservers() {
@@ -127,6 +128,7 @@ class MainViewController: UITableViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotNewPin:", name: "gotNewPin", object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotContacts:", name: "gotContacts", object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "pressedViewMapAction:", name: "pressedViewMapAction", object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "backupFriends", name: "backupFriends", object: nil)
   }
 
   func addFriend(friend: PinFriend) {
@@ -190,6 +192,10 @@ class MainViewController: UITableViewController {
     UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
     silentRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refreshTable", userInfo: nil, repeats: false)
     NSRunLoop.currentRunLoop().addTimer(silentRefreshTimer, forMode: NSRunLoopCommonModes)
+  }
+  
+  func backupFriends() {
+    syncFriends(friendList)
   }
 }
 
