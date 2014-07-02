@@ -8,8 +8,10 @@
 
 import Foundation
 
+
 class MapUtil: NSObject {
 
+  
   func makeMapThumb(size: CGSize!, location: Location!, zoom: Int) -> UIImage! {
     var lc: NSString = "\(location.latitude),\(location.longitude)"
     var sz: NSString = "\(Int(size.width*1.6))x\(Int(size.height*1.6))"
@@ -22,10 +24,10 @@ class MapUtil: NSObject {
     return mapImage
   }
 
+  
   func launchMapApp(location: Location!) {
     var mapURL: NSURL = NSURL(string: "http://maps.apple.com/?q=\(location.latitude),\(location.longitude)&z=17")
     UIApplication.sharedApplication().openURL(mapURL)
 
   }
-
 }

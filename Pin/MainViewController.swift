@@ -9,6 +9,7 @@
 import UIKit
 import AudioToolbox
 
+
 class MainViewController: UITableViewController {
 
   var friendList: PinFriend[] = getFriends()
@@ -19,6 +20,7 @@ class MainViewController: UITableViewController {
   let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   var silentRefreshTimer: NSTimer = NSTimer()
 
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -33,23 +35,25 @@ class MainViewController: UITableViewController {
     tableView.separatorStyle = UITableViewCellSeparatorStyle.None
   }
 
+  
   override func prefersStatusBarHidden() -> Bool {
     return true
   }
 
 
   //#pragma mark - Private Methods -
-
   func initiateConnection() {
     appDelegate.socketManager.connect(appDelegate.sendingFrom)
   }
 
+  
   func connected() {
     if friendList.isEmpty {
       requestContacts()
     }
   }
 
+  
   func tappedOnMap(recognizer: UIGestureRecognizer!) {
     var cellImageViewTapped: UIImageView = recognizer.view as UIImageView
     var friendTapped: PinFriend = friendList[cellImageViewTapped.tag] as PinFriend
@@ -57,11 +61,13 @@ class MainViewController: UITableViewController {
     MapUtil().launchMapApp(friendTapped.location)
   }
 
+  
   func pressedViewMapAction(notification: NSNotification) {
     var location: Location = Location(dictionary: notification.userInfo)
     MapUtil().launchMapApp(location)
   }
 
+  
   func gotNewPin(notification: NSNotification) {
     var pinResponse: NSDictionary = notification.userInfo
     var fromNumber: NSString = pinResponse["from_cellphone_number"] as NSString
@@ -85,9 +91,11 @@ class MainViewController: UITableViewController {
     showPushAlert(fromFriend)
   }
 
+  
   func requestContacts() {
     appDelegate.socketManager.requestContactList(addressBook.getMobileNumbersArray())
   }
+  
   
   func friendListToDict() {
     for friend: PinFriend in friendList {
@@ -95,6 +103,7 @@ class MainViewController: UITableViewController {
     }
   }
 
+  
   func gotContacts(notification: NSNotification) {
     var pinResponse: NSArray = notification.userInfo["numbers"] as NSArray
     if pinResponse.count == 0 { return }
@@ -104,6 +113,7 @@ class MainViewController: UITableViewController {
     friendListToDict()
   }
 
+  
   func showPushAlert(from: PinFriend) {
     if UIApplication.sharedApplication().applicationState != UIApplicationState.Background { return }
     
@@ -122,6 +132,7 @@ class MainViewController: UITableViewController {
     UIApplication.sharedApplication().applicationIconBadgeNumber += 1
   }
 
+  
   func addObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "initiateConnection", name: "disconnected", object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "connected", name: "connected", object: nil)
@@ -131,6 +142,7 @@ class MainViewController: UITableViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "backupFriends", name: "backupFriends", object: nil)
   }
 
+  
   func addFriend(friend: PinFriend) {
     var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
 
@@ -140,6 +152,7 @@ class MainViewController: UITableViewController {
     silentRefresh()
   }
 
+  
   func updateFriend(friend: PinFriend, mentionSent: Bool) {
     var currentFriend: PinFriend = getFriendWithNumber(addressBook.contactList, friend.number!)
     var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -185,18 +198,21 @@ class MainViewController: UITableViewController {
     silentRefresh()
   }
 
+  
   func refreshTable() {
     UIView.transitionWithView(tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
         self.tableView.reloadData()
       }, completion: nil)
   }
 
+  
   func silentRefresh() {
     silentRefreshTimer.invalidate()
     UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
     silentRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refreshTable", userInfo: nil, repeats: false)
     NSRunLoop.currentRunLoop().addTimer(silentRefreshTimer, forMode: NSRunLoopCommonModes)
   }
+  
   
   func backupFriends() {
     syncFriends(friendList)
@@ -230,6 +246,7 @@ extension MainViewController {
     addTextBox.tag = tag
   }
 
+  
   class UITableViewCellFix: UITableViewCell {
 
     override func layoutSubviews() {
@@ -244,6 +261,7 @@ extension MainViewController {
     }
   }
 
+  
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     let cell = UITableViewCellFix(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
 
@@ -282,6 +300,7 @@ extension MainViewController {
     return cell
   }
 
+  
   override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
@@ -296,22 +315,27 @@ extension MainViewController {
     }
   }
 
+  
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
 
+  
   override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
     return cellImageSize.height
   }
 
+  
   override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
     return friendList.count + 1
   }
 
+  
   override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     return indexPath.row != friendList.count
   }
 
+  
   override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
     friendList.removeAtIndex(indexPath.row)
     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -322,7 +346,6 @@ extension MainViewController {
 
 
 //#pragma mark - UITextFieldDelegate
-
 extension MainViewController: UITextFieldDelegate {
 
   func textFieldDidEndEditing(textField: UITextField!) {
@@ -332,6 +355,7 @@ extension MainViewController: UITextFieldDelegate {
       updateFriend(friendList[0], mentionSent: false)
     }
   }
+  
 
   func textFieldShouldReturn(textField: UITextField!) -> Bool {
     textField.resignFirstResponder()
@@ -349,6 +373,7 @@ extension Array {
     table.insertRowsAtIndexPaths([firstRow], withRowAnimation: UITableViewRowAnimation.Top)
   }
 
+  
   mutating func update(friend: T, table: UITableView) {
     var currentFriend: PinFriend = friend as PinFriend
     var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -386,6 +411,7 @@ extension Array {
     insert(friend, atIndex: 0)
   }
 
+  
   mutating func exists(friend: T) -> Bool {
     var currentFriend: PinFriend = friend as PinFriend
 
@@ -396,7 +422,7 @@ extension Array {
         return true
       }
     }
-
+    
     return false
   }
 }

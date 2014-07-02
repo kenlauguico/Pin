@@ -17,10 +17,12 @@ func getFriends() -> PinFriend[] {
   return friends ? friends as PinFriend[] : []
 }
 
+
 func syncFriends(friendList: PinFriend[]) {
   var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(friendList) as NSData
   NSUserDefaults.standardUserDefaults().setObject(data, forKey: "friendList")
 }
+
 
 func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> PinFriend[] {
   var newFriendList: PinFriend[] = []
@@ -41,13 +43,14 @@ func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> 
   return newFriendList
 }
 
+
 func getFriendWithNumber(contactList: NSArray, number: NSString) -> PinFriend {
   for person: NSDictionary! in contactList {
     if !person.objectForKey("phone") { continue }
     var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
     phone = "+\(phone)"
     if phone == number {
-      var newFriend: PinFriend = PinFriend(friendName: person["name"] as? NSString, friendNumber: number as? NSString, friendLocation: nil)
+      var newFriend: PinFriend = PinFriend(friendName: person["name"] as? NSString, friendNumber: number as NSString, friendLocation: nil)
       return newFriend
     }
   }
@@ -61,7 +64,6 @@ class PinFriend: NSObject, NSCoding {
   var number: NSString? = nil
   var location: Location? = nil
   var map: UIImage? = nil
-
 
   init(friendNumber: NSString?, friendLocation: Location?) {
     name = friendNumber

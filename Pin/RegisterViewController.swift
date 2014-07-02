@@ -8,8 +8,9 @@
 
 import Foundation
 
-class RegisterViewController: UITableViewController, UITextFieldDelegate {
 
+class RegisterViewController: UITableViewController, UITextFieldDelegate {
+  
   enum RegistrationCellTypes: Int {
     case PhoneTextbox = 0
     case Button
@@ -37,6 +38,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     tableView.separatorStyle = UITableViewCellSeparatorStyle.None
   }
 
+  
   override func prefersStatusBarHidden() -> Bool {
     return true
   }
@@ -48,13 +50,13 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
 
 
   //#pragma mark - UITextFieldDelegate
-
   func textFieldDidEndEditing(textField: UITextField!) {
     if textField == phoneTextBox {
       userPhone = phoneTextBox.phoneNumber()
     }
   }
 
+  
   func textFieldShouldReturn(textField: UITextField!) -> Bool {
     if textField == userTextBox {
       phoneTextBox.becomeFirstResponder()
@@ -64,7 +66,6 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
 
 
   //#pragma mark - UITableViewDataSource
-
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
 
@@ -108,10 +109,10 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
       }
     }
 
-
     return cell
   }
 
+  
   override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
@@ -135,16 +136,18 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     }
   }
 
+  
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
 
+  
   override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
     return cellImageSize.height
   }
 
+  
   override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
     return cellPlaceholders.count
   }
-
 }

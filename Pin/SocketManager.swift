@@ -17,27 +17,30 @@ class SocketManager: SocketIO {
   var userPhone: NSString! = nil
   var reconnectTimer: NSTimer = NSTimer()
 
-
   init() {
     super.init()
     socketManager = SocketIO(delegate: self)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "startTimer", name: "reconnect", object: nil)
   }
 
+  
   func connect(phone: NSString!) {
     userPhone = phone
 
     socketManager.connectToHost(socketHost, onPort: socketPort)
   }
 
+  
   func disconnectSocket() {
     socketManager.disconnect()
   }
 
+  
   func reconnect() {
     socketManager.connectToHost(socketHost, onPort: socketPort)
   }
 
+  
   func sendLocation(to: NSString!, let position: Location!) {
     var params = [
       "to_cellphone_number": to,
@@ -47,6 +50,7 @@ class SocketManager: SocketIO {
     socketManager.sendEvent("location", withData: params)
   }
 
+  
   func requestContactList(numbersArray: NSArray) {
     var params = numbersArray
     socketManager.sendEvent("filter_contact_list", withData: params)
@@ -54,7 +58,6 @@ class SocketManager: SocketIO {
 
 
   //#pragma mark - Private Methods
-
   func startTimer() {
     reconnectTimer.invalidate()
     UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
@@ -74,21 +77,23 @@ extension SocketManager: SocketIODelegate {
     ]
 
     socketManager.sendEvent("login", withData: params)
-    NSNotificationCenter.defaultCenter().postNotificationName("connected", object: nil)
     NSUserDefaults.standardUserDefaults().setValue(userPhone, forKey: "sendingFrom")
     reconnectTimer.invalidate()
   }
 
+  
   func socketIODidDisconnect(socket: SocketIO, disconnectedWithError error: NSError) {
     NSNotificationCenter.defaultCenter().postNotificationName("disconnected", object: nil)
 
     startTimer()
   }
 
+  
   func socketIO(socket: SocketIO, onError error: NSError) {
     startTimer()
   }
 
+  
   func socketIO(socket: SocketIO, didReceiveEvent packet: SocketIOPacket) {
     if packet.name == "connected" {
       NSNotificationCenter.defaultCenter().postNotificationName("connected", object: nil)
