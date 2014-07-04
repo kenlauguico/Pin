@@ -15,3 +15,4 @@
 #import <SHSPhoneComponent/SHSPhoneTextField.h>
 #import <APAddressBook/APAddressBook.h>
 #import <APAddressBook/APContact.h>
+#import <CMPopTipView/CMPopTipView.h>

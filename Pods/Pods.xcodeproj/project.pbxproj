@@ -7,406 +7,461 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02044402CCC14E99BB3EABD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9B4BB44C9E4C35856F3BCA /* Foundation.framework */; };
-		024B4F6A83A64780AE202602 /* SocketIOTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 3452EDC1177146F090CC98E4 /* SocketIOTransport.h */; };
-		0439FA95C3054F7592172EB2 /* SocketIOTransportWebsocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 25A6C3C8476445A3B1B8F320 /* SocketIOTransportWebsocket.h */; };
-		052543B804034BDE8617F66C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DF74A3BDD544D0B18722AC /* Security.framework */; };
-		0C5789A94B0B45C5A9527B31 /* SHSPhoneTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B9F2DF84C9A466AA356C58E /* SHSPhoneTextField.h */; };
-		1157D5711DED4E3EBA07D1A6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8C16EE42F74500897C7890 /* CFNetwork.framework */; };
-		1CEFCE8183334E048D4F3E24 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC39BCE6E9F4F9D82A14FF2 /* SocketIO.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		229C38587FDE403F8A36CDB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9B4BB44C9E4C35856F3BCA /* Foundation.framework */; };
-		272F39B4BA88458C9562DE8A /* Pods-socket.IO-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5865D584152646AD9F13FF49 /* Pods-socket.IO-dummy.m */; };
-		27D5B4EAC91744E9AC5F289E /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = FB7F009177264C55855B2470 /* base64.h */; };
-		3F1B1B41824F478C963798FE /* SocketIOJSONSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 2333F05F070A46459924F2CF /* SocketIOJSONSerialization.h */; };
-		3F2D9E27D6224ABC82C277C5 /* Pods-APAddressBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBBCCE6BF6E42CD9F7C1194 /* Pods-APAddressBook-dummy.m */; };
-		446FF6D9B9424D6D8C47F406 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9B4BB44C9E4C35856F3BCA /* Foundation.framework */; };
-		5AEF2E230D2B431FB532C345 /* APAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 29715EE404F6404D905DE723 /* APAddress.h */; };
-		5B8F0DF0626544AE8DEF16BF /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAAC42A3B6B45A0A044726E /* SocketIOTransportWebsocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		61AC650ED4F04A4ABEDA659D /* APAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCB63437DA499888BE3B0F /* APAddressBook.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		62585D7816A846F68E20195C /* libPods-socket.IO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 874E48A9E0584D51B9442948 /* libPods-socket.IO.a */; };
-		65BF90FA12DE484EB25D2AB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9B4BB44C9E4C35856F3BCA /* Foundation.framework */; };
-		6BC40FCD61AF4697895DE445 /* SocketIOPacket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FB03F8790C54C6393AA612D /* SocketIOPacket.h */; };
-		6EE315C55626400D9BF6D3A6 /* SHSPhoneNumberFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = EE4E0C09259241B7BDAAEDC2 /* SHSPhoneNumberFormatter.h */; };
-		716A4CD40727403885A23018 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9B4BB44C9E4C35856F3BCA /* Foundation.framework */; };
-		7A1F4808C4644E93BA09BF8E /* libPods-SHSPhoneComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44259B6A448FE9710A351 /* libPods-SHSPhoneComponent.a */; };
-		7DE3DA8673A74A4095D6FB10 /* APAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 8009C29106B642109CC328CB /* APAddressBook.h */; };
-		7F97EF5079B7456AA5F3B8B4 /* SHSPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BE2C5BE75A44BE99DD2634 /* SHSPhoneNumberFormatter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		88DCB13A82774EBFA67E23C7 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = E4EAB38D92964A9991246255 /* base64.c */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		8EE4DDC4591348798B97D23B /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E19B33F889B4E8B8194F17C /* SocketIOTransportXHR.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		9286EFA1D44542B88505EA22 /* NSData+SRB64Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 342571CE982A48CA81B31795 /* NSData+SRB64Additions.h */; };
-		970E92E78AAA4ADB8EEF042B /* SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F217D01F904D5DA5E3148D /* SRWebSocket.h */; };
-		A494B74235A24BDAAB9C3559 /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD62606767D34663BABB4981 /* libPods-SocketRocket.a */; };
-		A7D4F3B50D074F8DA03D5A7F /* APPhoneWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DE29F3A7DF470B8862467B /* APPhoneWithLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		ACEEC54EA7DA49058BD60F71 /* SHSFlagAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = 36CD52D2B7504B30AF1EC4A1 /* SHSFlagAccessoryView.h */; };
-		BAD2A74A03DF40F890F662E3 /* APAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EEF92D9F01405B807A0ED7 /* APAddress.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		BCED40012EEA46EBACC93AD5 /* SHSPhoneLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDFCBBC183C44DAA55CB691 /* SHSPhoneLogic.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		BE81BF4CB7D24A318D3FB8E7 /* SHSPhoneNumberFormatter+UserConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 5705EDEFD3594458B7E3C930 /* SHSPhoneNumberFormatter+UserConfig.h */; };
-		C2C0EEE8E6C24C958BB8BC1C /* SHSFlagAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE0B8CE9A864177AFA76E10 /* SHSFlagAccessoryView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		C48C8D9FD04B4DAB84075635 /* SHSPhoneLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 09F6AD2B6C944DEBB3CE5AD3 /* SHSPhoneLibrary.h */; };
-		C53C595E155C451A98FA057D /* Pods-SocketRocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85FA9A1709C542A78582C079 /* Pods-SocketRocket-dummy.m */; };
-		C554072421BC4B4EAB184A9C /* SocketIO.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5AAD9A0A044FDE8FC2F5D8 /* SocketIO.h */; };
-		C8AA40E259224B82963F94B0 /* libPods-APAddressBook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7FD57DD79C4706B2319FD8 /* libPods-APAddressBook.a */; };
-		CE6F6710745B4308AD327EE2 /* APContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 82C56BB453EF48108A513942 /* APContact.h */; };
-		D2436D4EAA7845E7AC642A43 /* SHSPhoneTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB42B74D4C24673A1FA58AF /* SHSPhoneTextField.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		D326B2428B814D38B47C0711 /* Pods-SHSPhoneComponent-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE1F0034FE7449F9C3B2333 /* Pods-SHSPhoneComponent-dummy.m */; };
-		D6C4DE016B59480893EF3B3D /* SHSPhoneNumberFormatter+UserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F77746F7D3F843DAA74F9FEB /* SHSPhoneNumberFormatter+UserConfig.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		DCB24F69259047C6A9BFBA7D /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB75A7D4BA4AA992165EB1 /* SocketIOPacket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		E161C743E7B5469286FD445D /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED10E17055F42AAA681586A /* NSData+SRB64Additions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		E2D3E6BFF2E446839C236A49 /* APPhoneWithLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A58130BF99364815B09576DB /* APPhoneWithLabel.h */; };
-		E665E6810E7B4F9396D406DF /* APContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D089D3717E646F285ECC720 /* APContact.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		E7250500229A4C0EBB08B0D3 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E4D5390C414537A481C0BD /* SocketIOJSONSerialization.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		E7E48FA53E2F4D00AB2A8557 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C9B6B50ED9446296CB8B05 /* SRWebSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		F34C526EA3124F3A82A8F8EB /* SHSPhoneLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = C99237BAC1A14F4891CEF200 /* SHSPhoneLogic.h */; };
-		F61C6D2E95E04DF694487094 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C592C1451DB54338AA78324C /* Pods-dummy.m */; };
-		F860C82991F34935A7D56E3E /* SocketIOTransportXHR.h in Headers */ = {isa = PBXBuildFile; fileRef = 99235089C89E40C6BC6EDF9D /* SocketIOTransportXHR.h */; };
-		FAA5B85F5FFA40B28B0964DC /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AF1E6939164E41A9414C02 /* AddressBook.framework */; };
-		FE891D66A4F64AF2A73DFE84 /* APTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DC0D5465C5F84CB6B1F2DAA2 /* APTypes.h */; };
+		0210B100F9C4450B9E59BEB6 /* SHSPhoneLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E3C165E03BD46DCBAA1E643 /* SHSPhoneLibrary.h */; };
+		03AE81B6367C4E75AE7DA9F9 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6987FD098A324EC792283699 /* SocketIOTransportWebsocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		05484AD7179F49C298A189D1 /* SHSPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D906151BD5CC457C831CE770 /* SHSPhoneNumberFormatter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		08C8DFCA0BE74DC39DC4FA0E /* APAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 047EB2EEC9024B9994C1D8F9 /* APAddress.h */; };
+		0964E82E4A9944E5B630F5BE /* APPhoneWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD6ABBD8B6347D9893C5988 /* APPhoneWithLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		09A1B94E2DE4407FAA0207EA /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = A43DF4658F994FECB440DA28 /* SocketIOPacket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		19A2D3F6ED884012A9B24BAB /* APContact.h in Headers */ = {isa = PBXBuildFile; fileRef = D7A7D329013A4CA28F05096F /* APContact.h */; };
+		1F819A5BF88342019D63F9EB /* Pods-SocketRocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4883AE552445E0BFF3B39D /* Pods-SocketRocket-dummy.m */; };
+		29A70F803DD44721B705CDBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB3AA2A5070421BA390CFA2 /* Foundation.framework */; };
+		2A9A9147FDE847829365F0A9 /* SHSPhoneNumberFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = E61BCDCF5787415BAF95C77E /* SHSPhoneNumberFormatter.h */; };
+		3405CDE9C1154842A1DA4B47 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94DFB2B8614BAFAF70D95D /* AddressBook.framework */; };
+		35B79C51C76D46CFA7626BA6 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF2CCB5A0E443B1AF20889A /* SRWebSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		3876AF3171AB4B5BBA88CC94 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 49D340F3FEED4B9EB18A4185 /* base64.c */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		3BC4D7A285BA48E194AEA4F2 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = E91CE745247948B5B24AF897 /* base64.h */; };
+		42B0A6B60EA24697A6E47E53 /* Pods-APAddressBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0554978F6DD64DCDA6334970 /* Pods-APAddressBook-dummy.m */; };
+		45C45EC37BD74984B408D3A9 /* NSData+SRB64Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 8956F8631B704E1698A3A508 /* NSData+SRB64Additions.h */; };
+		48E25E303FB548318260D2DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE698B890C649DE8329B7C5 /* UIKit.framework */; };
+		541C22E30B5C4B9DACA910FB /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE99FDD60154AF6981D4F72 /* libPods-SocketRocket.a */; };
+		583F395264974B43AE41A98D /* SHSPhoneNumberFormatter+UserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2952E2D4640342E29A29CB7A /* SHSPhoneNumberFormatter+UserConfig.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		592EAB97D9164E39BB070592 /* APPhoneWithLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1261E530E0654B80BB4B8840 /* APPhoneWithLabel.h */; };
+		5C80CCC384CE4692AB24C45B /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = FB08C68301EB44E581FA3490 /* SocketIOTransportXHR.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		5E47633EDFB548DD9BE1DEBD /* CMPopTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = CB1E8D7FD957470484C8E4BA /* CMPopTipView.h */; };
+		618CC9BBC4264043B11F1861 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BD386BF9D3463C93EC8914 /* SocketIOJSONSerialization.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		6EA69449EE044C8EA39F664A /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587AA0565484CF6831B9F6B /* Pods-dummy.m */; };
+		73FBB14E410D4F03870F775D /* libPods-socket.IO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F73A18E236984EB8B8BD14D6 /* libPods-socket.IO.a */; };
+		74DECA98E8F245FDB0AC0488 /* SocketIOPacket.h in Headers */ = {isa = PBXBuildFile; fileRef = B3740B6EAC374DF9930510D6 /* SocketIOPacket.h */; };
+		78D24EC8461E42D48CFFA99D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9F1BA5F4D74100B9154907 /* CFNetwork.framework */; };
+		7D5B2C44647B4CC59CF62291 /* Pods-SHSPhoneComponent-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D256B71CD667406189D99D77 /* Pods-SHSPhoneComponent-dummy.m */; };
+		80B85B09EF884D0F8BBD9B06 /* SocketIOTransportWebsocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B08F8576B94BF5ABF7B9C4 /* SocketIOTransportWebsocket.h */; };
+		8BE466826DFB4E17ACFCD4BD /* SHSPhoneLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = E07B34A80FFD4146A46C4796 /* SHSPhoneLogic.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		8D84D59334A0406DA3DDC782 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB3AA2A5070421BA390CFA2 /* Foundation.framework */; };
+		8EDE1839DC5F4FD6B30CA1FE /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB284B65547441CF9A3516C4 /* CMPopTipView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		908F3270052E4AB39FF3895D /* libPods-CMPopTipView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4981AA83A3B4B4B917CED3E /* libPods-CMPopTipView.a */; };
+		9488DA53643B45D0B2F3A4FD /* APAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5759443FDA4AFB9769D169 /* APAddress.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		95D447D7BD7B4983BC37E5ED /* SocketIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CE03CB329644779A6285620 /* SocketIO.h */; };
+		9A783024D0AC4454941D86DB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6360DF19DE4F1AA702CE0D /* Security.framework */; };
+		9ADB9D1E284A43929CFD6BB7 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51462E32F14298BA0438DB /* SocketIO.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		9BF29134D0334D8D90C33DCC /* SHSFlagAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F16AE8D6C741AEB35E6A6B /* SHSFlagAccessoryView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B1D3D60728254F8CBE450071 /* SHSPhoneLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = 85D8BC1737D0452B8D4D883E /* SHSPhoneLogic.h */; };
+		B54CFB1C33554DE48F3FC420 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB3AA2A5070421BA390CFA2 /* Foundation.framework */; };
+		BE05E1EE0EF24922B1F014FF /* SHSPhoneNumberFormatter+UserConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = F14BCC8563DA4E938A312A61 /* SHSPhoneNumberFormatter+UserConfig.h */; };
+		C0A435ED31954AD7BB56EF94 /* SHSFlagAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = 747962F6421243C09ED30380 /* SHSFlagAccessoryView.h */; };
+		C17D24A90777451A8540FE17 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6261057C456B4A23B76AB221 /* NSData+SRB64Additions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		C24C8729997E498A837413B7 /* libPods-SHSPhoneComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE38F9C7D8A45DE931F342F /* libPods-SHSPhoneComponent.a */; };
+		C252AA9C2334482497CF61C7 /* Pods-socket.IO-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7857627AAC684332A092426E /* Pods-socket.IO-dummy.m */; };
+		C6B9BAF4520C4252BD5F3148 /* SocketIOTransportXHR.h in Headers */ = {isa = PBXBuildFile; fileRef = E2A25EBD17164418B6905C00 /* SocketIOTransportXHR.h */; };
+		C9D70C5D21334EE98BB7415C /* APContact.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9E54C0F2CF47CE9CA8BDB5 /* APContact.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		CB062682E5B64AF6B00CFFDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB3AA2A5070421BA390CFA2 /* Foundation.framework */; };
+		D2E75C571F494569946A852E /* Pods-CMPopTipView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F34E76FD4F4806B7A7CE05 /* Pods-CMPopTipView-dummy.m */; };
+		D5CDD45A055541C5B062FEE4 /* SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = CC0E186CFD6F40EE9C785D04 /* SRWebSocket.h */; };
+		D886504F0E564C08B8BA889E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB3AA2A5070421BA390CFA2 /* Foundation.framework */; };
+		DC56E573D67143679ED94C98 /* APTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F02C3BC851D4DB08E056278 /* APTypes.h */; };
+		E285AECA0AE147A6B71D064D /* libPods-APAddressBook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40216D9CC7E74D6FB78ACD26 /* libPods-APAddressBook.a */; };
+		E8AFD2B7E881409F98921170 /* APAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B53A01F7C1E4053898A34F6 /* APAddressBook.h */; };
+		EECA69F24B754734B3C780A0 /* SHSPhoneTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C5A2ACC2A0459789E69D74 /* SHSPhoneTextField.h */; };
+		F0EC52963A7E4AF5B32F99FB /* APAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC727ED00E646E5889270FB /* APAddressBook.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		F7CBA846D956457AAB75C8E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB3AA2A5070421BA390CFA2 /* Foundation.framework */; };
+		F8496FD0E04149FFBB49A5D6 /* SocketIOJSONSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 2468F60FC754409CB9650656 /* SocketIOJSONSerialization.h */; };
+		FD624C8A4D8942839BC4EC0D /* SocketIOTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 37B6F5ECB1834FB18ED658CC /* SocketIOTransport.h */; };
+		FF11D2AFB99944218AF2317D /* SHSPhoneTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6DBD455209405CABD674BA /* SHSPhoneTextField.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3C7430F55BD94547ACF83728 /* PBXContainerItemProxy */ = {
+		02B574DB005948388AFA6419 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1295269AB6B34F3794EF762E /* Project object */;
+			containerPortal = 7B54BF95703F4A789E1839D8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 517744B7BB414CCEBFB76F75;
+			remoteGlobalIDString = 3D52E01CD6944633B1A9B05C;
+			remoteInfo = "Pods-SocketRocket";
+		};
+		0EF482A15899401AA6D82569 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B54BF95703F4A789E1839D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF3EF0E9C291469AB955FE96;
 			remoteInfo = "Pods-SHSPhoneComponent";
 		};
-		48C3122CDB2B48C6A25FBF4D /* PBXContainerItemProxy */ = {
+		4E54691BA37144E6BD1C0308 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1295269AB6B34F3794EF762E /* Project object */;
+			containerPortal = 7B54BF95703F4A789E1839D8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C17752E2E2F04D3BBCE59F18;
+			remoteGlobalIDString = 3D52E01CD6944633B1A9B05C;
+			remoteInfo = "Pods-SocketRocket";
+		};
+		62A5004BDE8A41CE9EAE5118 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B54BF95703F4A789E1839D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F3C9B6D18B1476EBD946352;
 			remoteInfo = "Pods-APAddressBook";
 		};
-		52EF1B84D63D40B38C2285DD /* PBXContainerItemProxy */ = {
+		A47E8FB060464D788F146EF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1295269AB6B34F3794EF762E /* Project object */;
+			containerPortal = 7B54BF95703F4A789E1839D8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4C46D5293CAE4CD1B14D94F3;
-			remoteInfo = "Pods-SocketRocket";
+			remoteGlobalIDString = 736FDF4092C2486AB8B64C50;
+			remoteInfo = "Pods-CMPopTipView";
 		};
-		91DB679885EF46AD872B678A /* PBXContainerItemProxy */ = {
+		F75D7B6D8CD345EF9CC98CD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1295269AB6B34F3794EF762E /* Project object */;
+			containerPortal = 7B54BF95703F4A789E1839D8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E4D13F3E3A9E4AD1B1848ECA;
+			remoteGlobalIDString = FD5DC80184184360B6DDD570;
 			remoteInfo = "Pods-socket.IO";
-		};
-		CD93B419B5B944E49C7FBEF6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1295269AB6B34F3794EF762E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4C46D5293CAE4CD1B14D94F3;
-			remoteInfo = "Pods-SocketRocket";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		090C7A75143F4A5487009FE2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
-		09F6AD2B6C944DEBB3CE5AD3 /* SHSPhoneLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSPhoneLibrary.h; path = SHSPhoneComponents/SHSPhoneLibrary.h; sourceTree = "<group>"; };
-		0CE941E7F74A463E9E1161B9 /* Pods-APAddressBook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-APAddressBook-prefix.pch"; sourceTree = "<group>"; };
-		18679B288D0845A58ACDF949 /* Pods-SocketRocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SocketRocket.xcconfig"; sourceTree = "<group>"; };
-		1CE1F0034FE7449F9C3B2333 /* Pods-SHSPhoneComponent-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SHSPhoneComponent-dummy.m"; sourceTree = "<group>"; };
-		1D089D3717E646F285ECC720 /* APContact.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APContact.m; path = Classes/APContact.m; sourceTree = "<group>"; };
-		1EDB75A7D4BA4AA992165EB1 /* SocketIOPacket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIOPacket.m; sourceTree = "<group>"; };
-		2333F05F070A46459924F2CF /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = "<group>"; };
-		25A6C3C8476445A3B1B8F320 /* SocketIOTransportWebsocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportWebsocket.h; sourceTree = "<group>"; };
-		29715EE404F6404D905DE723 /* APAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APAddress.h; path = Classes/APAddress.h; sourceTree = "<group>"; };
-		342571CE982A48CA81B31795 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+SRB64Additions.h"; path = "SocketRocket/NSData+SRB64Additions.h"; sourceTree = "<group>"; };
-		3452EDC1177146F090CC98E4 /* SocketIOTransport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOTransport.h; sourceTree = "<group>"; };
-		36CD52D2B7504B30AF1EC4A1 /* SHSFlagAccessoryView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSFlagAccessoryView.h; path = SHSPhoneComponents/SHSFlagAccessoryView.h; sourceTree = "<group>"; };
-		38F217D01F904D5DA5E3148D /* SRWebSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SRWebSocket.h; path = SocketRocket/SRWebSocket.h; sourceTree = "<group>"; };
-		3BDFCBBC183C44DAA55CB691 /* SHSPhoneLogic.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHSPhoneLogic.m; path = SHSPhoneComponents/SHSPhoneLogic.m; sourceTree = "<group>"; };
-		42CF3D0E95024331893067CC /* Pods-SHSPhoneComponent.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHSPhoneComponent.xcconfig"; sourceTree = "<group>"; };
-		47D9AE51126C400DBD714A9D /* Pods-SocketRocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SocketRocket-prefix.pch"; sourceTree = "<group>"; };
-		4E19B33F889B4E8B8194F17C /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
-		51EEF92D9F01405B807A0ED7 /* APAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APAddress.m; path = Classes/APAddress.m; sourceTree = "<group>"; };
-		5705EDEFD3594458B7E3C930 /* SHSPhoneNumberFormatter+UserConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SHSPhoneNumberFormatter+UserConfig.h"; path = "SHSPhoneComponents/SHSPhoneNumberFormatter+UserConfig.h"; sourceTree = "<group>"; };
-		574277D45A8E4EA5A70F977B /* Pods-APAddressBook-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APAddressBook-Private.xcconfig"; sourceTree = "<group>"; };
-		5865D584152646AD9F13FF49 /* Pods-socket.IO-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-socket.IO-dummy.m"; sourceTree = "<group>"; };
-		5DB1AAD05B8C41B88EDDA83E /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		5DC39BCE6E9F4F9D82A14FF2 /* SocketIO.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
-		5DED9E0B941342E385B093DF /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		68BB8F2C58814A518CB90660 /* Pods-SocketRocket-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SocketRocket-Private.xcconfig"; sourceTree = "<group>"; };
-		6A7FD57DD79C4706B2319FD8 /* libPods-APAddressBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-APAddressBook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BAAC42A3B6B45A0A044726E /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
-		6F5C6B6AB8974C41B3141B67 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		78DE29F3A7DF470B8862467B /* APPhoneWithLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APPhoneWithLabel.m; path = Classes/APPhoneWithLabel.m; sourceTree = "<group>"; };
-		7ACCB63437DA499888BE3B0F /* APAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APAddressBook.m; path = Classes/APAddressBook.m; sourceTree = "<group>"; };
-		7C8C16EE42F74500897C7890 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		7ED10E17055F42AAA681586A /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+SRB64Additions.m"; path = "SocketRocket/NSData+SRB64Additions.m"; sourceTree = "<group>"; };
-		7FB03F8790C54C6393AA612D /* SocketIOPacket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOPacket.h; sourceTree = "<group>"; };
-		8009C29106B642109CC328CB /* APAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APAddressBook.h; path = Classes/APAddressBook.h; sourceTree = "<group>"; };
-		82C56BB453EF48108A513942 /* APContact.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APContact.h; path = Classes/APContact.h; sourceTree = "<group>"; };
-		83D67D72450B440AA86DD078 /* Pods-APAddressBook.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APAddressBook.xcconfig"; sourceTree = "<group>"; };
-		83E44259B6A448FE9710A351 /* libPods-SHSPhoneComponent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SHSPhoneComponent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		85FA9A1709C542A78582C079 /* Pods-SocketRocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SocketRocket-dummy.m"; sourceTree = "<group>"; };
-		86A775CEAFF94947B25620C1 /* Pods-SHSPhoneComponent-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SHSPhoneComponent-prefix.pch"; sourceTree = "<group>"; };
-		874E48A9E0584D51B9442948 /* libPods-socket.IO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-socket.IO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B9B4BB44C9E4C35856F3BCA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8B9F2DF84C9A466AA356C58E /* SHSPhoneTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSPhoneTextField.h; path = SHSPhoneComponents/SHSPhoneTextField.h; sourceTree = "<group>"; };
-		8DBBCCE6BF6E42CD9F7C1194 /* Pods-APAddressBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-APAddressBook-dummy.m"; sourceTree = "<group>"; };
-		92D2476C71C145469ADFA272 /* Pods-socket.IO-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-socket.IO-Private.xcconfig"; sourceTree = "<group>"; };
-		94C9B6B50ED9446296CB8B05 /* SRWebSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SRWebSocket.m; path = SocketRocket/SRWebSocket.m; sourceTree = "<group>"; };
-		99235089C89E40C6BC6EDF9D /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
-		996E30CC15704C6A8BC20289 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		A3DF74A3BDD544D0B18722AC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		A4F7711BC5DF4C3F999AF23E /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A58130BF99364815B09576DB /* APPhoneWithLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APPhoneWithLabel.h; path = Classes/APPhoneWithLabel.h; sourceTree = "<group>"; };
-		AD5AAD9A0A044FDE8FC2F5D8 /* SocketIO.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
-		B5AF1E6939164E41A9414C02 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
-		B9E4D5390C414537A481C0BD /* SocketIOJSONSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIOJSONSerialization.m; sourceTree = "<group>"; };
-		C30ED8F0D9A44FD9B61DB613 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C592C1451DB54338AA78324C /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		C723B24665094D859FA674DF /* Pods-SHSPhoneComponent-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHSPhoneComponent-Private.xcconfig"; sourceTree = "<group>"; };
-		C7BE2C5BE75A44BE99DD2634 /* SHSPhoneNumberFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHSPhoneNumberFormatter.m; path = SHSPhoneComponents/SHSPhoneNumberFormatter.m; sourceTree = "<group>"; };
-		C8166599E67A41729CE835CD /* Pods-socket.IO.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-socket.IO.xcconfig"; sourceTree = "<group>"; };
-		C99237BAC1A14F4891CEF200 /* SHSPhoneLogic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSPhoneLogic.h; path = SHSPhoneComponents/SHSPhoneLogic.h; sourceTree = "<group>"; };
-		CD62606767D34663BABB4981 /* libPods-SocketRocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocketRocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC0D5465C5F84CB6B1F2DAA2 /* APTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APTypes.h; path = Classes/APTypes.h; sourceTree = "<group>"; };
-		DCB42B74D4C24673A1FA58AF /* SHSPhoneTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHSPhoneTextField.m; path = SHSPhoneComponents/SHSPhoneTextField.m; sourceTree = "<group>"; };
-		E4EAB38D92964A9991246255 /* base64.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = base64.c; path = SocketRocket/base64.c; sourceTree = "<group>"; };
-		ECE0B8CE9A864177AFA76E10 /* SHSFlagAccessoryView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHSFlagAccessoryView.m; path = SHSPhoneComponents/SHSFlagAccessoryView.m; sourceTree = "<group>"; };
-		EE4E0C09259241B7BDAAEDC2 /* SHSPhoneNumberFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSPhoneNumberFormatter.h; path = SHSPhoneComponents/SHSPhoneNumberFormatter.h; sourceTree = "<group>"; };
-		F77746F7D3F843DAA74F9FEB /* SHSPhoneNumberFormatter+UserConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SHSPhoneNumberFormatter+UserConfig.m"; path = "SHSPhoneComponents/SHSPhoneNumberFormatter+UserConfig.m"; sourceTree = "<group>"; };
-		F8F2DC6056554C9980565B71 /* Pods-socket.IO-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-socket.IO-prefix.pch"; sourceTree = "<group>"; };
-		FB7F009177264C55855B2470 /* base64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = base64.h; path = SocketRocket/base64.h; sourceTree = "<group>"; };
+		047EB2EEC9024B9994C1D8F9 /* APAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APAddress.h; path = Classes/APAddress.h; sourceTree = "<group>"; };
+		0554978F6DD64DCDA6334970 /* Pods-APAddressBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-APAddressBook-dummy.m"; sourceTree = "<group>"; };
+		1261E530E0654B80BB4B8840 /* APPhoneWithLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APPhoneWithLabel.h; path = Classes/APPhoneWithLabel.h; sourceTree = "<group>"; };
+		20875D9F1CC04B988456C109 /* Pods-SocketRocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SocketRocket-prefix.pch"; sourceTree = "<group>"; };
+		2468F60FC754409CB9650656 /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = "<group>"; };
+		25F16AE8D6C741AEB35E6A6B /* SHSFlagAccessoryView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHSFlagAccessoryView.m; path = SHSPhoneComponents/SHSFlagAccessoryView.m; sourceTree = "<group>"; };
+		2952E2D4640342E29A29CB7A /* SHSPhoneNumberFormatter+UserConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SHSPhoneNumberFormatter+UserConfig.m"; path = "SHSPhoneComponents/SHSPhoneNumberFormatter+UserConfig.m"; sourceTree = "<group>"; };
+		2AE4C14B65C949119FA83CCA /* Pods-socket.IO.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-socket.IO.xcconfig"; sourceTree = "<group>"; };
+		2B53A01F7C1E4053898A34F6 /* APAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APAddressBook.h; path = Classes/APAddressBook.h; sourceTree = "<group>"; };
+		2CC7A15916AF461D87272CFF /* Pods-socket.IO-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-socket.IO-prefix.pch"; sourceTree = "<group>"; };
+		2E3C165E03BD46DCBAA1E643 /* SHSPhoneLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSPhoneLibrary.h; path = SHSPhoneComponents/SHSPhoneLibrary.h; sourceTree = "<group>"; };
+		2F02C3BC851D4DB08E056278 /* APTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APTypes.h; path = Classes/APTypes.h; sourceTree = "<group>"; };
+		3587AA0565484CF6831B9F6B /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		37B6F5ECB1834FB18ED658CC /* SocketIOTransport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOTransport.h; sourceTree = "<group>"; };
+		38BA31D9460C4FDABC7A5C8C /* Pods-CMPopTipView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView-Private.xcconfig"; sourceTree = "<group>"; };
+		3B51462E32F14298BA0438DB /* SocketIO.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
+		3B57E1FFE0A2431B80A17D88 /* Pods-CMPopTipView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView.xcconfig"; sourceTree = "<group>"; };
+		3B8829183852474A91BA7E4B /* Pods-APAddressBook.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APAddressBook.xcconfig"; sourceTree = "<group>"; };
+		3BD6ABBD8B6347D9893C5988 /* APPhoneWithLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APPhoneWithLabel.m; path = Classes/APPhoneWithLabel.m; sourceTree = "<group>"; };
+		3FD5853CC61B493B9382E65F /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		40216D9CC7E74D6FB78ACD26 /* libPods-APAddressBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-APAddressBook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40F6C74200324E3C87B8E8A7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
+		44B08F8576B94BF5ABF7B9C4 /* SocketIOTransportWebsocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportWebsocket.h; sourceTree = "<group>"; };
+		495C38CF3E964CC8BB8C0595 /* Pods-SHSPhoneComponent-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SHSPhoneComponent-prefix.pch"; sourceTree = "<group>"; };
+		49D340F3FEED4B9EB18A4185 /* base64.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = base64.c; path = SocketRocket/base64.c; sourceTree = "<group>"; };
+		4D9F1BA5F4D74100B9154907 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		515978BCE3AA4709BEC25DE7 /* Pods-CMPopTipView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CMPopTipView-prefix.pch"; sourceTree = "<group>"; };
+		59BD386BF9D3463C93EC8914 /* SocketIOJSONSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIOJSONSerialization.m; sourceTree = "<group>"; };
+		5B02C025554B4BCB8F129EAE /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		5BE698B890C649DE8329B7C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5DE99FDD60154AF6981D4F72 /* libPods-SocketRocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocketRocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA7AB34362F4A80A59916D4 /* Pods-socket.IO-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-socket.IO-Private.xcconfig"; sourceTree = "<group>"; };
+		6261057C456B4A23B76AB221 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+SRB64Additions.m"; path = "SocketRocket/NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		67F34E76FD4F4806B7A7CE05 /* Pods-CMPopTipView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CMPopTipView-dummy.m"; sourceTree = "<group>"; };
+		6987FD098A324EC792283699 /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
+		6CE03CB329644779A6285620 /* SocketIO.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
+		747962F6421243C09ED30380 /* SHSFlagAccessoryView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSFlagAccessoryView.h; path = SHSPhoneComponents/SHSFlagAccessoryView.h; sourceTree = "<group>"; };
+		752717FC17184590916B14B2 /* Pods-SHSPhoneComponent.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHSPhoneComponent.xcconfig"; sourceTree = "<group>"; };
+		75C6EA8D48E04357949692E5 /* Pods-APAddressBook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-APAddressBook-prefix.pch"; sourceTree = "<group>"; };
+		7857627AAC684332A092426E /* Pods-socket.IO-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-socket.IO-dummy.m"; sourceTree = "<group>"; };
+		7E6DBD455209405CABD674BA /* SHSPhoneTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHSPhoneTextField.m; path = SHSPhoneComponents/SHSPhoneTextField.m; sourceTree = "<group>"; };
+		85D8BC1737D0452B8D4D883E /* SHSPhoneLogic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSPhoneLogic.h; path = SHSPhoneComponents/SHSPhoneLogic.h; sourceTree = "<group>"; };
+		85F39B62B2004C83824DB0EC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8956F8631B704E1698A3A508 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+SRB64Additions.h"; path = "SocketRocket/NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		8AC65F994EFF4EFBBD3580CA /* Pods-APAddressBook-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APAddressBook-Private.xcconfig"; sourceTree = "<group>"; };
+		8B94DFB2B8614BAFAF70D95D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
+		90E09F58AEA244E8B0C66249 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		98CEB0437AE843199E82E214 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		9AC727ED00E646E5889270FB /* APAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APAddressBook.m; path = Classes/APAddressBook.m; sourceTree = "<group>"; };
+		A43DF4658F994FECB440DA28 /* SocketIOPacket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIOPacket.m; sourceTree = "<group>"; };
+		ABB3AA2A5070421BA390CFA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B3740B6EAC374DF9930510D6 /* SocketIOPacket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOPacket.h; sourceTree = "<group>"; };
+		B926EFAC41874AD089F28212 /* Pods-SHSPhoneComponent-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHSPhoneComponent-Private.xcconfig"; sourceTree = "<group>"; };
+		B9E53DDD3B7D413D819C4FAA /* Pods-SocketRocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SocketRocket.xcconfig"; sourceTree = "<group>"; };
+		BB284B65547441CF9A3516C4 /* CMPopTipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CMPopTipView.m; path = CMPopTipView/CMPopTipView.m; sourceTree = "<group>"; };
+		BF9E54C0F2CF47CE9CA8BDB5 /* APContact.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APContact.m; path = Classes/APContact.m; sourceTree = "<group>"; };
+		C8C5A2ACC2A0459789E69D74 /* SHSPhoneTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSPhoneTextField.h; path = SHSPhoneComponents/SHSPhoneTextField.h; sourceTree = "<group>"; };
+		CB1E8D7FD957470484C8E4BA /* CMPopTipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CMPopTipView.h; path = CMPopTipView/CMPopTipView.h; sourceTree = "<group>"; };
+		CC0E186CFD6F40EE9C785D04 /* SRWebSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SRWebSocket.h; path = SocketRocket/SRWebSocket.h; sourceTree = "<group>"; };
+		CDF2CCB5A0E443B1AF20889A /* SRWebSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SRWebSocket.m; path = SocketRocket/SRWebSocket.m; sourceTree = "<group>"; };
+		CF4883AE552445E0BFF3B39D /* Pods-SocketRocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SocketRocket-dummy.m"; sourceTree = "<group>"; };
+		CF6360DF19DE4F1AA702CE0D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		D256B71CD667406189D99D77 /* Pods-SHSPhoneComponent-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SHSPhoneComponent-dummy.m"; sourceTree = "<group>"; };
+		D7A7D329013A4CA28F05096F /* APContact.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APContact.h; path = Classes/APContact.h; sourceTree = "<group>"; };
+		D906151BD5CC457C831CE770 /* SHSPhoneNumberFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHSPhoneNumberFormatter.m; path = SHSPhoneComponents/SHSPhoneNumberFormatter.m; sourceTree = "<group>"; };
+		DAE38F9C7D8A45DE931F342F /* libPods-SHSPhoneComponent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SHSPhoneComponent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF5759443FDA4AFB9769D169 /* APAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APAddress.m; path = Classes/APAddress.m; sourceTree = "<group>"; };
+		E07B34A80FFD4146A46C4796 /* SHSPhoneLogic.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHSPhoneLogic.m; path = SHSPhoneComponents/SHSPhoneLogic.m; sourceTree = "<group>"; };
+		E2A25EBD17164418B6905C00 /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
+		E4981AA83A3B4B4B917CED3E /* libPods-CMPopTipView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CMPopTipView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E61BCDCF5787415BAF95C77E /* SHSPhoneNumberFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHSPhoneNumberFormatter.h; path = SHSPhoneComponents/SHSPhoneNumberFormatter.h; sourceTree = "<group>"; };
+		E8F11EAC1BA441D58A18F102 /* Pods-SocketRocket-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SocketRocket-Private.xcconfig"; sourceTree = "<group>"; };
+		E91CE745247948B5B24AF897 /* base64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = base64.h; path = SocketRocket/base64.h; sourceTree = "<group>"; };
+		F14BCC8563DA4E938A312A61 /* SHSPhoneNumberFormatter+UserConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SHSPhoneNumberFormatter+UserConfig.h"; path = "SHSPhoneComponents/SHSPhoneNumberFormatter+UserConfig.h"; sourceTree = "<group>"; };
+		F2FF057D41F34E79AC0B85AC /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F73A18E236984EB8B8BD14D6 /* libPods-socket.IO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-socket.IO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB08C68301EB44E581FA3490 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0A73C73BEEC54AE9B5983E3E /* Frameworks */ = {
+		0955F24185604C01B99D6C3F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65BF90FA12DE484EB25D2AB1 /* Foundation.framework in Frameworks */,
-				C8AA40E259224B82963F94B0 /* libPods-APAddressBook.a in Frameworks */,
-				7A1F4808C4644E93BA09BF8E /* libPods-SHSPhoneComponent.a in Frameworks */,
-				A494B74235A24BDAAB9C3559 /* libPods-SocketRocket.a in Frameworks */,
-				62585D7816A846F68E20195C /* libPods-socket.IO.a in Frameworks */,
+				D886504F0E564C08B8BA889E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6479D4FD62A747FEB91A12F9 /* Frameworks */ = {
+		2C3C56AE04F3485D95EC2400 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02044402CCC14E99BB3EABD2 /* Foundation.framework in Frameworks */,
+				F7CBA846D956457AAB75C8E6 /* Foundation.framework in Frameworks */,
+				48E25E303FB548318260D2DF /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6BAFA7D3C6984F1E8C6A60E1 /* Frameworks */ = {
+		2CE686AC48E2411A98E84546 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA5B85F5FFA40B28B0964DC /* AddressBook.framework in Frameworks */,
-				229C38587FDE403F8A36CDB7 /* Foundation.framework in Frameworks */,
+				8D84D59334A0406DA3DDC782 /* Foundation.framework in Frameworks */,
+				78D24EC8461E42D48CFFA99D /* CFNetwork.framework in Frameworks */,
+				9A783024D0AC4454941D86DB /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD72B53ADA3147DDBDE7AF55 /* Frameworks */ = {
+		59B403688AE94D41ADB08C61 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				716A4CD40727403885A23018 /* Foundation.framework in Frameworks */,
-				1157D5711DED4E3EBA07D1A6 /* CFNetwork.framework in Frameworks */,
-				052543B804034BDE8617F66C /* Security.framework in Frameworks */,
+				B54CFB1C33554DE48F3FC420 /* Foundation.framework in Frameworks */,
+				E285AECA0AE147A6B71D064D /* libPods-APAddressBook.a in Frameworks */,
+				908F3270052E4AB39FF3895D /* libPods-CMPopTipView.a in Frameworks */,
+				C24C8729997E498A837413B7 /* libPods-SHSPhoneComponent.a in Frameworks */,
+				541C22E30B5C4B9DACA910FB /* libPods-SocketRocket.a in Frameworks */,
+				73FBB14E410D4F03870F775D /* libPods-socket.IO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E018C3A302B94680B9E93199 /* Frameworks */ = {
+		A644476D638A40BF9E0431CE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				446FF6D9B9424D6D8C47F406 /* Foundation.framework in Frameworks */,
+				CB062682E5B64AF6B00CFFDC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5622CFAC0D74C29880FDDA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3405CDE9C1154842A1DA4B47 /* AddressBook.framework in Frameworks */,
+				29A70F803DD44721B705CDBF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02236AAB2CB4438CBE87F306 /* socket.IO */ = {
+		0B78CDF437D1424DB1950B67 /* SocketRocket */ = {
 			isa = PBXGroup;
 			children = (
-				AD5AAD9A0A044FDE8FC2F5D8 /* SocketIO.h */,
-				5DC39BCE6E9F4F9D82A14FF2 /* SocketIO.m */,
-				2333F05F070A46459924F2CF /* SocketIOJSONSerialization.h */,
-				B9E4D5390C414537A481C0BD /* SocketIOJSONSerialization.m */,
-				7FB03F8790C54C6393AA612D /* SocketIOPacket.h */,
-				1EDB75A7D4BA4AA992165EB1 /* SocketIOPacket.m */,
-				3452EDC1177146F090CC98E4 /* SocketIOTransport.h */,
-				25A6C3C8476445A3B1B8F320 /* SocketIOTransportWebsocket.h */,
-				6BAAC42A3B6B45A0A044726E /* SocketIOTransportWebsocket.m */,
-				99235089C89E40C6BC6EDF9D /* SocketIOTransportXHR.h */,
-				4E19B33F889B4E8B8194F17C /* SocketIOTransportXHR.m */,
-				56AB269E1E78418988962616 /* Support Files */,
-			);
-			path = socket.IO;
-			sourceTree = "<group>";
-		};
-		0BEEE19E5E5248CDB6810708 /* APAddressBook */ = {
-			isa = PBXGroup;
-			children = (
-				29715EE404F6404D905DE723 /* APAddress.h */,
-				51EEF92D9F01405B807A0ED7 /* APAddress.m */,
-				8009C29106B642109CC328CB /* APAddressBook.h */,
-				7ACCB63437DA499888BE3B0F /* APAddressBook.m */,
-				82C56BB453EF48108A513942 /* APContact.h */,
-				1D089D3717E646F285ECC720 /* APContact.m */,
-				A58130BF99364815B09576DB /* APPhoneWithLabel.h */,
-				78DE29F3A7DF470B8862467B /* APPhoneWithLabel.m */,
-				DC0D5465C5F84CB6B1F2DAA2 /* APTypes.h */,
-				FD890230D8D345B0B54835EE /* Support Files */,
-			);
-			path = APAddressBook;
-			sourceTree = "<group>";
-		};
-		13492B4626AF4EC0811551C9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C30ED8F0D9A44FD9B61DB613 /* libPods.a */,
-				6A7FD57DD79C4706B2319FD8 /* libPods-APAddressBook.a */,
-				83E44259B6A448FE9710A351 /* libPods-SHSPhoneComponent.a */,
-				CD62606767D34663BABB4981 /* libPods-SocketRocket.a */,
-				874E48A9E0584D51B9442948 /* libPods-socket.IO.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		40E108B801B34D25AB746714 /* SocketRocket */ = {
-			isa = PBXGroup;
-			children = (
-				342571CE982A48CA81B31795 /* NSData+SRB64Additions.h */,
-				7ED10E17055F42AAA681586A /* NSData+SRB64Additions.m */,
-				38F217D01F904D5DA5E3148D /* SRWebSocket.h */,
-				94C9B6B50ED9446296CB8B05 /* SRWebSocket.m */,
-				E4EAB38D92964A9991246255 /* base64.c */,
-				FB7F009177264C55855B2470 /* base64.h */,
-				D3ABCCC1D0064CAFB3D30430 /* Support Files */,
+				8956F8631B704E1698A3A508 /* NSData+SRB64Additions.h */,
+				6261057C456B4A23B76AB221 /* NSData+SRB64Additions.m */,
+				CC0E186CFD6F40EE9C785D04 /* SRWebSocket.h */,
+				CDF2CCB5A0E443B1AF20889A /* SRWebSocket.m */,
+				49D340F3FEED4B9EB18A4185 /* base64.c */,
+				E91CE745247948B5B24AF897 /* base64.h */,
+				76EF723CA750451CA3372CF8 /* Support Files */,
 			);
 			path = SocketRocket;
 			sourceTree = "<group>";
 		};
-		56AB269E1E78418988962616 /* Support Files */ = {
+		23D0DF4AC50D40AFA7DA1EAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C8166599E67A41729CE835CD /* Pods-socket.IO.xcconfig */,
-				92D2476C71C145469ADFA272 /* Pods-socket.IO-Private.xcconfig */,
-				5865D584152646AD9F13FF49 /* Pods-socket.IO-dummy.m */,
-				F8F2DC6056554C9980565B71 /* Pods-socket.IO-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		5F44C8A4CE1744E9BEF0BB40 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0BEEE19E5E5248CDB6810708 /* APAddressBook */,
-				9365B32CF3F44F9BB4118529 /* SHSPhoneComponent */,
-				40E108B801B34D25AB746714 /* SocketRocket */,
-				02236AAB2CB4438CBE87F306 /* socket.IO */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		796650988D3349F9ADA7FA9E = {
-			isa = PBXGroup;
-			children = (
-				A4F7711BC5DF4C3F999AF23E /* Podfile */,
-				B07EB5CA2C9344A6B1B15983 /* Frameworks */,
-				5F44C8A4CE1744E9BEF0BB40 /* Pods */,
-				13492B4626AF4EC0811551C9 /* Products */,
-				F02B007FACFD4693B99B68FE /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		9365B32CF3F44F9BB4118529 /* SHSPhoneComponent */ = {
-			isa = PBXGroup;
-			children = (
-				36CD52D2B7504B30AF1EC4A1 /* SHSFlagAccessoryView.h */,
-				ECE0B8CE9A864177AFA76E10 /* SHSFlagAccessoryView.m */,
-				09F6AD2B6C944DEBB3CE5AD3 /* SHSPhoneLibrary.h */,
-				C99237BAC1A14F4891CEF200 /* SHSPhoneLogic.h */,
-				3BDFCBBC183C44DAA55CB691 /* SHSPhoneLogic.m */,
-				EE4E0C09259241B7BDAAEDC2 /* SHSPhoneNumberFormatter.h */,
-				C7BE2C5BE75A44BE99DD2634 /* SHSPhoneNumberFormatter.m */,
-				5705EDEFD3594458B7E3C930 /* SHSPhoneNumberFormatter+UserConfig.h */,
-				F77746F7D3F843DAA74F9FEB /* SHSPhoneNumberFormatter+UserConfig.m */,
-				8B9F2DF84C9A466AA356C58E /* SHSPhoneTextField.h */,
-				DCB42B74D4C24673A1FA58AF /* SHSPhoneTextField.m */,
-				B75BC2866B2E4D588E39A237 /* Support Files */,
-			);
-			path = SHSPhoneComponent;
-			sourceTree = "<group>";
-		};
-		B07EB5CA2C9344A6B1B15983 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D3F474CB7B4841AAA5306FB8 /* iOS */,
+				DC528645C3B94746A5EE56A7 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B75BC2866B2E4D588E39A237 /* Support Files */ = {
+		291F22EEA6D6442C846B66BA /* CMPopTipView */ = {
 			isa = PBXGroup;
 			children = (
-				42CF3D0E95024331893067CC /* Pods-SHSPhoneComponent.xcconfig */,
-				C723B24665094D859FA674DF /* Pods-SHSPhoneComponent-Private.xcconfig */,
-				1CE1F0034FE7449F9C3B2333 /* Pods-SHSPhoneComponent-dummy.m */,
-				86A775CEAFF94947B25620C1 /* Pods-SHSPhoneComponent-prefix.pch */,
+				CB1E8D7FD957470484C8E4BA /* CMPopTipView.h */,
+				BB284B65547441CF9A3516C4 /* CMPopTipView.m */,
+				FC92F5A9B2804E95B1894CAE /* Support Files */,
 			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		D3ABCCC1D0064CAFB3D30430 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				18679B288D0845A58ACDF949 /* Pods-SocketRocket.xcconfig */,
-				68BB8F2C58814A518CB90660 /* Pods-SocketRocket-Private.xcconfig */,
-				85FA9A1709C542A78582C079 /* Pods-SocketRocket-dummy.m */,
-				47D9AE51126C400DBD714A9D /* Pods-SocketRocket-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		D3F474CB7B4841AAA5306FB8 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				B5AF1E6939164E41A9414C02 /* AddressBook.framework */,
-				7C8C16EE42F74500897C7890 /* CFNetwork.framework */,
-				8B9B4BB44C9E4C35856F3BCA /* Foundation.framework */,
-				A3DF74A3BDD544D0B18722AC /* Security.framework */,
-			);
-			name = iOS;
+			path = CMPopTipView;
 			sourceTree = "<group>";
 		};
-		E5B3FFE514D64C03AEEA514E /* Pods */ = {
+		2D72F45E8A0F4396BBA94FD5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				090C7A75143F4A5487009FE2 /* Pods.xcconfig */,
-				6F5C6B6AB8974C41B3141B67 /* Pods-acknowledgements.markdown */,
-				5DB1AAD05B8C41B88EDDA83E /* Pods-acknowledgements.plist */,
-				C592C1451DB54338AA78324C /* Pods-dummy.m */,
-				996E30CC15704C6A8BC20289 /* Pods-environment.h */,
-				5DED9E0B941342E385B093DF /* Pods-resources.sh */,
+				40F6C74200324E3C87B8E8A7 /* Pods.xcconfig */,
+				F2FF057D41F34E79AC0B85AC /* Pods-acknowledgements.markdown */,
+				5B02C025554B4BCB8F129EAE /* Pods-acknowledgements.plist */,
+				3587AA0565484CF6831B9F6B /* Pods-dummy.m */,
+				3FD5853CC61B493B9382E65F /* Pods-environment.h */,
+				98CEB0437AE843199E82E214 /* Pods-resources.sh */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F02B007FACFD4693B99B68FE /* Targets Support Files */ = {
+		3285246ED34245A6AB4D0526 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E5B3FFE514D64C03AEEA514E /* Pods */,
+				85F39B62B2004C83824DB0EC /* libPods.a */,
+				40216D9CC7E74D6FB78ACD26 /* libPods-APAddressBook.a */,
+				E4981AA83A3B4B4B917CED3E /* libPods-CMPopTipView.a */,
+				DAE38F9C7D8A45DE931F342F /* libPods-SHSPhoneComponent.a */,
+				5DE99FDD60154AF6981D4F72 /* libPods-SocketRocket.a */,
+				F73A18E236984EB8B8BD14D6 /* libPods-socket.IO.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		666A0D3BDD484684B4D0D3AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A4FAE155C2244FE992F6435 /* APAddressBook */,
+				291F22EEA6D6442C846B66BA /* CMPopTipView */,
+				D3B845951DE1490FADF9C835 /* SHSPhoneComponent */,
+				0B78CDF437D1424DB1950B67 /* SocketRocket */,
+				70B5ADDD342F4D9E9CB5FDBC /* socket.IO */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		67FF3AE721864746B7259DA3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3B8829183852474A91BA7E4B /* Pods-APAddressBook.xcconfig */,
+				8AC65F994EFF4EFBBD3580CA /* Pods-APAddressBook-Private.xcconfig */,
+				0554978F6DD64DCDA6334970 /* Pods-APAddressBook-dummy.m */,
+				75C6EA8D48E04357949692E5 /* Pods-APAddressBook-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		6D50957A4FC84823A2C9F853 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D72F45E8A0F4396BBA94FD5 /* Pods */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		FD890230D8D345B0B54835EE /* Support Files */ = {
+		70B5ADDD342F4D9E9CB5FDBC /* socket.IO */ = {
 			isa = PBXGroup;
 			children = (
-				83D67D72450B440AA86DD078 /* Pods-APAddressBook.xcconfig */,
-				574277D45A8E4EA5A70F977B /* Pods-APAddressBook-Private.xcconfig */,
-				8DBBCCE6BF6E42CD9F7C1194 /* Pods-APAddressBook-dummy.m */,
-				0CE941E7F74A463E9E1161B9 /* Pods-APAddressBook-prefix.pch */,
+				6CE03CB329644779A6285620 /* SocketIO.h */,
+				3B51462E32F14298BA0438DB /* SocketIO.m */,
+				2468F60FC754409CB9650656 /* SocketIOJSONSerialization.h */,
+				59BD386BF9D3463C93EC8914 /* SocketIOJSONSerialization.m */,
+				B3740B6EAC374DF9930510D6 /* SocketIOPacket.h */,
+				A43DF4658F994FECB440DA28 /* SocketIOPacket.m */,
+				37B6F5ECB1834FB18ED658CC /* SocketIOTransport.h */,
+				44B08F8576B94BF5ABF7B9C4 /* SocketIOTransportWebsocket.h */,
+				6987FD098A324EC792283699 /* SocketIOTransportWebsocket.m */,
+				E2A25EBD17164418B6905C00 /* SocketIOTransportXHR.h */,
+				FB08C68301EB44E581FA3490 /* SocketIOTransportXHR.m */,
+				D09225C1F3E54505A6FD2794 /* Support Files */,
+			);
+			path = socket.IO;
+			sourceTree = "<group>";
+		};
+		76EF723CA750451CA3372CF8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B9E53DDD3B7D413D819C4FAA /* Pods-SocketRocket.xcconfig */,
+				E8F11EAC1BA441D58A18F102 /* Pods-SocketRocket-Private.xcconfig */,
+				CF4883AE552445E0BFF3B39D /* Pods-SocketRocket-dummy.m */,
+				20875D9F1CC04B988456C109 /* Pods-SocketRocket-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		9573FFC969AF44CCB2BA48FE = {
+			isa = PBXGroup;
+			children = (
+				90E09F58AEA244E8B0C66249 /* Podfile */,
+				23D0DF4AC50D40AFA7DA1EAC /* Frameworks */,
+				666A0D3BDD484684B4D0D3AF /* Pods */,
+				3285246ED34245A6AB4D0526 /* Products */,
+				6D50957A4FC84823A2C9F853 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9A4FAE155C2244FE992F6435 /* APAddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				047EB2EEC9024B9994C1D8F9 /* APAddress.h */,
+				DF5759443FDA4AFB9769D169 /* APAddress.m */,
+				2B53A01F7C1E4053898A34F6 /* APAddressBook.h */,
+				9AC727ED00E646E5889270FB /* APAddressBook.m */,
+				D7A7D329013A4CA28F05096F /* APContact.h */,
+				BF9E54C0F2CF47CE9CA8BDB5 /* APContact.m */,
+				1261E530E0654B80BB4B8840 /* APPhoneWithLabel.h */,
+				3BD6ABBD8B6347D9893C5988 /* APPhoneWithLabel.m */,
+				2F02C3BC851D4DB08E056278 /* APTypes.h */,
+				67FF3AE721864746B7259DA3 /* Support Files */,
+			);
+			path = APAddressBook;
+			sourceTree = "<group>";
+		};
+		C92CD4BF98134ABB94FCE181 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				752717FC17184590916B14B2 /* Pods-SHSPhoneComponent.xcconfig */,
+				B926EFAC41874AD089F28212 /* Pods-SHSPhoneComponent-Private.xcconfig */,
+				D256B71CD667406189D99D77 /* Pods-SHSPhoneComponent-dummy.m */,
+				495C38CF3E964CC8BB8C0595 /* Pods-SHSPhoneComponent-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		D09225C1F3E54505A6FD2794 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2AE4C14B65C949119FA83CCA /* Pods-socket.IO.xcconfig */,
+				5FA7AB34362F4A80A59916D4 /* Pods-socket.IO-Private.xcconfig */,
+				7857627AAC684332A092426E /* Pods-socket.IO-dummy.m */,
+				2CC7A15916AF461D87272CFF /* Pods-socket.IO-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		D3B845951DE1490FADF9C835 /* SHSPhoneComponent */ = {
+			isa = PBXGroup;
+			children = (
+				747962F6421243C09ED30380 /* SHSFlagAccessoryView.h */,
+				25F16AE8D6C741AEB35E6A6B /* SHSFlagAccessoryView.m */,
+				2E3C165E03BD46DCBAA1E643 /* SHSPhoneLibrary.h */,
+				85D8BC1737D0452B8D4D883E /* SHSPhoneLogic.h */,
+				E07B34A80FFD4146A46C4796 /* SHSPhoneLogic.m */,
+				E61BCDCF5787415BAF95C77E /* SHSPhoneNumberFormatter.h */,
+				D906151BD5CC457C831CE770 /* SHSPhoneNumberFormatter.m */,
+				F14BCC8563DA4E938A312A61 /* SHSPhoneNumberFormatter+UserConfig.h */,
+				2952E2D4640342E29A29CB7A /* SHSPhoneNumberFormatter+UserConfig.m */,
+				C8C5A2ACC2A0459789E69D74 /* SHSPhoneTextField.h */,
+				7E6DBD455209405CABD674BA /* SHSPhoneTextField.m */,
+				C92CD4BF98134ABB94FCE181 /* Support Files */,
+			);
+			path = SHSPhoneComponent;
+			sourceTree = "<group>";
+		};
+		DC528645C3B94746A5EE56A7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8B94DFB2B8614BAFAF70D95D /* AddressBook.framework */,
+				4D9F1BA5F4D74100B9154907 /* CFNetwork.framework */,
+				ABB3AA2A5070421BA390CFA2 /* Foundation.framework */,
+				CF6360DF19DE4F1AA702CE0D /* Security.framework */,
+				5BE698B890C649DE8329B7C5 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		FC92F5A9B2804E95B1894CAE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3B57E1FFE0A2431B80A17D88 /* Pods-CMPopTipView.xcconfig */,
+				38BA31D9460C4FDABC7A5C8C /* Pods-CMPopTipView-Private.xcconfig */,
+				67F34E76FD4F4806B7A7CE05 /* Pods-CMPopTipView-dummy.m */,
+				515978BCE3AA4709BEC25DE7 /* Pods-CMPopTipView-prefix.pch */,
 			);
 			name = "Support Files";
 			sourceTree = SOURCE_ROOT;
@@ -414,64 +469,72 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2F1E8A85832149309034F6C5 /* Headers */ = {
+		080C2636A61C4601BCD0605F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C554072421BC4B4EAB184A9C /* SocketIO.h in Headers */,
-				3F1B1B41824F478C963798FE /* SocketIOJSONSerialization.h in Headers */,
-				6BC40FCD61AF4697895DE445 /* SocketIOPacket.h in Headers */,
-				024B4F6A83A64780AE202602 /* SocketIOTransport.h in Headers */,
-				0439FA95C3054F7592172EB2 /* SocketIOTransportWebsocket.h in Headers */,
-				F860C82991F34935A7D56E3E /* SocketIOTransportXHR.h in Headers */,
+				C0A435ED31954AD7BB56EF94 /* SHSFlagAccessoryView.h in Headers */,
+				0210B100F9C4450B9E59BEB6 /* SHSPhoneLibrary.h in Headers */,
+				B1D3D60728254F8CBE450071 /* SHSPhoneLogic.h in Headers */,
+				BE05E1EE0EF24922B1F014FF /* SHSPhoneNumberFormatter+UserConfig.h in Headers */,
+				2A9A9147FDE847829365F0A9 /* SHSPhoneNumberFormatter.h in Headers */,
+				EECA69F24B754734B3C780A0 /* SHSPhoneTextField.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50AF71A9DD604130B4F5D1C0 /* Headers */ = {
+		4CDB97A04B614A80B7C230EF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AEF2E230D2B431FB532C345 /* APAddress.h in Headers */,
-				7DE3DA8673A74A4095D6FB10 /* APAddressBook.h in Headers */,
-				CE6F6710745B4308AD327EE2 /* APContact.h in Headers */,
-				E2D3E6BFF2E446839C236A49 /* APPhoneWithLabel.h in Headers */,
-				FE891D66A4F64AF2A73DFE84 /* APTypes.h in Headers */,
+				45C45EC37BD74984B408D3A9 /* NSData+SRB64Additions.h in Headers */,
+				D5CDD45A055541C5B062FEE4 /* SRWebSocket.h in Headers */,
+				3BC4D7A285BA48E194AEA4F2 /* base64.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9BACEBE2C31E4D9A90647B83 /* Headers */ = {
+		7EE0F997D1674032805AEFEA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACEEC54EA7DA49058BD60F71 /* SHSFlagAccessoryView.h in Headers */,
-				C48C8D9FD04B4DAB84075635 /* SHSPhoneLibrary.h in Headers */,
-				F34C526EA3124F3A82A8F8EB /* SHSPhoneLogic.h in Headers */,
-				BE81BF4CB7D24A318D3FB8E7 /* SHSPhoneNumberFormatter+UserConfig.h in Headers */,
-				6EE315C55626400D9BF6D3A6 /* SHSPhoneNumberFormatter.h in Headers */,
-				0C5789A94B0B45C5A9527B31 /* SHSPhoneTextField.h in Headers */,
+				08C8DFCA0BE74DC39DC4FA0E /* APAddress.h in Headers */,
+				E8AFD2B7E881409F98921170 /* APAddressBook.h in Headers */,
+				19A2D3F6ED884012A9B24BAB /* APContact.h in Headers */,
+				592EAB97D9164E39BB070592 /* APPhoneWithLabel.h in Headers */,
+				DC56E573D67143679ED94C98 /* APTypes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3D12CFDF9274C6BBD702285 /* Headers */ = {
+		A8D33C8A159B49AC8B8B743E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9286EFA1D44542B88505EA22 /* NSData+SRB64Additions.h in Headers */,
-				970E92E78AAA4ADB8EEF042B /* SRWebSocket.h in Headers */,
-				27D5B4EAC91744E9AC5F289E /* base64.h in Headers */,
+				5E47633EDFB548DD9BE1DEBD /* CMPopTipView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACB15E3B56AE43E3BC53DF4D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95D447D7BD7B4983BC37E5ED /* SocketIO.h in Headers */,
+				F8496FD0E04149FFBB49A5D6 /* SocketIOJSONSerialization.h in Headers */,
+				74DECA98E8F245FDB0AC0488 /* SocketIOPacket.h in Headers */,
+				FD624C8A4D8942839BC4EC0D /* SocketIOTransport.h in Headers */,
+				80B85B09EF884D0F8BBD9B06 /* SocketIOTransportWebsocket.h in Headers */,
+				C6B9BAF4520C4252BD5F3148 /* SocketIOTransportXHR.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4C46D5293CAE4CD1B14D94F3 /* Pods-SocketRocket */ = {
+		3D52E01CD6944633B1A9B05C /* Pods-SocketRocket */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 286F553191974B2D9A1C44F3 /* Build configuration list for PBXNativeTarget "Pods-SocketRocket" */;
+			buildConfigurationList = D004C35FBC114BAAB5699C34 /* Build configuration list for PBXNativeTarget "Pods-SocketRocket" */;
 			buildPhases = (
-				88604A5802924F7B90CD403F /* Sources */,
-				AD72B53ADA3147DDBDE7AF55 /* Frameworks */,
-				B3D12CFDF9274C6BBD702285 /* Headers */,
+				D13DCBC7697F4A8588D17FEB /* Sources */,
+				2CE686AC48E2411A98E84546 /* Frameworks */,
+				4CDB97A04B614A80B7C230EF /* Headers */,
 			);
 			buildRules = (
 			);
@@ -479,53 +542,16 @@
 			);
 			name = "Pods-SocketRocket";
 			productName = "Pods-SocketRocket";
-			productReference = CD62606767D34663BABB4981 /* libPods-SocketRocket.a */;
+			productReference = 5DE99FDD60154AF6981D4F72 /* libPods-SocketRocket.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		517744B7BB414CCEBFB76F75 /* Pods-SHSPhoneComponent */ = {
+		4F3C9B6D18B1476EBD946352 /* Pods-APAddressBook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 31B27AB8626E4CF58E8D2183 /* Build configuration list for PBXNativeTarget "Pods-SHSPhoneComponent" */;
+			buildConfigurationList = 383228909387432FA5D65AAD /* Build configuration list for PBXNativeTarget "Pods-APAddressBook" */;
 			buildPhases = (
-				332800B850AF454BA748BC83 /* Sources */,
-				6479D4FD62A747FEB91A12F9 /* Frameworks */,
-				9BACEBE2C31E4D9A90647B83 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-SHSPhoneComponent";
-			productName = "Pods-SHSPhoneComponent";
-			productReference = 83E44259B6A448FE9710A351 /* libPods-SHSPhoneComponent.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		87B849BA8E87402A86C93D89 /* Pods */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 529FD40547F944EAAF278B6E /* Build configuration list for PBXNativeTarget "Pods" */;
-			buildPhases = (
-				84B798C39E9D4E5783A8F83B /* Sources */,
-				0A73C73BEEC54AE9B5983E3E /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				06C3B8CE7182491FA831D8C1 /* PBXTargetDependency */,
-				A49F8DB1919E4B42AA81E53D /* PBXTargetDependency */,
-				555C7DF416C84FFFBC7290FA /* PBXTargetDependency */,
-				42328AA3A8DA4501A902C38D /* PBXTargetDependency */,
-			);
-			name = Pods;
-			productName = Pods;
-			productReference = C30ED8F0D9A44FD9B61DB613 /* libPods.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		C17752E2E2F04D3BBCE59F18 /* Pods-APAddressBook */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 877F464B1A9846F88CF1C1DB /* Build configuration list for PBXNativeTarget "Pods-APAddressBook" */;
-			buildPhases = (
-				7AD4EF8DB5004D1CA492D044 /* Sources */,
-				6BAFA7D3C6984F1E8C6A60E1 /* Frameworks */,
-				50AF71A9DD604130B4F5D1C0 /* Headers */,
+				8CB219D1263149FA95DE2718 /* Sources */,
+				F5622CFAC0D74C29880FDDA9 /* Frameworks */,
+				7EE0F997D1674032805AEFEA /* Headers */,
 			);
 			buildRules = (
 			);
@@ -533,146 +559,274 @@
 			);
 			name = "Pods-APAddressBook";
 			productName = "Pods-APAddressBook";
-			productReference = 6A7FD57DD79C4706B2319FD8 /* libPods-APAddressBook.a */;
+			productReference = 40216D9CC7E74D6FB78ACD26 /* libPods-APAddressBook.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		E4D13F3E3A9E4AD1B1848ECA /* Pods-socket.IO */ = {
+		736FDF4092C2486AB8B64C50 /* Pods-CMPopTipView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 504387F913BA420897C7BB60 /* Build configuration list for PBXNativeTarget "Pods-socket.IO" */;
+			buildConfigurationList = 4FD8876F22A94DE38097B3D9 /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */;
 			buildPhases = (
-				D517CD03C25C4BE88420FFFC /* Sources */,
-				E018C3A302B94680B9E93199 /* Frameworks */,
-				2F1E8A85832149309034F6C5 /* Headers */,
+				3E9DF8CC57E44E1094D5EA79 /* Sources */,
+				2C3C56AE04F3485D95EC2400 /* Frameworks */,
+				A8D33C8A159B49AC8B8B743E /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2D3164DC8B8F402399142278 /* PBXTargetDependency */,
+			);
+			name = "Pods-CMPopTipView";
+			productName = "Pods-CMPopTipView";
+			productReference = E4981AA83A3B4B4B917CED3E /* libPods-CMPopTipView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		DAD579CD9AA448A291263348 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43C2C88BAA3E4703A9016F10 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				746765B852D24C128DD2BBBE /* Sources */,
+				59B403688AE94D41ADB08C61 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D5E769E0C494EB9AD9A250F /* PBXTargetDependency */,
+				F80F7470D618468DA7B89266 /* PBXTargetDependency */,
+				99BB0A7926334898BC2A84F2 /* PBXTargetDependency */,
+				5EDE75F3B9D34C2887011073 /* PBXTargetDependency */,
+				0062EEF2236D4858A86AC66E /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 85F39B62B2004C83824DB0EC /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EF3EF0E9C291469AB955FE96 /* Pods-SHSPhoneComponent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69307BF553C3474D9B228E58 /* Build configuration list for PBXNativeTarget "Pods-SHSPhoneComponent" */;
+			buildPhases = (
+				92DBA74F71314831B1D8F616 /* Sources */,
+				A644476D638A40BF9E0431CE /* Frameworks */,
+				080C2636A61C4601BCD0605F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SHSPhoneComponent";
+			productName = "Pods-SHSPhoneComponent";
+			productReference = DAE38F9C7D8A45DE931F342F /* libPods-SHSPhoneComponent.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FD5DC80184184360B6DDD570 /* Pods-socket.IO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7395E733CD4B4CFF91BF5DE7 /* Build configuration list for PBXNativeTarget "Pods-socket.IO" */;
+			buildPhases = (
+				DBE05D06B9C645EB8491B99D /* Sources */,
+				0955F24185604C01B99D6C3F /* Frameworks */,
+				ACB15E3B56AE43E3BC53DF4D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DFAD5ADF9D0347D2A31FC4F5 /* PBXTargetDependency */,
 			);
 			name = "Pods-socket.IO";
 			productName = "Pods-socket.IO";
-			productReference = 874E48A9E0584D51B9442948 /* libPods-socket.IO.a */;
+			productReference = F73A18E236984EB8B8BD14D6 /* libPods-socket.IO.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1295269AB6B34F3794EF762E /* Project object */ = {
+		7B54BF95703F4A789E1839D8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 0794FDDF54954F19B00E763D /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 3FE59BE3D9DB4C28AEE8A546 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 796650988D3349F9ADA7FA9E;
-			productRefGroup = 13492B4626AF4EC0811551C9 /* Products */;
+			mainGroup = 9573FFC969AF44CCB2BA48FE;
+			productRefGroup = 3285246ED34245A6AB4D0526 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				87B849BA8E87402A86C93D89 /* Pods */,
-				C17752E2E2F04D3BBCE59F18 /* Pods-APAddressBook */,
-				517744B7BB414CCEBFB76F75 /* Pods-SHSPhoneComponent */,
-				4C46D5293CAE4CD1B14D94F3 /* Pods-SocketRocket */,
-				E4D13F3E3A9E4AD1B1848ECA /* Pods-socket.IO */,
+				DAD579CD9AA448A291263348 /* Pods */,
+				4F3C9B6D18B1476EBD946352 /* Pods-APAddressBook */,
+				736FDF4092C2486AB8B64C50 /* Pods-CMPopTipView */,
+				EF3EF0E9C291469AB955FE96 /* Pods-SHSPhoneComponent */,
+				3D52E01CD6944633B1A9B05C /* Pods-SocketRocket */,
+				FD5DC80184184360B6DDD570 /* Pods-socket.IO */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		332800B850AF454BA748BC83 /* Sources */ = {
+		3E9DF8CC57E44E1094D5EA79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D326B2428B814D38B47C0711 /* Pods-SHSPhoneComponent-dummy.m in Sources */,
-				C2C0EEE8E6C24C958BB8BC1C /* SHSFlagAccessoryView.m in Sources */,
-				BCED40012EEA46EBACC93AD5 /* SHSPhoneLogic.m in Sources */,
-				D6C4DE016B59480893EF3B3D /* SHSPhoneNumberFormatter+UserConfig.m in Sources */,
-				7F97EF5079B7456AA5F3B8B4 /* SHSPhoneNumberFormatter.m in Sources */,
-				D2436D4EAA7845E7AC642A43 /* SHSPhoneTextField.m in Sources */,
+				8EDE1839DC5F4FD6B30CA1FE /* CMPopTipView.m in Sources */,
+				D2E75C571F494569946A852E /* Pods-CMPopTipView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AD4EF8DB5004D1CA492D044 /* Sources */ = {
+		746765B852D24C128DD2BBBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAD2A74A03DF40F890F662E3 /* APAddress.m in Sources */,
-				61AC650ED4F04A4ABEDA659D /* APAddressBook.m in Sources */,
-				E665E6810E7B4F9396D406DF /* APContact.m in Sources */,
-				A7D4F3B50D074F8DA03D5A7F /* APPhoneWithLabel.m in Sources */,
-				3F2D9E27D6224ABC82C277C5 /* Pods-APAddressBook-dummy.m in Sources */,
+				6EA69449EE044C8EA39F664A /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84B798C39E9D4E5783A8F83B /* Sources */ = {
+		8CB219D1263149FA95DE2718 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F61C6D2E95E04DF694487094 /* Pods-dummy.m in Sources */,
+				9488DA53643B45D0B2F3A4FD /* APAddress.m in Sources */,
+				F0EC52963A7E4AF5B32F99FB /* APAddressBook.m in Sources */,
+				C9D70C5D21334EE98BB7415C /* APContact.m in Sources */,
+				0964E82E4A9944E5B630F5BE /* APPhoneWithLabel.m in Sources */,
+				42B0A6B60EA24697A6E47E53 /* Pods-APAddressBook-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		88604A5802924F7B90CD403F /* Sources */ = {
+		92DBA74F71314831B1D8F616 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E161C743E7B5469286FD445D /* NSData+SRB64Additions.m in Sources */,
-				C53C595E155C451A98FA057D /* Pods-SocketRocket-dummy.m in Sources */,
-				E7E48FA53E2F4D00AB2A8557 /* SRWebSocket.m in Sources */,
-				88DCB13A82774EBFA67E23C7 /* base64.c in Sources */,
+				7D5B2C44647B4CC59CF62291 /* Pods-SHSPhoneComponent-dummy.m in Sources */,
+				9BF29134D0334D8D90C33DCC /* SHSFlagAccessoryView.m in Sources */,
+				8BE466826DFB4E17ACFCD4BD /* SHSPhoneLogic.m in Sources */,
+				583F395264974B43AE41A98D /* SHSPhoneNumberFormatter+UserConfig.m in Sources */,
+				05484AD7179F49C298A189D1 /* SHSPhoneNumberFormatter.m in Sources */,
+				FF11D2AFB99944218AF2317D /* SHSPhoneTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D517CD03C25C4BE88420FFFC /* Sources */ = {
+		D13DCBC7697F4A8588D17FEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				272F39B4BA88458C9562DE8A /* Pods-socket.IO-dummy.m in Sources */,
-				1CEFCE8183334E048D4F3E24 /* SocketIO.m in Sources */,
-				E7250500229A4C0EBB08B0D3 /* SocketIOJSONSerialization.m in Sources */,
-				DCB24F69259047C6A9BFBA7D /* SocketIOPacket.m in Sources */,
-				5B8F0DF0626544AE8DEF16BF /* SocketIOTransportWebsocket.m in Sources */,
-				8EE4DDC4591348798B97D23B /* SocketIOTransportXHR.m in Sources */,
+				C17D24A90777451A8540FE17 /* NSData+SRB64Additions.m in Sources */,
+				1F819A5BF88342019D63F9EB /* Pods-SocketRocket-dummy.m in Sources */,
+				35B79C51C76D46CFA7626BA6 /* SRWebSocket.m in Sources */,
+				3876AF3171AB4B5BBA88CC94 /* base64.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBE05D06B9C645EB8491B99D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C252AA9C2334482497CF61C7 /* Pods-socket.IO-dummy.m in Sources */,
+				9ADB9D1E284A43929CFD6BB7 /* SocketIO.m in Sources */,
+				618CC9BBC4264043B11F1861 /* SocketIOJSONSerialization.m in Sources */,
+				09A1B94E2DE4407FAA0207EA /* SocketIOPacket.m in Sources */,
+				03AE81B6367C4E75AE7DA9F9 /* SocketIOTransportWebsocket.m in Sources */,
+				5C80CCC384CE4692AB24C45B /* SocketIOTransportXHR.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		06C3B8CE7182491FA831D8C1 /* PBXTargetDependency */ = {
+		0062EEF2236D4858A86AC66E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C17752E2E2F04D3BBCE59F18 /* Pods-APAddressBook */;
-			targetProxy = 48C3122CDB2B48C6A25FBF4D /* PBXContainerItemProxy */;
+			target = FD5DC80184184360B6DDD570 /* Pods-socket.IO */;
+			targetProxy = F75D7B6D8CD345EF9CC98CD7 /* PBXContainerItemProxy */;
 		};
-		2D3164DC8B8F402399142278 /* PBXTargetDependency */ = {
+		5EDE75F3B9D34C2887011073 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4C46D5293CAE4CD1B14D94F3 /* Pods-SocketRocket */;
-			targetProxy = 52EF1B84D63D40B38C2285DD /* PBXContainerItemProxy */;
+			target = 3D52E01CD6944633B1A9B05C /* Pods-SocketRocket */;
+			targetProxy = 02B574DB005948388AFA6419 /* PBXContainerItemProxy */;
 		};
-		42328AA3A8DA4501A902C38D /* PBXTargetDependency */ = {
+		8D5E769E0C494EB9AD9A250F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E4D13F3E3A9E4AD1B1848ECA /* Pods-socket.IO */;
-			targetProxy = 91DB679885EF46AD872B678A /* PBXContainerItemProxy */;
+			target = 4F3C9B6D18B1476EBD946352 /* Pods-APAddressBook */;
+			targetProxy = 62A5004BDE8A41CE9EAE5118 /* PBXContainerItemProxy */;
 		};
-		555C7DF416C84FFFBC7290FA /* PBXTargetDependency */ = {
+		99BB0A7926334898BC2A84F2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4C46D5293CAE4CD1B14D94F3 /* Pods-SocketRocket */;
-			targetProxy = CD93B419B5B944E49C7FBEF6 /* PBXContainerItemProxy */;
+			target = EF3EF0E9C291469AB955FE96 /* Pods-SHSPhoneComponent */;
+			targetProxy = 0EF482A15899401AA6D82569 /* PBXContainerItemProxy */;
 		};
-		A49F8DB1919E4B42AA81E53D /* PBXTargetDependency */ = {
+		DFAD5ADF9D0347D2A31FC4F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 517744B7BB414CCEBFB76F75 /* Pods-SHSPhoneComponent */;
-			targetProxy = 3C7430F55BD94547ACF83728 /* PBXContainerItemProxy */;
+			target = 3D52E01CD6944633B1A9B05C /* Pods-SocketRocket */;
+			targetProxy = 4E54691BA37144E6BD1C0308 /* PBXContainerItemProxy */;
+		};
+		F80F7470D618468DA7B89266 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 736FDF4092C2486AB8B64C50 /* Pods-CMPopTipView */;
+			targetProxy = A47E8FB060464D788F146EF1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		091EC2CE9C184CA981FE238B /* Debug */ = {
+		2AAC2D4EE7AA462EB5B56504 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA7AB34362F4A80A59916D4 /* Pods-socket.IO-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-socket.IO-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3D5ED92860104C11A15687F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AC65F994EFF4EFBBD3580CA /* Pods-APAddressBook-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-APAddressBook-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		577B207A4EF14F258B1C41B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -708,9 +862,9 @@
 			};
 			name = Debug;
 		};
-		1F87A0DA063C42BF8EF539CE /* Debug */ = {
+		9758FCCA61A6452690A92360 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C723B24665094D859FA674DF /* Pods-SHSPhoneComponent-Private.xcconfig */;
+			baseConfigurationReference = 38BA31D9460C4FDABC7A5C8C /* Pods-CMPopTipView-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
@@ -719,7 +873,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-SHSPhoneComponent-prefix.pch";
+				GCC_PREFIX_HEADER = "Pods-CMPopTipView-prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -736,48 +890,16 @@
 			};
 			name = Debug;
 		};
-		2C1C0A3D364844B1B1548F7B /* Debug */ = {
+		9EDB767B4A1F4242A9FFFA0F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68BB8F2C58814A518CB90660 /* Pods-SocketRocket-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-SocketRocket-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		47F027C6D74946B7BFB4B0B5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 574277D45A8E4EA5A70F977B /* Pods-APAddressBook-Private.xcconfig */;
+			baseConfigurationReference = 38BA31D9460C4FDABC7A5C8C /* Pods-CMPopTipView-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-APAddressBook-prefix.pch";
+				GCC_PREFIX_HEADER = "Pods-CMPopTipView-prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -798,94 +920,7 @@
 			};
 			name = Release;
 		};
-		50D105E1EAC0453C82225A17 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C723B24665094D859FA674DF /* Pods-SHSPhoneComponent-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-SHSPhoneComponent-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		960F07F51CC741F08D4D453A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 090C7A75143F4A5487009FE2 /* Pods.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9EFBEAEFBEFF40AF8508C4E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92D2476C71C145469ADFA272 /* Pods-socket.IO-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-socket.IO-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B042B28956754E91907C5A0A /* Release */ = {
+		A307E81B8F9A407CA8D05C88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -915,9 +950,9 @@
 			};
 			name = Release;
 		};
-		CE23D00D8BAD45AC94EE383E /* Debug */ = {
+		AFDB587F1045487FB11567F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 574277D45A8E4EA5A70F977B /* Pods-APAddressBook-Private.xcconfig */;
+			baseConfigurationReference = B926EFAC41874AD089F28212 /* Pods-SHSPhoneComponent-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
@@ -926,7 +961,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-APAddressBook-prefix.pch";
+				GCC_PREFIX_HEADER = "Pods-SHSPhoneComponent-prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -943,9 +978,9 @@
 			};
 			name = Debug;
 		};
-		DF4DD508778F4344A7172582 /* Debug */ = {
+		B1B3E188A542478EA829E8B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 090C7A75143F4A5487009FE2 /* Pods.xcconfig */;
+			baseConfigurationReference = 40F6C74200324E3C87B8E8A7 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
@@ -970,9 +1005,9 @@
 			};
 			name = Debug;
 		};
-		E9908961C2644D868101AD01 /* Release */ = {
+		B512B0FD0A0D4A08908A9DF2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68BB8F2C58814A518CB90660 /* Pods-SocketRocket-Private.xcconfig */;
+			baseConfigurationReference = E8F11EAC1BA441D58A18F102 /* Pods-SocketRocket-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
@@ -1004,9 +1039,128 @@
 			};
 			name = Release;
 		};
-		F61850BBD6D949C79D4DB848 /* Release */ = {
+		CD06FDC29DAE44C4842FE87B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92D2476C71C145469ADFA272 /* Pods-socket.IO-Private.xcconfig */;
+			baseConfigurationReference = E8F11EAC1BA441D58A18F102 /* Pods-SocketRocket-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-SocketRocket-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D30E9A3078464F41B63D0D7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AC65F994EFF4EFBBD3580CA /* Pods-APAddressBook-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-APAddressBook-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E874235461F94DD4ACA5C809 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B926EFAC41874AD089F28212 /* Pods-SHSPhoneComponent-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-SHSPhoneComponent-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F3299A378D9E4694B9477E13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40F6C74200324E3C87B8E8A7 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F6A499A0884840E887D4BCFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA7AB34362F4A80A59916D4 /* Pods-socket.IO-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
@@ -1037,61 +1191,70 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0794FDDF54954F19B00E763D /* Build configuration list for PBXProject "Pods" */ = {
+		383228909387432FA5D65AAD /* Build configuration list for PBXNativeTarget "Pods-APAddressBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				091EC2CE9C184CA981FE238B /* Debug */,
-				B042B28956754E91907C5A0A /* Release */,
+				D30E9A3078464F41B63D0D7D /* Debug */,
+				3D5ED92860104C11A15687F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		286F553191974B2D9A1C44F3 /* Build configuration list for PBXNativeTarget "Pods-SocketRocket" */ = {
+		3FE59BE3D9DB4C28AEE8A546 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2C1C0A3D364844B1B1548F7B /* Debug */,
-				E9908961C2644D868101AD01 /* Release */,
+				577B207A4EF14F258B1C41B8 /* Debug */,
+				A307E81B8F9A407CA8D05C88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		31B27AB8626E4CF58E8D2183 /* Build configuration list for PBXNativeTarget "Pods-SHSPhoneComponent" */ = {
+		43C2C88BAA3E4703A9016F10 /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1F87A0DA063C42BF8EF539CE /* Debug */,
-				50D105E1EAC0453C82225A17 /* Release */,
+				B1B3E188A542478EA829E8B1 /* Debug */,
+				F3299A378D9E4694B9477E13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		504387F913BA420897C7BB60 /* Build configuration list for PBXNativeTarget "Pods-socket.IO" */ = {
+		4FD8876F22A94DE38097B3D9 /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9EFBEAEFBEFF40AF8508C4E7 /* Debug */,
-				F61850BBD6D949C79D4DB848 /* Release */,
+				9758FCCA61A6452690A92360 /* Debug */,
+				9EDB767B4A1F4242A9FFFA0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		529FD40547F944EAAF278B6E /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		69307BF553C3474D9B228E58 /* Build configuration list for PBXNativeTarget "Pods-SHSPhoneComponent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DF4DD508778F4344A7172582 /* Debug */,
-				960F07F51CC741F08D4D453A /* Release */,
+				AFDB587F1045487FB11567F0 /* Debug */,
+				E874235461F94DD4ACA5C809 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		877F464B1A9846F88CF1C1DB /* Build configuration list for PBXNativeTarget "Pods-APAddressBook" */ = {
+		7395E733CD4B4CFF91BF5DE7 /* Build configuration list for PBXNativeTarget "Pods-socket.IO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE23D00D8BAD45AC94EE383E /* Debug */,
-				47F027C6D74946B7BFB4B0B5 /* Release */,
+				2AAC2D4EE7AA462EB5B56504 /* Debug */,
+				F6A499A0884840E887D4BCFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D004C35FBC114BAAB5699C34 /* Build configuration list for PBXNativeTarget "Pods-SocketRocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD06FDC29DAE44C4842FE87B /* Debug */,
+				B512B0FD0A0D4A08908A9DF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1295269AB6B34F3794EF762E /* Project object */;
+	rootObject = 7B54BF95703F4A789E1839D8 /* Project object */;
 }

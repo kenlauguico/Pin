@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "517744B7BB414CCEBFB76F75"
+               BlueprintIdentifier = "EF3EF0E9C291469AB955FE96"
                BuildableName = "libPods-SHSPhoneComponent.a"
                BlueprintName = "Pods-SHSPhoneComponent"
                ReferencedContainer = "container:Pods.xcodeproj">

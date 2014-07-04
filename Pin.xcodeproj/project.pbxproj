@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		820911F5195540F600A0544B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820911F4195540F600A0544B /* RegisterViewController.swift */; };
 		820911F719554ED500A0544B /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820911F619554ED500A0544B /* Styles.swift */; };
+		822E06D119666A2000A97B5D /* TourGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822E06D019666A2000A97B5D /* TourGuide.swift */; };
+		823F91671966865D0007FFCA /* logo-pin-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 823F91661966865D0007FFCA /* logo-pin-100.png */; };
 		825022B7195622FD00483403 /* PinFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825022B6195622FD00483403 /* PinFriend.swift */; };
 		825022B919562B3400483403 /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825022B819562B3400483403 /* MapUtil.swift */; };
 		825D531119540CD20075494E /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D531019540CD20075494E /* SocketManager.swift */; };
@@ -38,6 +40,8 @@
 		1C57550C6337462CB31CA5B0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		820911F4195540F600A0544B /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Pin/RegisterViewController.swift; sourceTree = "<group>"; };
 		820911F619554ED500A0544B /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Styles.swift; path = Pin/Styles.swift; sourceTree = "<group>"; };
+		822E06D019666A2000A97B5D /* TourGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TourGuide.swift; path = Pin/TourGuide.swift; sourceTree = "<group>"; };
+		823F91661966865D0007FFCA /* logo-pin-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-pin-100.png"; path = "Pin/Images/logo-pin-100.png"; sourceTree = "<group>"; };
 		825022B6195622FD00483403 /* PinFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinFriend.swift; path = Pin/PinFriend.swift; sourceTree = "<group>"; };
 		825022B819562B3400483403 /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUtil.swift; path = Pin/MapUtil.swift; sourceTree = "<group>"; };
 		825D531019540CD20075494E /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketManager.swift; path = Pin/SocketManager.swift; sourceTree = "<group>"; };
@@ -87,6 +91,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		823F9165196685750007FFCA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				823F91661966865D0007FFCA /* logo-pin-100.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		82683D2B195398C30063FCB1 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +126,7 @@
 		82683D2E195398EE0063FCB1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				820911F619554ED500A0544B /* Styles.swift */,
 				82683D321953A12A0063FCB1 /* Pin-Bridging-Header.h */,
 				82BF55FE1956BEDA00EBB4F3 /* MyPlayground.playground */,
 			);
@@ -169,6 +182,7 @@
 				825022B6195622FD00483403 /* PinFriend.swift */,
 				825D531019540CD20075494E /* SocketManager.swift */,
 				826075931959C839001DECBA /* AddressBookManager.swift */,
+				822E06D019666A2000A97B5D /* TourGuide.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -193,7 +207,7 @@
 		82CA31E019536F2100AECC7A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				820911F619554ED500A0544B /* Styles.swift */,
+				823F9165196685750007FFCA /* Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -304,6 +318,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				823F91671966865D0007FFCA /* logo-pin-100.png in Resources */,
 				82CA31C619536DB000AECC7A /* Main.storyboard in Resources */,
 				82CA31C819536DB000AECC7A /* Images.xcassets in Resources */,
 			);
@@ -365,6 +380,7 @@
 				825022B919562B3400483403 /* MapUtil.swift in Sources */,
 				82CA31BE19536DB000AECC7A /* AppDelegate.swift in Sources */,
 				825022B7195622FD00483403 /* PinFriend.swift in Sources */,
+				822E06D119666A2000A97B5D /* TourGuide.swift in Sources */,
 				82CA31C119536DB000AECC7A /* Pin.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-CMPopTipView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SHSPhoneComponent.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4C46D5293CAE4CD1B14D94F3</key>
+		<key>3D52E01CD6944633B1A9B05C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>517744B7BB414CCEBFB76F75</key>
+		<key>4F3C9B6D18B1476EBD946352</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>87B849BA8E87402A86C93D89</key>
+		<key>736FDF4092C2486AB8B64C50</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C17752E2E2F04D3BBCE59F18</key>
+		<key>DAD579CD9AA448A291263348</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4D13F3E3A9E4AD1B1848ECA</key>
+		<key>EF3EF0E9C291469AB955FE96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD5DC80184184360B6DDD570</key>
 		<dict>
 			<key>primary</key>
 			<true/>

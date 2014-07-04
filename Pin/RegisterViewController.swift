@@ -37,18 +37,20 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     tableView.backgroundColor = UIColor.clearColor()
     tableView.separatorStyle = UITableViewCellSeparatorStyle.None
   }
+  
+  
+  override func viewDidAppear(animated: Bool) {
+    if !TourGuide().seenPhoneTip {
+      showTour()
+    }
+  }
 
   
   override func prefersStatusBarHidden() -> Bool {
     return true
   }
 
-
-  func closeKeyboard() {
-    phoneTextBox.resignFirstResponder()
-  }
-
-
+  
   //#pragma mark - UITextFieldDelegate
   func textFieldDidEndEditing(textField: UITextField!) {
     if textField == phoneTextBox {
@@ -149,5 +151,25 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   
   override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
     return cellPlaceholders.count
+  }
+}
+
+
+//#pragma mark - Private Methods -
+extension RegisterViewController {
+  
+  func closeKeyboard() {
+    phoneTextBox.resignFirstResponder()
+  }
+  
+  
+  func showTour() {
+    var tooltip = CMPopTipView(message: TourGuide.tip.phone)
+    DefaultTooltipStyle().stylize(tooltip)
+    
+    UIView.animateWithDuration(0, delay: 2, options: nil, animations: nil, completion: { (done: Bool) in
+      tooltip.presentPointingAtView(self.phoneTextBox, inView: self.view, animated: true)
+      TourGuide().setSeen(TGTip.phone)
+      })
   }
 }
