@@ -76,7 +76,7 @@ class PinFriend: NSObject, NSCoding {
   }
 
   init(friendName: NSString?, friendNumber: NSString?, friendLocation: Location?) {
-    name = friendName?.uppercaseString
+    name = friendName?.lowercaseString
     number = friendNumber
     location = friendLocation
 

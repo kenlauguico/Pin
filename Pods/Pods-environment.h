@@ -6,6 +6,12 @@
 // project.
 
 
+// APAddressBook
+#define COCOAPODS_POD_AVAILABLE_APAddressBook
+#define COCOAPODS_VERSION_MAJOR_APAddressBook 0
+#define COCOAPODS_VERSION_MINOR_APAddressBook 0
+#define COCOAPODS_VERSION_PATCH_APAddressBook 10
+
 // SHSPhoneComponent
 #define COCOAPODS_POD_AVAILABLE_SHSPhoneComponent
 #define COCOAPODS_VERSION_MAJOR_SHSPhoneComponent 2

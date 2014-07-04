@@ -13,3 +13,5 @@
 #import <socket.IO/SocketIOPacket.h>
 #import <socket.IO/SocketIOJSONSerialization.h>
 #import <SHSPhoneComponent/SHSPhoneTextField.h>
+#import <APAddressBook/APAddressBook.h>
+#import <APAddressBook/APContact.h>

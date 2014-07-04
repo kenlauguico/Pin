@@ -108,9 +108,9 @@ class MainViewController: UITableViewController {
     var pinResponse: NSArray = notification.userInfo["numbers"] as NSArray
     if pinResponse.count == 0 { return }
     friendList = friendListFromNumbersArray(self.addressBook.contactList, pinResponse)
-    tableView.reloadData()
     syncFriends(friendList)
     friendListToDict()
+    silentRefresh()
   }
 
   
@@ -124,7 +124,7 @@ class MainViewController: UITableViewController {
       pushAlert.category = "DEFAULT_CATEGORY"
     }
 
-    pushAlert.alertBody = "from \(from.name!.uppercaseString)"
+    pushAlert.alertBody = "from \(from.name!.lowercaseString)"
     pushAlert.fireDate = now.dateByAddingTimeInterval(0)
     pushAlert.userInfo = from.location?.location
 
@@ -185,7 +185,7 @@ class MainViewController: UITableViewController {
     }
 
     if mentionSent {
-      tableView.cellForRowAtIndexPath(rowToHandle).text = "Sent!".uppercaseString
+      tableView.cellForRowAtIndexPath(rowToHandle).text = "Sent".lowercaseString
     } else {
       tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
@@ -240,7 +240,7 @@ extension MainViewController {
     addTextBox.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
     addTextBox.backgroundColor = UIColor.clearColor()
     addTextBox.keyboardType = UIKeyboardType.PhonePad
-    addTextBox.placeholder = "Enter a phone number".uppercaseString
+    addTextBox.placeholder = "Enter a phone number".lowercaseString
     addTextBox.adjustsFontSizeToFitWidth = true
     addTextBox.delegate = self
     addTextBox.tag = tag
@@ -292,7 +292,7 @@ extension MainViewController {
         cell.addSubview(addTextBox)
       }
     } else {
-      cell.text = "Refresh".uppercaseString
+      cell.text = "Refresh".lowercaseString
     }
 
     cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: cell.bounds.size.width*2)
@@ -305,10 +305,12 @@ extension MainViewController {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
     if indexPath.row != friendList.count {
+      // Tapped on a friend
       var friendTapped: PinFriend = friendList[indexPath.row] as PinFriend
       appDelegate.getLocation(friendTapped.number)
       updateFriend(friendTapped, mentionSent: true)
     } else {
+      // Pressed Refresh
       appDelegate.socketManager.disconnectSocket()
       addressBook.checkAddressBookAccess()
       friendList = []

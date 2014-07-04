@@ -18,7 +18,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
 
   var cellPlaceholders: NSString[] = [
     "Enter you phone number",
-    "GO!"
+    "GO"
   ]
 
   var userPhone: NSString? = nil
@@ -97,14 +97,14 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
         phoneTextBox.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
         phoneTextBox.backgroundColor = UIColor.clearColor()
         phoneTextBox.keyboardType = UIKeyboardType.PhonePad
-        phoneTextBox.placeholder = cellPlaceholders[indexPath.row].uppercaseString
+        phoneTextBox.placeholder = cellPlaceholders[indexPath.row].lowercaseString
         phoneTextBox.adjustsFontSizeToFitWidth = true
         phoneTextBox.delegate = self
 
         cell.addSubview(phoneTextBox)
 
       case .Button:
-        cell.text = cellPlaceholders[indexPath.row].uppercaseString
+        cell.text = cellPlaceholders[indexPath.row].lowercaseString
 
       }
     }

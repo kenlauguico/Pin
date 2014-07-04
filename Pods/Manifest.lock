@@ -1,15 +1,18 @@
 PODS:
+  - APAddressBook (0.0.10)
   - SHSPhoneComponent (2.11)
   - socket.IO (0.5.2):
     - SocketRocket (~> 0.2)
   - SocketRocket (0.3.1-beta2)
 
 DEPENDENCIES:
+  - APAddressBook
   - SHSPhoneComponent (~> 2.11)
   - socket.IO
   - SocketRocket
 
 SPEC CHECKSUMS:
+  APAddressBook: d176555d6b845a3c900f3f3c3787c1b98d83151d
   SHSPhoneComponent: 728c61d5dfe23314273c9e7ee9d05b314489425b
   socket.IO: db3e71805c862038ab73209dda2b0ad6babc54b2
   SocketRocket: 79a68ae186063c65e1fe6f638b1ae2927aa5f304

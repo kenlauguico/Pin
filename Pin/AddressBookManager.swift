@@ -7,32 +7,30 @@
 //
 
 import Foundation
-import AddressBook
-import AddressBookUI
 
 
 class AddressBookManager: NSObject {
   
-  var addressBook: ABAddressBookRef
+  var addressBook: APAddressBook
   var contactList: NSMutableArray = []
   
   
   init() {
-    addressBook = ABAddressBookCreateWithOptions(nil, nil)
+    addressBook = APAddressBook()
   }
   
   
   func checkAddressBookAccess() {
-    switch(ABAddressBookGetAuthorizationStatus()) {
-    case ABAuthorizationStatus.Authorized:
+    switch(APAddressBook.access().value) {
+    case APAddressBookAccessGranted.value:
       self.accessGrantedForAddressBook()
       break
       
-    case ABAuthorizationStatus.NotDetermined:
-      self.requestAddressBookAccess()
+    case APAddressBookAccessUnknown.value:
+      self.accessGrantedForAddressBook()
       break
       
-    case ABAuthorizationStatus.Denied, ABAuthorizationStatus.Restricted:
+    case APAddressBookAccessDenied.value:
       var alert: UIAlertView = UIAlertView(title: "Privacy Warning", message: "Permission was not granted for Contacts.", delegate: self, cancelButtonTitle: "OK")
       alert.show()
       break
@@ -43,40 +41,20 @@ class AddressBookManager: NSObject {
   }
   
   
-  func requestAddressBookAccess() {
-    ABAddressBookRequestAccessWithCompletion(addressBook, {
-      (granted: CBool, error: CFError!) in
-      if granted {
-        self.accessGrantedForAddressBook()
-      }
-      })
-  }
-  
-  
-  func accessGrantedForAddressBook() {  
-    var allPeople: CFArray = ABAddressBookCopyArrayOfAllPeople(addressBook).takeUnretainedValue()
-    var nPeople: CFIndex = ABAddressBookGetPersonCount(addressBook)
-    
-    for ref: ABRecordRef in allPeople.__conversion() {
-      var dOfPerson: NSMutableDictionary = NSMutableDictionary()
-      var phones: ABMultiValueRef = ABRecordCopyValue(ref, kABPersonPhoneProperty)
-      var firstName: ABMultiValueRef = ABRecordCopyValue(ref, kABPersonFirstNameProperty)
-      
-      dOfPerson.setValue(firstName as NSString, forKey: "name")
-      
-      var mobileLabel: ABMultiValueRef
-      
-      for i: CFIndex in 0...ABMultiValueGetCount(phones) {
-        let mobileLabel: CFString = ABMultiValueCopyLabelAtIndex(phones, i).takeUnretainedValue()
-        if mobileLabel == kABPersonPhoneMobileLabel! {
-          dOfPerson.setValue(ABMultiValueCopyValueAtIndex(phones, i) as ABMultiValueRef as NSString, forKey: "phone")
-        } else if mobileLabel == kABPersonPhoneIPhoneLabel! {
-          dOfPerson.setValue(ABMultiValueCopyValueAtIndex(phones, i) as ABMultiValueRef as NSString, forKey: "phone")
-          break
+  func accessGrantedForAddressBook() {
+    addressBook.loadContacts( { (contacts: AnyObject[]!, error: NSError!) in
+      if !error {
+        for contact: AnyObject in contacts {
+          var currentContact = contact as APContact
+          if !currentContact.firstName { continue }
+          if currentContact.phones.count == 0 { continue }
+          self.contactList.addObject([
+            "name": currentContact.firstName,
+            "phone": currentContact.phones[0]
+            ])
         }
       }
-      self.contactList.addObject(dOfPerson)
-    }
+      })
   }
   
   

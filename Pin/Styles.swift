@@ -19,4 +19,4 @@ var cellColors: UIColor[] = [
 ]
 
 var cellImageSize: CGSize = CGSizeMake(120, 80)
-var defaultFont: UIFont = UIFont(name: "Futura-Medium", size: 24.0)
+var defaultFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 28.0)
