@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import corelocation
 
 
 class MapUtil: NSObject {
@@ -29,5 +30,19 @@ class MapUtil: NSObject {
     var mapURL: NSURL = NSURL(string: "http://maps.apple.com/?q=\(location.latitude),\(location.longitude)&z=17")
     UIApplication.sharedApplication().openURL(mapURL)
 
+  }
+  
+  
+  func getCity(location: Location!, gotCity: ((NSString?) -> Void)) {
+    var geo = CLGeocoder()
+    var loc = CLLocation(latitude: location.latitude, longitude: location.longitude)
+    
+    geo.reverseGeocodeLocation(loc, completionHandler: { (placemarks: AnyObject[]!, error: NSError!) in
+      if !error {
+        var placemark: CLPlacemark = placemarks[0] as CLPlacemark
+        gotCity(placemark.locality)
+        NSNotificationCenter.defaultCenter().postNotificationName("silentRefresh", object: nil)
+      }
+      })
   }
 }

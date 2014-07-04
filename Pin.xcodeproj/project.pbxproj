@@ -49,6 +49,7 @@
 		826075931959C839001DECBA /* AddressBookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressBookManager.swift; path = Pin/AddressBookManager.swift; sourceTree = "<group>"; };
 		8264ED34195CFEEA00E84974 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		82683D321953A12A0063FCB1 /* Pin-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Pin-Bridging-Header.h"; path = "Pin/Pin-Bridging-Header.h"; sourceTree = "<group>"; };
+		82B5837C19669BD700190F81 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		82BF55FE1956BEDA00EBB4F3 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Pin/MyPlayground.playground; sourceTree = "<group>"; };
 		82CA31B819536DB000AECC7A /* Pin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82CA31BC19536DB000AECC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Pin/Info.plist; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		82CA31AF19536DB000AECC7A = {
 			isa = PBXGroup;
 			children = (
+				82B5837C19669BD700190F81 /* MapKit.framework */,
 				8264ED34195CFEEA00E84974 /* UIKit.framework */,
 				82CA31DD19536ED900AECC7A /* Models */,
 				82CA31DE19536F0700AECC7A /* Views */,

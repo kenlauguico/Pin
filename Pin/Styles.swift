@@ -10,6 +10,34 @@ import Foundation
 
 
 // Cell Styles
+struct DefaultCellStyle {
+  class title {
+    var font: UIFont = UIFont(name: "HelveticaNeue-UltraLight", size: 28.0)
+    var color: UIColor = UIColor.whiteColor()
+    var alignment = NSTextAlignment.Center
+  }
+  
+  class subtitle {
+    var font: UIFont = UIFont(name: "HelveticaNeue-Light", size: 14.0)
+    var color: UIColor = UIColor.whiteColor()
+    var alignment = NSTextAlignment.Center
+    
+    func stylize(cell: UITableViewCell) {
+      cell.detailTextLabel.font = subtitle().font
+      cell.detailTextLabel.textColor = subtitle().color
+      cell.detailTextLabel.textAlignment = subtitle().alignment
+      cell.detailTextLabel.adjustsFontSizeToFitWidth = true
+    }
+  }
+  
+  func stylize(cell: UITableViewCell) {
+    cell.font = title().font
+    cell.textColor = title().color
+    cell.textAlignment = title().alignment
+    cell.textLabel.adjustsFontSizeToFitWidth = true
+  }
+}
+
 var cellColors: UIColor[] = [
     UIColor(red: 25/255, green: 158/255, blue: 199/255, alpha: 1.0),
     UIColor(red: 64/255, green: 188/255, blue: 134/255, alpha: 1.0),

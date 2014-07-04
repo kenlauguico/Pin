@@ -64,8 +64,11 @@ class PinFriend: NSObject, NSCoding {
   var number: NSString? = nil
   var location: Location? = nil
   var map: UIImage? = nil
+  var city: NSString? = nil
 
+  
   init(friendNumber: NSString?, friendLocation: Location?) {
+    super.init()
     name = friendNumber
     number = friendNumber
     location = friendLocation
@@ -73,9 +76,15 @@ class PinFriend: NSObject, NSCoding {
     if friendLocation?.latitude == 0 || friendLocation?.latitude == nil { return }
 
     map = MapUtil().makeMapThumb(cellImageSize, location: friendLocation, zoom: 16)
+    
+    MapUtil().getCity(location, gotCity: { (cityname: NSString?) in
+      self.city = cityname
+      })
   }
 
+  
   init(friendName: NSString?, friendNumber: NSString?, friendLocation: Location?) {
+    super.init()
     name = friendName?.lowercaseString
     number = friendNumber
     location = friendLocation
@@ -83,14 +92,12 @@ class PinFriend: NSObject, NSCoding {
     if friendLocation?.latitude == 0 || friendLocation?.latitude == nil { return }
 
     map = MapUtil().makeMapThumb(cellImageSize, location: friendLocation, zoom: 16)
+    
+    MapUtil().getCity(location, gotCity: { (cityname: NSString?) in
+      self.city = cityname
+      })
   }
 
-  init(coder aDecoder: NSCoder!) {
-    name = aDecoder.decodeObjectForKey("name") as? NSString
-    number = aDecoder.decodeObjectForKey("number") as? NSString
-    location = aDecoder.decodeObjectForKey("location") as? Location
-    map = aDecoder.decodeObjectForKey("map") as? UIImage
-  }
 
   func updateLocation(friendLocation: Location!) {
     location = friendLocation
@@ -98,12 +105,28 @@ class PinFriend: NSObject, NSCoding {
     if friendLocation?.latitude == 0 || friendLocation?.latitude == nil { return }
 
     map = MapUtil().makeMapThumb(cellImageSize, location: friendLocation, zoom: 16)
+    
+    MapUtil().getCity(location, gotCity: { (cityname: NSString?) in
+      self.city = cityname
+      })
   }
+  
+  
+  init(coder aDecoder: NSCoder!) {
+    super.init()
+    name = aDecoder.decodeObjectForKey("name") as? NSString
+    number = aDecoder.decodeObjectForKey("number") as? NSString
+    location = aDecoder.decodeObjectForKey("location") as? Location
+    map = aDecoder.decodeObjectForKey("map") as? UIImage
+    city = aDecoder.decodeObjectForKey("city") as? NSString
+  }
+  
 
   func encodeWithCoder(aCoder: NSCoder!) {
     aCoder.encodeObject(name, forKey: "name")
     aCoder.encodeObject(number, forKey: "number")
     aCoder.encodeObject(location, forKey: "location")
     aCoder.encodeObject(map, forKey: "map")
+    aCoder.encodeObject(city, forKey: "city")
   }
 }

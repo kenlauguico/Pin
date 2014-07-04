@@ -90,24 +90,23 @@ extension MainViewController {
 
   
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-    let cell = UITableViewCellFix(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-
-    cell.textColor = UIColor.whiteColor()
-    cell.font = defaultFont
-    cell.textAlignment = NSTextAlignment.Center
-    cell.backgroundColor = cellColors[indexPath.row % cellColors.count]
-    cell.textLabel.adjustsFontSizeToFitWidth = true
+    var cell = UITableViewCellFix(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
 
     if indexPath.row != friendList.count {
       var currentFriend = friendList[indexPath.row] as PinFriend
       var uniqueColor = ((currentFriend.number as NSString).substringWithRange(NSMakeRange(1, 9)) as NSString).integerValue
       var tapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedOnMap:")
-
-      cell.backgroundColor = cellColors[uniqueColor % cellColors.count]
-      tapped.numberOfTapsRequired = 1
-
+      
       if currentFriend.number {
-        cell.text = currentFriend.name ? currentFriend.name : currentFriend.number
+        var who = currentFriend.name ? currentFriend.name : currentFriend.number
+        if currentFriend.city {
+          cell = UITableViewCellFix(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+          DefaultCellStyle.subtitle().stylize(cell)
+          cell.text = currentFriend.city
+          cell.detailTextLabel.text = "from \(who)"
+        } else {
+          cell.text = who
+        }
         cell.image = currentFriend.map
         cell.imageView.contentMode = UIViewContentMode.ScaleToFill
 
@@ -118,10 +117,15 @@ extension MainViewController {
         setupAddTextBox(indexPath.row)
         cell.addSubview(addTextBox)
       }
+      
+      cell.backgroundColor = cellColors[uniqueColor % cellColors.count]
+      tapped.numberOfTapsRequired = 1
     } else {
+      cell.backgroundColor = cellColors[indexPath.row % cellColors.count]
       cell.text = "Refresh".lowercaseString
     }
 
+    DefaultCellStyle().stylize(cell)
     cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: cell.bounds.size.width*2)
 
     return cell
@@ -451,6 +455,7 @@ extension MainViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotContacts:", name: "gotContacts", object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "pressedViewMapAction:", name: "pressedViewMapAction", object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "backupFriends", name: "backupFriends", object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "silentRefresh", name: "silentRefresh", object: nil)
   }
   
   
