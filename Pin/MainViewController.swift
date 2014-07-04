@@ -243,7 +243,7 @@ extension MainViewController {
   func silentRefresh() {
     silentRefreshTimer.invalidate()
     UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
-    silentRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refreshTable", userInfo: nil, repeats: false)
+    silentRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "refreshTable", userInfo: nil, repeats: false)
     NSRunLoop.currentRunLoop().addTimer(silentRefreshTimer, forMode: NSRunLoopCommonModes)
   }
   
@@ -252,26 +252,23 @@ extension MainViewController {
     var tooltip = CMPopTipView(message: TourGuide.tip.refresh)
     DefaultTooltipStyle().stylize(tooltip)
     
-    UIView.animateWithDuration(0, delay: 0, options: nil, animations: nil, completion: { (done: Bool) in
-      var lastIndex = NSIndexPath(forRow: self.friendList.count, inSection: 0)
-      var lastCell = self.tableView.cellForRowAtIndexPath(lastIndex)
-      
-      tooltip.presentPointingAtView(lastCell, inView: self.view, animated: true)
-      TourGuide().setSeen(TGTip.refresh)
-      })
+    var lastIndex = NSIndexPath(forRow: self.friendList.count, inSection: 0)
+    var lastCell = self.tableView.cellForRowAtIndexPath(lastIndex)
+    
+    tooltip.presentPointingAtView(lastCell, inView: self.view, animated: true)
+    TourGuide().setSeen(TGTip.refresh)
   }
   
   
   func showTourSend() {
-    var firstIndex = NSIndexPath(forRow: 0, inSection: 0)
-    var firstCell = self.tableView.cellForRowAtIndexPath(firstIndex)
     var tooltip = CMPopTipView(message: TourGuide.tip.send)
     DefaultTooltipStyle().stylize(tooltip)
     
-    UIView.animateWithDuration(0, delay: 2, options: nil, animations: nil, completion: { (done: Bool) in
-      tooltip.presentPointingAtView(firstCell, inView: self.view, animated: true)
-      TourGuide().setSeen(TGTip.send)
-      })
+    var firstIndex = NSIndexPath(forRow: 0, inSection: 0)
+    var firstCell = self.tableView.cellForRowAtIndexPath(firstIndex)
+    
+    tooltip.presentPointingAtView(firstCell, inView: self.view, animated: true)
+    TourGuide().setSeen(TGTip.send)
   }
   
   
@@ -279,13 +276,11 @@ extension MainViewController {
     var tooltip = CMPopTipView(message: TourGuide.tip.pin)
     DefaultTooltipStyle().stylize(tooltip)
     
-    UIView.animateWithDuration(0, delay: 2, options: nil, animations: nil, completion: { (done: Bool) in
-      var firstIndex = NSIndexPath(forRow: 0, inSection: 0)
-      var firstCell = self.tableView.cellForRowAtIndexPath(firstIndex)
-      
-      tooltip.presentPointingAtView(firstCell, inView: self.view, animated: true)
-      TourGuide().setSeen(TGTip.pin)
-      })
+    var firstIndex = NSIndexPath(forRow: 0, inSection: 0)
+    var firstCell = self.tableView.cellForRowAtIndexPath(firstIndex)
+    
+    tooltip.presentPointingAtView(firstCell, inView: self.view, animated: true)
+    TourGuide().setSeen(TGTip.pin)
   }
   
   
@@ -293,13 +288,11 @@ extension MainViewController {
     var tooltip = CMPopTipView(message: TourGuide.tip.contacts)
     DefaultTooltipStyle().stylize(tooltip)
     
-    UIView.animateWithDuration(0, delay: 2, options: nil, animations: nil, completion: { (done: Bool) in
-      var lastIndex = NSIndexPath(forRow: self.friendList.count, inSection: 0)
-      var lastCell = self.tableView.cellForRowAtIndexPath(lastIndex)
-      
-      tooltip.presentPointingAtView(lastCell, inView: self.view, animated: true)
-      TourGuide().setSeen(TGTip.contacts)
-      })
+    var lastIndex = NSIndexPath(forRow: self.friendList.count, inSection: 0)
+    var lastCell = self.tableView.cellForRowAtIndexPath(lastIndex)
+    
+    tooltip.presentPointingAtView(lastCell, inView: self.view, animated: true)
+    TourGuide().setSeen(TGTip.contacts)
   }
   
   
@@ -385,7 +378,8 @@ extension MainViewController {
     var fromFriend: PinFriend = PinFriend(friendNumber: fromNumber, friendLocation: fromLocation)
     
     if !TourGuide().seenPinTip {
-      showTourPin()
+      var delayedTip = NSTimer.scheduledTimerWithTimeInterval(TourGuide().tipDelay, target: self, selector: "showTourPin", userInfo: nil, repeats: false)
+      NSRunLoop.currentRunLoop().addTimer(delayedTip, forMode: NSRunLoopCommonModes)
     }
     
     if friendList.exists(fromFriend) {
@@ -424,8 +418,11 @@ extension MainViewController {
     if pinResponse.count == 0 {
       refreshTable()
       if !TourGuide().seenContactsTip{
-        showTourContacts()
-        showTourRefresh()
+        var delayedTipContacts = NSTimer.scheduledTimerWithTimeInterval(TourGuide().tipDelay, target: self, selector: "showTourContacts", userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(delayedTipContacts, forMode: NSRunLoopCommonModes)
+        
+        var delayedTipRefresh = NSTimer.scheduledTimerWithTimeInterval(TourGuide().tipDelay, target: self, selector: "showTourRefresh", userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(delayedTipRefresh, forMode: NSRunLoopCommonModes)
       }
       return
     }
@@ -436,11 +433,13 @@ extension MainViewController {
     silentRefresh()
     
     if !TourGuide().seenSendTip {
-      showTourSend()
+      var delayedTip = NSTimer.scheduledTimerWithTimeInterval(TourGuide().tipDelay, target: self, selector: "showTourSend", userInfo: nil, repeats: false)
+      NSRunLoop.currentRunLoop().addTimer(delayedTip, forMode: NSRunLoopCommonModes)
     }
     
     if !TourGuide().seenRefreshTip {
-      showTourRefresh()
+      var delayedTip = NSTimer.scheduledTimerWithTimeInterval(TourGuide().tipDelay, target: self, selector: "showTourRefresh", userInfo: nil, repeats: false)
+      NSRunLoop.currentRunLoop().addTimer(delayedTip, forMode: NSRunLoopCommonModes)
     }
   }
   

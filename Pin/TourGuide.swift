@@ -27,11 +27,15 @@ class TourGuide: NSObject {
     static var contacts = "It looks like you have no contacts! Make sure your friends on your address book have Pin!"
   }
   
+  
+  var tipDelay: Double = 1.5
+  
   var seenPhoneTip: Bool = NSUserDefaults.standardUserDefaults().boolForKey(TGTip.phone)
   var seenRefreshTip: Bool = NSUserDefaults.standardUserDefaults().boolForKey(TGTip.refresh)
   var seenSendTip: Bool = NSUserDefaults.standardUserDefaults().boolForKey(TGTip.send)
   var seenPinTip: Bool = NSUserDefaults.standardUserDefaults().boolForKey(TGTip.pin)
   var seenContactsTip: Bool = NSUserDefaults.standardUserDefaults().boolForKey(TGTip.contacts)
+  
   
   func reset() {
     seenPhoneTip = false
@@ -48,23 +52,24 @@ class TourGuide: NSObject {
     
   }
   
+  
   func setSeen(tip: NSString) {
     switch tip {
     case TGTip.phone:
       seenPhoneTip = true
-      NSUserDefaults.standardUserDefaults().setBool(false, forKey: TGTip.phone)
+      NSUserDefaults.standardUserDefaults().setBool(true, forKey: TGTip.phone)
     case TGTip.refresh:
       seenRefreshTip = true
-      NSUserDefaults.standardUserDefaults().setBool(false, forKey: TGTip.refresh)
+      NSUserDefaults.standardUserDefaults().setBool(true, forKey: TGTip.refresh)
     case TGTip.send:
       seenSendTip = true
-      NSUserDefaults.standardUserDefaults().setBool(false, forKey: TGTip.send)
+      NSUserDefaults.standardUserDefaults().setBool(true, forKey: TGTip.send)
     case TGTip.pin:
       seenPinTip = true
-      NSUserDefaults.standardUserDefaults().setBool(false, forKey: TGTip.pin)
+      NSUserDefaults.standardUserDefaults().setBool(true, forKey: TGTip.pin)
     case TGTip.contacts:
       seenContactsTip = true
-      NSUserDefaults.standardUserDefaults().setBool(false, forKey: TGTip.contacts)
+      NSUserDefaults.standardUserDefaults().setBool(true, forKey: TGTip.contacts)
       
     default:
       return

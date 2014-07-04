@@ -41,7 +41,8 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   
   override func viewDidAppear(animated: Bool) {
     if !TourGuide().seenPhoneTip {
-      showTour()
+      var delayedTip = NSTimer.scheduledTimerWithTimeInterval(TourGuide().tipDelay, target: self, selector: "showTour", userInfo: nil, repeats: false)
+      NSRunLoop.currentRunLoop().addTimer(delayedTip, forMode: NSRunLoopCommonModes)
     }
   }
 
