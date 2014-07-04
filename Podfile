@@ -1,5 +1,6 @@
 platform :ios, '7.0'
 pod 'SHSPhoneComponent', '~> 2.11'
+pod 'CMPopTipView', '~> 2.2'
 pod 'SocketRocket'
 pod 'socket.IO'
 pod 'APAddressBook'
