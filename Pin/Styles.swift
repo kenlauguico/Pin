@@ -12,7 +12,7 @@ import Foundation
 // Cell Styles
 struct DefaultCellStyle {
   class title {
-    var font: UIFont = UIFont(name: "HelveticaNeue-UltraLight", size: 28.0)
+    var font: UIFont = UIFont(name: "HelveticaNeue-Light", size: 28.0)
     var color: UIColor = UIColor.whiteColor()
     var alignment = NSTextAlignment.Center
   }

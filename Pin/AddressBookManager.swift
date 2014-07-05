@@ -48,10 +48,12 @@ class AddressBookManager: NSObject {
           var currentContact = contact as APContact
           if !currentContact.firstName { continue }
           if currentContact.phones.count == 0 { continue }
-          self.contactList.addObject([
-            "name": currentContact.firstName,
-            "phone": currentContact.phones[0]
-            ])
+          for phone: AnyObject in currentContact.phones {
+            self.contactList.addObject([
+              "name": currentContact.firstName,
+              "phone": phone as NSString
+              ])
+          }
         }
       }
       })
