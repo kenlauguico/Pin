@@ -97,14 +97,14 @@ extension MainViewController {
     var tapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedOnMap:")
     
     if currentFriend.number {
-      var who = currentFriend.name ? currentFriend.name : currentFriend.number
+      var who: NSString! = currentFriend.name ? currentFriend.name as? NSString : currentFriend.number as? NSString
       if currentFriend.city {
         cell = UITableViewCellFix(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         DefaultCellStyle.subtitle().stylize(cell)
         cell.text = currentFriend.city
-        cell.detailTextLabel.text = "from \(who)"
+        cell.detailTextLabel.text = "from \(who.lowercaseString)"
       } else {
-        cell.text = who
+        cell.text = who.lowercaseString
       }
       cell.image = currentFriend.map
       cell.imageView.contentMode = UIViewContentMode.ScaleToFill
@@ -213,7 +213,7 @@ extension MainViewController {
       var currentCell = tableView.cellForRowAtIndexPath(rowToHandle)
       currentCell.text = "Sent".lowercaseString
       if currentCell.detailTextLabel {
-        currentCell.detailTextLabel.text = "to \(currentFriend.name)"
+        currentCell.detailTextLabel.text = "to \(currentFriend.name?.lowercaseString)"
       }
     } else {
       tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -295,7 +295,7 @@ extension MainViewController {
       pushAlert.category = "DEFAULT_CATEGORY"
     }
     
-    pushAlert.alertBody = "from \(from.name!.lowercaseString)"
+    pushAlert.alertBody = "from \(from.name!.uppercaseString)"
     pushAlert.fireDate = now.dateByAddingTimeInterval(0)
     pushAlert.userInfo = from.location?.location
     
