@@ -72,11 +72,8 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
 
-    cell.textColor = UIColor.whiteColor()
-    cell.font = defaultFont
-    cell.textAlignment = NSTextAlignment.Center
+    DefaultCellStyle().stylize(cell)
     cell.backgroundColor = cellColors[indexPath.row % cellColors.count]
-    cell.textLabel.adjustsFontSizeToFitWidth = true
 
     cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: cell.bounds.size.width*2)
 
@@ -94,9 +91,9 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
           phoneTextBox.formatter.setDefaultOutputPattern("+# (###) ###-####")
         }
 
-        phoneTextBox.font = defaultFont
-        phoneTextBox.textColor = UIColor.whiteColor()
-        phoneTextBox.textAlignment = NSTextAlignment.Center
+        phoneTextBox.font = DefaultCellStyle.title().font
+        phoneTextBox.textColor = DefaultCellStyle.title().color
+        phoneTextBox.textAlignment = DefaultCellStyle.title().alignment
         phoneTextBox.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
         phoneTextBox.backgroundColor = UIColor.clearColor()
         phoneTextBox.keyboardType = UIKeyboardType.PhonePad

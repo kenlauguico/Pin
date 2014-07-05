@@ -39,10 +39,16 @@ struct DefaultCellStyle {
 }
 
 var cellColors: UIColor[] = [
-    UIColor(red: 25/255, green: 158/255, blue: 199/255, alpha: 1.0),
-    UIColor(red: 64/255, green: 188/255, blue: 134/255, alpha: 1.0),
-    UIColor(red: 236/255, green: 85/255, blue: 92/255, alpha: 1.0),
-    UIColor(red: 252/255, green: 180/255, blue: 16/255, alpha: 1.0)
+  UIColor(red: 25/255, green: 158/255, blue: 199/255, alpha: 1.0),
+  UIColor(red: 64/255, green: 188/255, blue: 134/255, alpha: 1.0),
+  UIColor(red: 236/255, green: 85/255, blue: 92/255, alpha: 1.0),
+  UIColor(red: 252/255, green: 180/255, blue: 16/255, alpha: 1.0),
+  UIColor(red: 238/255, green: 156/255, blue: 68/255, alpha: 1.0),
+  UIColor(red: 234/255, green: 139/255, blue: 51/255, alpha: 1.0),
+  UIColor(red: 91/255, green: 125/255, blue: 175/255, alpha: 1.0),
+  UIColor(red: 66/255, green: 107/255, blue: 186/255, alpha: 1.0),
+  UIColor(red: 91/255, green: 182/255, blue: 154/255, alpha: 1.0),
+  UIColor(red: 50/255, green: 133/255, blue: 130/255, alpha: 1.0)
 ]
 
 var cellImageSize: CGSize = CGSizeMake(120, 80)

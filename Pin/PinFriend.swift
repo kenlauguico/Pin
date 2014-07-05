@@ -39,8 +39,36 @@ func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> 
       }
     }
   }
-
   return newFriendList
+}
+
+
+func mergeFriendList(oldList: PinFriend[], newList: PinFriend[]) -> PinFriend[] {
+  var updatedList: PinFriend[] = []
+  var newFriendList = newList
+  var found: Bool = false
+  
+  for friend: PinFriend in oldList {
+    found = false
+    for (index, newFriend: PinFriend) in enumerate(newFriendList) {
+      if newFriend.number == friend.number {
+        found = true
+        newFriend.updateLocation(friend.location)
+        updatedList.append(newFriend)
+        newFriendList.removeAtIndex(index)
+        break
+      }
+    }
+    if !found {
+      updatedList.append(friend)
+    }
+  }
+  
+  for friend: PinFriend in newFriendList {
+    updatedList.append(friend)
+  }
+  
+  return updatedList
 }
 
 

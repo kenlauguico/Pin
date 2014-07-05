@@ -2,16 +2,38 @@
 
 import Cocoa
 
-var str = "Hello, playground"
-
-var dictionary = [
-    "+111": ["name":"ken", "phone":"+111"],
-    "+222": ["name":"ken", "phone":"+222"]
+var new_list: AnyObject[] = []
+var friend_list = [
+  ["name":"ken0", "phone":"+000"],
+  ["name":"ken2", "phone":"+222"],
+  ["name":"ken4", "phone":"+444"],
 ]
+var address_book = [
+  ["name":"ken1", "phone":"+111"],
+  ["name":"ken2", "phone":"+222"],
+  ["name":"ken3", "phone":"+333"],
+  ["name":"ken4", "phone":"+444"],
+  ["name":"ken5", "phone":"+555"],
+]
+var found: Bool
 
-dictionary.count
+for friend in friend_list {
+  found = false
+  for (index, newfriend) in enumerate(address_book) {
+    if newfriend["phone"] == friend["phone"] {
+      found = true
+      new_list.append(newfriend)
+      address_book.removeAtIndex(index)
+      break
+    }
+  }
+  if !found {
+    new_list.append(friend)
+  }
+}
 
-dictionary["+111"]
-dictionary[0]
+for friend in address_book {
+  new_list.append(friend)
+}
 
-dictionary.indexForKey("+111")
+println(new_list)

@@ -21,7 +21,7 @@ class TourGuide: NSObject {
   
   struct tip {
     static var phone    = "Remember to add your country code!"
-    static var refresh  = "Refresh to see if your friends have joined Pin!"
+    static var refresh  = "Pull to refresh to see if your friends have joined Pin!"
     static var send     = "Tap on a friend to send them your location!"
     static var pin      = "You have a new Pin from a friend! Tap the map for a closer look."
     static var contacts = "It looks like you have no contacts! Make sure your friends on your address book have Pin!"

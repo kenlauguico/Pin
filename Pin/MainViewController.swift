@@ -29,6 +29,7 @@ class MainViewController: UITableViewController {
     addressBook.checkAddressBookAccess()
     syncFriends(friendList)
     friendListToDict()
+    addRefreshControl()
     makeFooter()
 
     tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -91,39 +92,33 @@ extension MainViewController {
   
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     var cell = UITableViewCellFix(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-
-    if indexPath.row != friendList.count {
-      var currentFriend = friendList[indexPath.row] as PinFriend
-      var uniqueColor = ((currentFriend.number as NSString).substringWithRange(NSMakeRange(1, 9)) as NSString).integerValue
-      var tapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedOnMap:")
-      
-      if currentFriend.number {
-        var who = currentFriend.name ? currentFriend.name : currentFriend.number
-        if currentFriend.city {
-          cell = UITableViewCellFix(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
-          DefaultCellStyle.subtitle().stylize(cell)
-          cell.text = currentFriend.city
-          cell.detailTextLabel.text = "from \(who)"
-        } else {
-          cell.text = who
-        }
-        cell.image = currentFriend.map
-        cell.imageView.contentMode = UIViewContentMode.ScaleToFill
-
-        cell.imageView.tag = indexPath.row
-        cell.imageView.userInteractionEnabled = true
-        cell.imageView.addGestureRecognizer(tapped)
+    var currentFriend = friendList[indexPath.row] as PinFriend
+    var uniqueColor = ((currentFriend.number as NSString).substringWithRange(NSMakeRange(1, 9)) as NSString).integerValue
+    var tapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedOnMap:")
+    
+    if currentFriend.number {
+      var who = currentFriend.name ? currentFriend.name : currentFriend.number
+      if currentFriend.city {
+        cell = UITableViewCellFix(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+        DefaultCellStyle.subtitle().stylize(cell)
+        cell.text = currentFriend.city
+        cell.detailTextLabel.text = "from \(who)"
       } else {
-        setupAddTextBox(indexPath.row)
-        cell.addSubview(addTextBox)
+        cell.text = who
       }
-      
-      cell.backgroundColor = cellColors[uniqueColor % cellColors.count]
-      tapped.numberOfTapsRequired = 1
+      cell.image = currentFriend.map
+      cell.imageView.contentMode = UIViewContentMode.ScaleToFill
+
+      cell.imageView.tag = indexPath.row
+      cell.imageView.userInteractionEnabled = true
+      cell.imageView.addGestureRecognizer(tapped)
     } else {
-      cell.backgroundColor = cellColors[indexPath.row % cellColors.count]
-      cell.text = "Refresh".lowercaseString
+      setupAddTextBox(indexPath.row)
+      cell.addSubview(addTextBox)
     }
+    
+    cell.backgroundColor = cellColors[uniqueColor % cellColors.count]
+    tapped.numberOfTapsRequired = 1
 
     DefaultCellStyle().stylize(cell)
     cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: cell.bounds.size.width*2)
@@ -135,17 +130,9 @@ extension MainViewController {
   override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-    if indexPath.row != friendList.count {
-      // Tapped on a friend
-      var friendTapped: PinFriend = friendList[indexPath.row] as PinFriend
-      appDelegate.getLocation(friendTapped.number)
-      updateFriend(friendTapped, mentionSent: true)
-    } else {
-      // Pressed Refresh
-      appDelegate.socketManager.disconnectSocket()
-      addressBook.checkAddressBookAccess()
-      friendList = []
-    }
+    var friendTapped: PinFriend = friendList[indexPath.row] as PinFriend
+    appDelegate.getLocation(friendTapped.number)
+    updateFriend(friendTapped, mentionSent: true)
   }
 
   
@@ -160,12 +147,12 @@ extension MainViewController {
 
   
   override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-    return friendList.count + 1
+    return friendList.count
   }
 
   
   override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return indexPath.row != friendList.count
+    return true
   }
 
   
@@ -223,7 +210,11 @@ extension MainViewController {
     }
     
     if mentionSent {
-      tableView.cellForRowAtIndexPath(rowToHandle).text = "Sent".lowercaseString
+      var currentCell = tableView.cellForRowAtIndexPath(rowToHandle)
+      currentCell.text = "Sent".lowercaseString
+      if currentCell.detailTextLabel {
+        currentCell.detailTextLabel.text = "to \(currentFriend.name)"
+      }
     } else {
       tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
@@ -256,10 +247,7 @@ extension MainViewController {
     var tooltip = CMPopTipView(message: TourGuide.tip.refresh)
     DefaultTooltipStyle().stylize(tooltip)
     
-    var lastIndex = NSIndexPath(forRow: self.friendList.count, inSection: 0)
-    var lastCell = self.tableView.cellForRowAtIndexPath(lastIndex)
-    
-    tooltip.presentPointingAtView(lastCell, inView: self.view, animated: true)
+    tooltip.presentPointingAtView(refreshControl, inView: self.view, animated: true)
     TourGuide().setSeen(TGTip.refresh)
   }
   
@@ -292,10 +280,7 @@ extension MainViewController {
     var tooltip = CMPopTipView(message: TourGuide.tip.contacts)
     DefaultTooltipStyle().stylize(tooltip)
     
-    var lastIndex = NSIndexPath(forRow: self.friendList.count, inSection: 0)
-    var lastCell = self.tableView.cellForRowAtIndexPath(lastIndex)
-    
-    tooltip.presentPointingAtView(lastCell, inView: self.view, animated: true)
+    tooltip.presentPointingAtView(refreshControl, inView: self.view, animated: true)
     TourGuide().setSeen(TGTip.contacts)
   }
   
@@ -316,6 +301,13 @@ extension MainViewController {
     
     UIApplication.sharedApplication().scheduleLocalNotification(pushAlert)
     UIApplication.sharedApplication().applicationIconBadgeNumber += 1
+  }
+  
+  
+  func addRefreshControl() {
+    var refresher = UIRefreshControl()
+    refresher.addTarget(self, action: "refreshContacts", forControlEvents: UIControlEvents.ValueChanged)
+    refreshControl = refresher
   }
   
   
@@ -355,9 +347,13 @@ extension MainViewController {
   
   
   func connected() {
-    if friendList.isEmpty {
-      requestContacts()
-    }
+    requestContacts()
+  }
+  
+  
+  func refreshContacts() {
+    appDelegate.socketManager.disconnectSocket()
+    addressBook.checkAddressBookAccess()
   }
   
   
@@ -419,6 +415,8 @@ extension MainViewController {
   func gotContacts(notification: NSNotification) {
     var pinResponse: NSArray = notification.userInfo["numbers"] as NSArray
     
+    refreshControl.endRefreshing()
+    
     if pinResponse.count == 0 {
       refreshTable()
       if !TourGuide().seenContactsTip{
@@ -431,7 +429,9 @@ extension MainViewController {
       return
     }
     
-    friendList = friendListFromNumbersArray(self.addressBook.contactList, pinResponse)
+    var newFriendList = friendListFromNumbersArray(self.addressBook.contactList, pinResponse)
+    var updatedFriendList = mergeFriendList(friendList, newFriendList)
+    friendList = updatedFriendList
     syncFriends(friendList)
     friendListToDict()
     silentRefresh()
