@@ -17,7 +17,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   }
 
   var cellPlaceholders: NSString[] = [
-    "Enter you phone number",
+    "Enter your phone number",
     "GO"
   ]
 
@@ -62,7 +62,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   
   func textFieldShouldReturn(textField: UITextField!) -> Bool {
     if textField == userTextBox {
-      phoneTextBox.becomeFirstResponder()
+      phoneTextBox.resignFirstResponder()
     }
     return false
   }

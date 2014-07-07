@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     locationManager.delegate = self;
     application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
 
-    if ( ios8() ) {
+    if ios8() {
       locationManager.requestAlwaysAuthorization()
 
       // Register notifications - Actions
@@ -204,6 +204,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
   func getLocation(sendTo: NSString!) {
     sendingTo = sendTo
 
+    if ios8() {
+      locationManager.requestWhenInUseAuthorization()
+    }
+    
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
     locationManager.startUpdatingLocation()
     didGetLocation = false

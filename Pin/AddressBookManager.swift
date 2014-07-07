@@ -42,6 +42,7 @@ class AddressBookManager: NSObject {
   
   
   func accessGrantedForAddressBook() {
+    contactList = []
     addressBook.loadContacts( { (contacts: AnyObject[]!, error: NSError!) in
       if !error {
         for contact: AnyObject in contacts {
