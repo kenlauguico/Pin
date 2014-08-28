@@ -11,7 +11,7 @@ import Foundation
 
 func getFriends() -> [PinFriend] {
   var data: NSData? = NSUserDefaults.standardUserDefaults().objectForKey("friendList") as? NSData
-  if !(data != nil) { return [] }
+  if (data == nil) { return [] }
 
   var friends: [PinFriend]? = NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [PinFriend]
   return (friends != nil) ? friends as [PinFriend]! : []
@@ -29,7 +29,7 @@ func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> 
 
   for number: AnyObject in numbersArray {
     for person in contactList {
-      if !(person.valueForKey("phone") != nil) { continue }
+      if (person.valueForKey("phone") == nil) { continue }
       var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
       phone = "+\(phone)"
       if phone == number as NSString {
@@ -74,7 +74,7 @@ func mergeFriendList(oldList: [PinFriend], newList: [PinFriend]) -> [PinFriend] 
 
 func getFriendWithNumber(contactList: NSArray, number: NSString) -> PinFriend {
   for person in contactList {
-    if !(person.objectForKey("phone") != nil) { continue }
+    if (person.objectForKey("phone") == nil) { continue }
     var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
     phone = "+\(phone)"
     if phone == number {

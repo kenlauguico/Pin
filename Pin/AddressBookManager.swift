@@ -44,10 +44,10 @@ class AddressBookManager: NSObject {
   func accessGrantedForAddressBook() {
     contactList = []
     addressBook.loadContacts( { (contacts: [AnyObject]!, error: NSError!) in
-      if !(error != nil) {
+      if (error == nil) {
         for contact: AnyObject in contacts {
           var currentContact = contact as APContact
-          if !(currentContact.firstName != nil) { continue }
+          if (currentContact.firstName == nil) { continue }
           if currentContact.phones.count == 0 { continue }
           for phone: AnyObject in currentContact.phones {
             self.contactList.addObject([

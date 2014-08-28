@@ -37,7 +37,7 @@ class MapUtil: NSObject {
     var loc = CLLocation(latitude: location.latitude, longitude: location.longitude)
     
     geo.reverseGeocodeLocation(loc, completionHandler: { (placemarks: [AnyObject]!, error: NSError!) in
-      if !(error != nil) {
+      if (error == nil) {
         var placemark: CLPlacemark = placemarks[0] as CLPlacemark
         gotCity(placemark.locality)
         NSNotificationCenter.defaultCenter().postNotificationName("silentRefresh", object: nil)

@@ -69,8 +69,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
   func application(application: UIApplication!, handleActionWithIdentifier identifier: String!, forLocalNotification notification: UILocalNotification!, completionHandler: (() -> Void)!) {
 
-    if identifier == "ACTION_VIEWMAP" {
-      NSNotificationCenter.defaultCenter().postNotificationName("pressedViewMapAction", object: nil, userInfo: notification.userInfo)
+    if (identifier != nil) {
+      if identifier == "ACTION_VIEWMAP" {
+        NSNotificationCenter.defaultCenter().postNotificationName("pressedViewMapAction", object: nil, userInfo: notification.userInfo)
+      }
     }
 
     completionHandler()

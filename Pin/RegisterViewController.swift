@@ -21,7 +21,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     "GO"
   ]
 
-  var userPhone: NSString? = nil
+  var userPhone: NSString! = nil
   var userTextBox: UITextField!
   var phoneTextBox: SHSPhoneTextField!
   let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -119,7 +119,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     closeKeyboard()
 
     if indexPath.row == RegistrationCellTypes.Button.toRaw() {
-      if userPhone != nil || userPhone == "" { return }
+      if userPhone == nil || userPhone == "" { return }
       var currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell
       var loader: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
 
