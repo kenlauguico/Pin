@@ -16,7 +16,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     case Button
   }
 
-  var cellPlaceholders: NSString[] = [
+  var cellPlaceholders: [NSString] = [
     "Enter your phone number",
     "GO"
   ]
@@ -30,7 +30,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    if appDelegate.sendingFrom {
+    if (appDelegate.sendingFrom != nil) {
       performSegueWithIdentifier("toMain", sender: nil)
     }
 
@@ -104,7 +104,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
         cell.addSubview(phoneTextBox)
 
       case .Button:
-        cell.text = cellPlaceholders[indexPath.row].lowercaseString
+        cell.textLabel.text = cellPlaceholders[indexPath.row].lowercaseString
 
       }
     }
@@ -119,7 +119,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     closeKeyboard()
 
     if indexPath.row == RegistrationCellTypes.Button.toRaw() {
-      if !userPhone || userPhone == "" { return }
+      if userPhone != nil || userPhone == "" { return }
       var currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell
       var loader: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
 
@@ -127,7 +127,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
       loader.startAnimating()
 
       // change cell to a loader
-      currentCell.text = ""
+      currentCell.textLabel.text = ""
       currentCell.addSubview(loader)
 
       appDelegate.sendingFrom = "+\(userPhone)"
@@ -164,10 +164,10 @@ extension RegisterViewController {
   func showTour() {
     var tooltip = CMPopTipView(message: TourGuide.tip.phone)
     DefaultTooltipStyle().stylize(tooltip)
-    
-    UIView.animateWithDuration(0, delay: 2, options: nil, animations: nil, completion: { (done: Bool) in
+
+    UIView.animateWithDuration(0, delay: 2, options: nil, animations: {}, completion: { done in
       tooltip.presentPointingAtView(self.phoneTextBox, inView: self.view, animated: true)
       TourGuide().setSeen(TGTip.phone)
-      })
+    })
   }
 }

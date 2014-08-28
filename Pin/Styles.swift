@@ -31,14 +31,14 @@ struct DefaultCellStyle {
   }
   
   func stylize(cell: UITableViewCell) {
-    cell.font = title().font
-    cell.textColor = title().color
-    cell.textAlignment = title().alignment
+    cell.textLabel.font = title().font
+    cell.textLabel.textColor = title().color
+    cell.textLabel.textAlignment = title().alignment
     cell.textLabel.adjustsFontSizeToFitWidth = true
   }
 }
 
-var cellColors: UIColor[] = [
+var cellColors: [UIColor] = [
   UIColor(red: 25/255, green: 158/255, blue: 199/255, alpha: 1.0),
   UIColor(red: 64/255, green: 188/255, blue: 134/255, alpha: 1.0),
   UIColor(red: 236/255, green: 85/255, blue: 92/255, alpha: 1.0),

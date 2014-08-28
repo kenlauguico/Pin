@@ -10,29 +10,29 @@
 	<string>Pin</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B4CDBAC4-FEE4-41A7-AFFB-A42AD4617B15</key>
+		<key>87011AF1F4D6E72381D31A4E97A14A7CF61BD91D</key>
 		<string>https://bitbucket.org/kenlauguico/pin-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Pin.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B4CDBAC4-FEE4-41A7-AFFB-A42AD4617B15</key>
+		<key>87011AF1F4D6E72381D31A4E97A14A7CF61BD91D</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://bitbucket.org/kenlauguico/pin-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B4CDBAC4-FEE4-41A7-AFFB-A42AD4617B15</string>
+	<string>87011AF1F4D6E72381D31A4E97A14A7CF61BD91D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B4CDBAC4-FEE4-41A7-AFFB-A42AD4617B15</string>
+			<string>87011AF1F4D6E72381D31A4E97A14A7CF61BD91D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Pin</string>
 		</dict>

@@ -12,7 +12,7 @@ import AudioToolbox
 
 class MainViewController: UITableViewController {
 
-  var friendList: PinFriend[] = getFriends()
+  var friendList: [PinFriend] = getFriends()
   var friends = Dictionary<String, PinFriend>()
   var addTextBox: SHSPhoneTextField!
   var newUserPhone: NSString?
@@ -93,20 +93,20 @@ extension MainViewController {
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     var cell = UITableViewCellFix(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
     var currentFriend = friendList[indexPath.row] as PinFriend
-    var uniqueColor = ((currentFriend.number as NSString).substringWithRange(NSMakeRange(1, 9)) as NSString).integerValue
+    var uniqueColor = ((currentFriend.number as NSString!).substringWithRange(NSMakeRange(1, 9)) as NSString).integerValue
     var tapped: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedOnMap:")
     
-    if currentFriend.number {
-      var who: NSString! = currentFriend.name ? currentFriend.name as? NSString : currentFriend.number as? NSString
-      if currentFriend.city {
+    if (currentFriend.number != nil) {
+      var who: NSString! = (currentFriend.name != nil) ? currentFriend.name as NSString! : currentFriend.number as NSString!
+      if (currentFriend.city != nil) {
         cell = UITableViewCellFix(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         DefaultCellStyle.subtitle().stylize(cell)
-        cell.text = currentFriend.city
+        cell.textLabel.text = currentFriend.city
         cell.detailTextLabel.text = "from \(who.lowercaseString)"
       } else {
-        cell.text = who.lowercaseString
+        cell.textLabel.text = who.lowercaseString
       }
-      cell.image = currentFriend.map
+      cell.imageView.image = currentFriend.map
       cell.imageView.contentMode = UIViewContentMode.ScaleToFill
 
       cell.imageView.tag = indexPath.row
@@ -182,7 +182,7 @@ extension MainViewController {
     var currentFriend: PinFriend = getFriendWithNumber(addressBook.contactList, friend.number!)
     var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     var rowToHandle: NSIndexPath = firstRow
-    var rowsToRemove: NSIndexPath[] = []
+    var rowsToRemove: [NSIndexPath] = []
     var foundAtIndex: Int = 0
     var foundYet: Bool = false
     
@@ -211,8 +211,8 @@ extension MainViewController {
     
     if mentionSent {
       var currentCell = tableView.cellForRowAtIndexPath(rowToHandle)
-      currentCell.text = "Sent".lowercaseString
-      if currentCell.detailTextLabel {
+      currentCell.textLabel.text = "Sent".lowercaseString
+      if (currentCell.detailTextLabel != nil) {
         currentCell.detailTextLabel.text = "to \(currentFriend.name?.lowercaseString)"
       }
     } else {
@@ -297,7 +297,7 @@ extension MainViewController {
     
     pushAlert.alertBody = "from \(from.name!.uppercaseString)"
     pushAlert.fireDate = now.dateByAddingTimeInterval(0)
-    pushAlert.userInfo = from.location?.location
+    pushAlert.userInfo = from.location?.location as NSDictionary!
     
     UIApplication.sharedApplication().scheduleLocalNotification(pushAlert)
     UIApplication.sharedApplication().applicationIconBadgeNumber += 1
@@ -366,13 +366,13 @@ extension MainViewController {
   
   
   func pressedViewMapAction(notification: NSNotification) {
-    var location: Location = Location(dictionary: notification.userInfo)
+    var location: Location = Location(dictionary: notification.userInfo!)
     MapUtil().launchMapApp(location)
   }
   
   
   func gotNewPin(notification: NSNotification) {
-    var pinResponse: NSDictionary = notification.userInfo
+    var pinResponse: NSDictionary = notification.userInfo!
     var fromNumber: NSString = pinResponse["from_cellphone_number"] as NSString
     var fromLocation: Location  = Location(dictionary: pinResponse["location"] as NSDictionary)
     var fromFriend: PinFriend = PinFriend(friendNumber: fromNumber, friendLocation: fromLocation)
@@ -392,8 +392,8 @@ extension MainViewController {
     syncFriends(friendList)
     friendListToDict()
     
-    if friends[fromFriend.number!] {
-      fromFriend = friends[fromFriend.number!] as PinFriend
+    if (friends[fromFriend.number!] != nil) {
+      fromFriend = friends[fromFriend.number!] as PinFriend!
     }
     
     showPushAlert(fromFriend)
@@ -413,8 +413,8 @@ extension MainViewController {
   
   
   func gotContacts(notification: NSNotification) {
-    var pinResponse: NSArray = notification.userInfo["numbers"] as NSArray
-    
+    var pinResponse: NSArray = notification.userInfo!["numbers"] as NSArray
+
     refreshControl.endRefreshing()
     
     if pinResponse.count == 0 {

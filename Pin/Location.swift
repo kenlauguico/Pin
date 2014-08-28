@@ -9,14 +9,14 @@
 import Foundation
 
 
-class Location: NSObject, NSCoding {
+class Location: NSObject {
 
   var latitude: Double = 0
   var longitude: Double = 0
   var accuracy: Int = 0
   var location: NSDictionary = [:]
 
-  init() {}
+  override init() {}
 
   init(lat: Double, long: Double, acc: Int) {
     latitude = lat

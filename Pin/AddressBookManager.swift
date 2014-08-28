@@ -15,13 +15,13 @@ class AddressBookManager: NSObject {
   var contactList: NSMutableArray = []
   
   
-  init() {
+  override init() {
     addressBook = APAddressBook()
   }
   
   
   func checkAddressBookAccess() {
-    switch(APAddressBook.access().value) {
+    switch APAddressBook.access().value {
     case APAddressBookAccessGranted.value:
       self.accessGrantedForAddressBook()
       break
@@ -43,11 +43,11 @@ class AddressBookManager: NSObject {
   
   func accessGrantedForAddressBook() {
     contactList = []
-    addressBook.loadContacts( { (contacts: AnyObject[]!, error: NSError!) in
-      if !error {
+    addressBook.loadContacts( { (contacts: [AnyObject]!, error: NSError!) in
+      if !(error != nil) {
         for contact: AnyObject in contacts {
           var currentContact = contact as APContact
-          if !currentContact.firstName { continue }
+          if !(currentContact.firstName != nil) { continue }
           if currentContact.phones.count == 0 { continue }
           for phone: AnyObject in currentContact.phones {
             self.contactList.addObject([
@@ -64,8 +64,8 @@ class AddressBookManager: NSObject {
   func getMobileNumbersArray() -> NSMutableArray {
     var newContactsList: NSMutableArray = []
     
-    for person: NSDictionary! in self.contactList {
-      if person.valueForKey("phone") {
+    for person in self.contactList {
+      if (person.valueForKey("phone") != nil) {
         var digitOnlyNumber: NSString = SHSPhoneNumberFormatter.digitOnlyString(person.valueForKey("phone") as NSString)
         newContactsList.addObject("+\(digitOnlyNumber)")
       }

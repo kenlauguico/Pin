@@ -17,7 +17,7 @@ class SocketManager: SocketIO {
   var userPhone: NSString! = nil
   var reconnectTimer: NSTimer = NSTimer()
 
-  init() {
+  override init() {
     super.init()
     socketManager = SocketIO(delegate: self)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "startTimer", name: "reconnect", object: nil)
@@ -104,8 +104,8 @@ extension SocketManager: SocketIODelegate {
     }
 
     if packet.name == "filtered_contact_list" {
-      var numbers = ["numbers": packet.args[0]]
-      NSNotificationCenter.defaultCenter().postNotificationName("gotContacts", object: self, userInfo: numbers)
+      var userInfo = ["numbers": packet.args[0]]
+      NSNotificationCenter.defaultCenter().postNotificationName("gotContacts", object: self, userInfo: userInfo as NSDictionary)
     }
   }
   

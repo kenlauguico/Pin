@@ -9,27 +9,27 @@
 import Foundation
 
 
-func getFriends() -> PinFriend[] {
+func getFriends() -> [PinFriend] {
   var data: NSData? = NSUserDefaults.standardUserDefaults().objectForKey("friendList") as? NSData
-  if !data { return [] }
+  if !(data != nil) { return [] }
 
-  var friends: PinFriend[]? = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? PinFriend[]
-  return friends ? friends as PinFriend[] : []
+  var friends: [PinFriend]? = NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [PinFriend]
+  return (friends != nil) ? friends as [PinFriend]! : []
 }
 
 
-func syncFriends(friendList: PinFriend[]) {
+func syncFriends(friendList: [PinFriend]) {
   var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(friendList) as NSData
   NSUserDefaults.standardUserDefaults().setObject(data, forKey: "friendList")
 }
 
 
-func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> PinFriend[] {
-  var newFriendList: PinFriend[] = []
+func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> [PinFriend] {
+  var newFriendList: [PinFriend] = []
 
   for number: AnyObject in numbersArray {
-    for person: NSDictionary! in contactList {
-      if !person.valueForKey("phone") { continue }
+    for person in contactList {
+      if !(person.valueForKey("phone") != nil) { continue }
       var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
       phone = "+\(phone)"
       if phone == number as NSString {
@@ -43,8 +43,8 @@ func friendListFromNumbersArray(contactList: NSArray, numbersArray: NSArray) -> 
 }
 
 
-func mergeFriendList(oldList: PinFriend[], newList: PinFriend[]) -> PinFriend[] {
-  var updatedList: PinFriend[] = []
+func mergeFriendList(oldList: [PinFriend], newList: [PinFriend]) -> [PinFriend] {
+  var updatedList: [PinFriend] = []
   var newFriendList = newList
   var found: Bool = false
   
@@ -73,8 +73,8 @@ func mergeFriendList(oldList: PinFriend[], newList: PinFriend[]) -> PinFriend[] 
 
 
 func getFriendWithNumber(contactList: NSArray, number: NSString) -> PinFriend {
-  for person: NSDictionary! in contactList {
-    if !person.objectForKey("phone") { continue }
+  for person in contactList {
+    if !(person.objectForKey("phone") != nil) { continue }
     var phone: NSString = SHSPhoneNumberFormatter.digitOnlyString(person["phone"] as NSString)
     phone = "+\(phone)"
     if phone == number {
@@ -86,7 +86,7 @@ func getFriendWithNumber(contactList: NSArray, number: NSString) -> PinFriend {
 }
 
 
-class PinFriend: NSObject, NSCoding {
+class PinFriend: NSObject {
 
   var name: NSString? = nil
   var number: NSString? = nil
@@ -151,10 +151,17 @@ class PinFriend: NSObject, NSCoding {
   
 
   func encodeWithCoder(aCoder: NSCoder!) {
-    aCoder.encodeObject(name, forKey: "name")
-    aCoder.encodeObject(number, forKey: "number")
-    aCoder.encodeObject(location, forKey: "location")
-    aCoder.encodeObject(map, forKey: "map")
-    aCoder.encodeObject(city, forKey: "city")
+    aCoder.encodeObject(name!, forKey: "name")
+    aCoder.encodeObject(number!, forKey: "number")
+    
+    if (location != nil) {
+      aCoder.encodeObject(location!, forKey: "location")
+    }
+    if (map != nil) {
+      aCoder.encodeObject(map!, forKey: "map")
+    }
+    if (city != nil) {
+      aCoder.encodeObject(city!, forKey: "city")
+    }
   }
 }
