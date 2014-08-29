@@ -12,20 +12,23 @@ import CoreLocation
 
 class MapUtil: NSObject {
 
+// MARK: - Public Methods -
   
   func makeMapThumb(size: CGSize!, location: Location!, zoom: Int) -> UIImage! {
     var coordinates = location.location.coordinate
-    var lc: NSString = "\(coordinates.latitude),\(coordinates.longitude)"
-    var sz: NSString = "\(Int(size.width*1.6))x\(Int(size.height*1.6))"
-    var mapThumbURL: NSString = "http://maps.googleapis.com/maps/api/staticmap?center=\(lc)&zoom=\(zoom)&size=\(sz)&maptype=roadmap&markers=color:red%7C\(lc)&sensor=false"
+    
+    var locationFormat: NSString = "\(coordinates.latitude),\(coordinates.longitude)"
+    var sizeFormat: NSString = "\(Int(size.width*1.6))x\(Int(size.height*1.6))"
+    
+    var mapThumbURLString: NSString = "http://maps.googleapis.com/maps/api/staticmap?center=\(locationFormat)&zoom=\(zoom)&size=\(sizeFormat)&maptype=roadmap&markers=color:red%7C\(locationFormat)&sensor=false"
 
-    var url: NSURL = NSURL(string: mapThumbURL)
-    var imageData: NSData = NSData(contentsOfURL: url)
-    var mapImage: UIImage = UIImage(data: imageData)
+    var mapThumbURL: NSURL = NSURL(string: mapThumbURLString)
+    var mapThumbData: NSData = NSData(contentsOfURL: mapThumbURL)
+    var mapThumbImage: UIImage = UIImage(data: mapThumbData)
 
-    return mapImage
+    return mapThumbImage
   }
-
+  
   
   func launchMapApp(location: Location!) {
     var coordinates = location.location.coordinate
@@ -35,13 +38,13 @@ class MapUtil: NSObject {
   
   
   func getCity(location: Location!, gotCity: ((NSString?) -> Void)) {
-    var geo = CLGeocoder()
-    var loc = location.location
+    var geocoder = CLGeocoder()
     
-    geo.reverseGeocodeLocation(loc, completionHandler: { (placemarks: [AnyObject]!, error: NSError!) in
+    geocoder.reverseGeocodeLocation(location.location, completionHandler: { (placemarks: [AnyObject]!, error: NSError!) in
       if (error == nil) {
         var placemark: CLPlacemark = placemarks[0] as CLPlacemark
         gotCity(placemark.locality)
+        
         NSNotificationCenter.defaultCenter().postNotificationName("silentRefresh", object: nil)
       }
       })

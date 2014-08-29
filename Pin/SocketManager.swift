@@ -18,30 +18,32 @@ class SocketManager: SocketIO {
   var reconnectTimer: NSTimer = NSTimer()
 
 
+// MARK: - Public Methods -
+
   override init() {
     super.init()
     socketManager = SocketIO(delegate: self)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "startTimer", name: "reconnect", object: nil)
   }
 
-  
+
   func connect(phone: NSString!) {
     userPhone = phone
 
     socketManager.connectToHost(socketHost, onPort: socketPort)
   }
-
   
+
   func disconnectSocket() {
     socketManager.disconnect()
   }
-
   
+
   func reconnect() {
     socketManager.connectToHost(socketHost, onPort: socketPort)
   }
 
-  
+
   func sendLocation(to: NSString!, let position: Location!) {
     var params = [
       "to_cellphone_number": to,
@@ -50,15 +52,16 @@ class SocketManager: SocketIO {
 
     socketManager.sendEvent("location", withData: params)
   }
-
   
+
   func requestContactList(numbersArray: NSArray) {
     var params = numbersArray
     socketManager.sendEvent("filter_contact_list", withData: params)
   }
 
 
-  //#pragma mark - Private Methods
+// MARK: - Private Methods -
+
   func startTimer() {
     reconnectTimer.invalidate()
     UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
@@ -68,14 +71,12 @@ class SocketManager: SocketIO {
 }
 
 
-//#pragma mark - SocketIODelegate -
+// MARK: - SocketIODelegate -
 
 extension SocketManager: SocketIODelegate {
 
   func socketIODidConnect(socket: SocketIO) {
-    var params = [
-      "cellphone_number": userPhone
-    ]
+    var params = ["cellphone_number": userPhone]
 
     socketManager.sendEvent("login", withData: params)
     NSUserDefaults.standardUserDefaults().setValue(userPhone, forKey: "sendingFrom")
@@ -85,7 +86,6 @@ extension SocketManager: SocketIODelegate {
   
   func socketIODidDisconnect(socket: SocketIO, disconnectedWithError error: NSError) {
     NSNotificationCenter.defaultCenter().postNotificationName("disconnected", object: nil)
-
     startTimer()
   }
 
@@ -96,17 +96,23 @@ extension SocketManager: SocketIODelegate {
 
   
   func socketIO(socket: SocketIO, didReceiveEvent packet: SocketIOPacket) {
-    if packet.name == "connected" {
+
+    switch packet.name {
+    case "connected":
       NSNotificationCenter.defaultCenter().postNotificationName("connected", object: nil)
-    }
+      break
 
-    if packet.name == "pin" {
+    case "pin":
       NSNotificationCenter.defaultCenter().postNotificationName("gotNewPin", object: self, userInfo: packet.args[0] as NSDictionary)
-    }
+      break
 
-    if packet.name == "filtered_contact_list" {
+    case "filtered_contact_list":
       var userInfo = ["numbers": packet.args[0]]
       NSNotificationCenter.defaultCenter().postNotificationName("gotContacts", object: self, userInfo: userInfo as NSDictionary)
+      break
+
+    default:
+      break
     }
   }
   

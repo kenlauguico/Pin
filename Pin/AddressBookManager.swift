@@ -15,10 +15,11 @@ class AddressBookManager: NSObject {
   var contactList: NSMutableArray = []
   
   
+// MARK: - Public Methods -
+  
   override init() {
     addressBook = APAddressBook()
   }
-  
   
   func checkAddressBookAccess() {
     switch APAddressBook.access().value {
@@ -40,27 +41,6 @@ class AddressBookManager: NSObject {
     }
   }
   
-  
-  func accessGrantedForAddressBook() {
-    contactList = []
-    addressBook.loadContacts( { (contacts: [AnyObject]!, error: NSError!) in
-      if (error == nil) {
-        for contact: AnyObject in contacts {
-          var currentContact = contact as APContact
-          if (currentContact.firstName == nil) { continue }
-          if currentContact.phones.count == 0 { continue }
-          for phone: AnyObject in currentContact.phones {
-            self.contactList.addObject([
-              "name": currentContact.firstName,
-              "phone": phone as NSString
-              ])
-          }
-        }
-      }
-      })
-  }
-  
-  
   func getMobileNumbersArray() -> NSMutableArray {
     var newContactsList: NSMutableArray = []
     
@@ -73,4 +53,36 @@ class AddressBookManager: NSObject {
     
     return newContactsList
   }
+  
+  
+// MARK: - Private Methods -
+  
+  private func accessGrantedForAddressBook() {
+    contactList = []
+    addressBook.loadContacts( { (contacts: [AnyObject]!, error: NSError!) in
+      if (error == nil) {
+        self.populatedContactList(contacts, contactList: self.contactList)
+      }
+    })
+  }
+  
+  private func populatedContactList(contacts: [AnyObject], contactList: [AnyObject]) {
+    for contact: AnyObject in contacts {
+      var currentContact = contact as APContact
+      
+      if !(self.isContactValid(currentContact)) { continue }
+      
+      for phone: AnyObject in currentContact.phones {
+        self.contactList.addObject([
+          "name": currentContact.firstName,
+          "phone": phone as NSString
+          ])
+      }
+    }
+  }
+  
+  private func isContactValid(contact: APContact) -> Bool {
+    return !(contact.firstName == nil || contact.phones.count == 0)
+  }
+  
 }

@@ -37,6 +37,8 @@ class TourGuide: NSObject {
   var seenContactsTip: Bool = NSUserDefaults.standardUserDefaults().boolForKey(TGTip.contacts)
   
   
+// MARK: - Public Functions -
+  
   func reset() {
     seenPhoneTip = false
     seenRefreshTip = false
@@ -74,4 +76,5 @@ class TourGuide: NSObject {
       return
     }
   }
+  
 }

@@ -13,19 +13,24 @@ class Location: NSObject {
 
   var location: CLLocation
 
+
+// MARK: - Public Methods -
   
   override init() {
     location = CLLocation()
   }
 
+  
   init(lat: Double, long: Double, acc: Double) {
     var coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
     location = CLLocation(coordinate: coordinates, altitude: 0, horizontalAccuracy: acc, verticalAccuracy: acc, timestamp: nil)
   }
 
+  
   init(loc: CLLocation) {
     location = loc
   }
+  
   
   init(dictionary: NSDictionary) {
     var latitude = dictionary["latitude"] as Double
@@ -36,6 +41,7 @@ class Location: NSObject {
     location = CLLocation(coordinate: coordinates, altitude: 0, horizontalAccuracy: accuracy, verticalAccuracy: accuracy, timestamp: nil)
   }
   
+  
   func asDictionary() -> NSDictionary {
     return [
       "latitude": location.coordinate.latitude,
@@ -45,10 +51,13 @@ class Location: NSObject {
   }
 
   
+// MARK: - Private Methods -
+  
   init(coder aDecoder: NSCoder!) {
     location = aDecoder.decodeObjectForKey("location") as CLLocation
   }
 
+  
   private func encodeWithCoder(aCoder: NSCoder!) {
     aCoder.encodeObject(location, forKey: "location")
   }
