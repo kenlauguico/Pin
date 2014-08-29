@@ -12,7 +12,7 @@ import AudioToolbox
 
 class MainViewController: UITableViewController {
 
-  var friendList: [PinFriend] = getFriends()
+  var friendList: [PinFriend] = PinFriendUtil().getFriends()
   var friends = Dictionary<String, PinFriend>()
   var addTextBox: SHSPhoneTextField!
   var newUserPhone: NSString?
@@ -27,7 +27,7 @@ class MainViewController: UITableViewController {
     initiateConnection()
     addObservers()
     addressBook.checkAddressBookAccess()
-    syncFriends(friendList)
+    PinFriendUtil().syncFriends(friendList)
     friendListToDict()
     addRefreshControl()
     makeFooter()
@@ -159,7 +159,7 @@ extension MainViewController {
   override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
     friendList.removeAtIndex(indexPath.row)
     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-    syncFriends(friendList)
+    PinFriendUtil().syncFriends(friendList)
     friendListToDict()
   }
 }
@@ -179,7 +179,7 @@ extension MainViewController {
   
   
   func updateFriend(friend: PinFriend, mentionSent: Bool) {
-    var currentFriend: PinFriend = getFriendWithNumber(addressBook.contactList, friend.number!)
+    var currentFriend: PinFriend = PinFriendUtil().getFriendWithNumber(addressBook.contactList, number: friend.number!)
     var firstRow: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     var rowToHandle: NSIndexPath = firstRow
     var rowsToRemove: [NSIndexPath] = []
@@ -389,7 +389,7 @@ extension MainViewController {
     }
     
     AudioServicesPlaySystemSound(1007)
-    syncFriends(friendList)
+    PinFriendUtil().syncFriends(friendList)
     friendListToDict()
     
     if (friends[fromFriend.number!] != nil) {
@@ -429,10 +429,10 @@ extension MainViewController {
       return
     }
     
-    var newFriendList = friendListFromNumbersArray(self.addressBook.contactList, pinResponse)
-    var updatedFriendList = mergeFriendList(friendList, newFriendList)
+    var newFriendList = PinFriendUtil().numberArrayToFriendList(self.addressBook.contactList, numbersArray: pinResponse)
+    var updatedFriendList = PinFriendUtil().mergeFriendList(friendList, newList: newFriendList)
     friendList = updatedFriendList
-    syncFriends(friendList)
+    PinFriendUtil().syncFriends(friendList)
     friendListToDict()
     silentRefresh()
     
@@ -460,7 +460,7 @@ extension MainViewController {
   
   
   func backupFriends() {
-    syncFriends(friendList)
+    PinFriendUtil().syncFriends(friendList)
   }
 }
 
