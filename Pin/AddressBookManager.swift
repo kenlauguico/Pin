@@ -24,11 +24,11 @@ class AddressBookManager: NSObject {
   func checkAddressBookAccess() {
     switch APAddressBook.access().value {
     case APAddressBookAccessGranted.value:
-      self.accessGrantedForAddressBook()
+      accessGrantedForAddressBook()
       break
       
     case APAddressBookAccessUnknown.value:
-      self.accessGrantedForAddressBook()
+      accessGrantedForAddressBook()
       break
       
     case APAddressBookAccessDenied.value:
@@ -70,7 +70,7 @@ class AddressBookManager: NSObject {
     for contact: AnyObject in contacts {
       var currentContact = contact as APContact
       
-      if !(self.isContactValid(currentContact)) { continue }
+      if !(isContactValid(currentContact)) { continue }
       
       for phone: AnyObject in currentContact.phones {
         self.contactList.addObject([

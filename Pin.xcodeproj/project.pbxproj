@@ -18,6 +18,7 @@
 		826075941959C839001DECBA /* AddressBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826075931959C839001DECBA /* AddressBookManager.swift */; };
 		8264ED35195CFEEA00E84974 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8264ED34195CFEEA00E84974 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8280C81119B058150076A506 /* PinFriendUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280C81019B058150076A506 /* PinFriendUtil.swift */; };
+		8280C81319B06DA90076A506 /* PinFriendArray+Exists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280C81219B06DA90076A506 /* PinFriendArray+Exists.swift */; };
 		82CA31BE19536DB000AECC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA31BD19536DB000AECC7A /* AppDelegate.swift */; };
 		82CA31C119536DB000AECC7A /* Pin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82CA31BF19536DB000AECC7A /* Pin.xcdatamodeld */; };
 		82CA31C319536DB000AECC7A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA31C219536DB000AECC7A /* MainViewController.swift */; };
@@ -51,6 +52,7 @@
 		8264ED34195CFEEA00E84974 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		82683D321953A12A0063FCB1 /* Pin-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Pin-Bridging-Header.h"; path = "Pin/Pin-Bridging-Header.h"; sourceTree = "<group>"; };
 		8280C81019B058150076A506 /* PinFriendUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinFriendUtil.swift; path = Pin/PinFriendUtil.swift; sourceTree = "<group>"; };
+		8280C81219B06DA90076A506 /* PinFriendArray+Exists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PinFriendArray+Exists.swift"; path = "Pin/PinFriendArray+Exists.swift"; sourceTree = "<group>"; };
 		82B5837C19669BD700190F81 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		82BF55FE1956BEDA00EBB4F3 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Pin/MyPlayground.playground; sourceTree = "<group>"; };
 		82CA31B819536DB000AECC7A /* Pin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,13 +183,14 @@
 		82CA31DD19536ED900AECC7A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				826075931959C839001DECBA /* AddressBookManager.swift */,
 				825D5312195412600075494E /* Location.swift */,
 				825022B819562B3400483403 /* MapUtil.swift */,
 				825022B6195622FD00483403 /* PinFriend.swift */,
-				825D531019540CD20075494E /* SocketManager.swift */,
-				826075931959C839001DECBA /* AddressBookManager.swift */,
-				822E06D019666A2000A97B5D /* TourGuide.swift */,
+				8280C81219B06DA90076A506 /* PinFriendArray+Exists.swift */,
 				8280C81019B058150076A506 /* PinFriendUtil.swift */,
+				825D531019540CD20075494E /* SocketManager.swift */,
+				822E06D019666A2000A97B5D /* TourGuide.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8280C81319B06DA90076A506 /* PinFriendArray+Exists.swift in Sources */,
 				825D531119540CD20075494E /* SocketManager.swift in Sources */,
 				820911F5195540F600A0544B /* RegisterViewController.swift in Sources */,
 				820911F719554ED500A0544B /* Styles.swift in Sources */,

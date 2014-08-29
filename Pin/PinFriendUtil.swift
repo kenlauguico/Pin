@@ -33,8 +33,8 @@ class PinFriendUtil : NSObject {
     
     for number: AnyObject in numbersArray {
       for person in contactList {
-        if !(self.isPhoneNumberValid(person)) { continue }
-        if (self.listContactHasMatchingNumber(person, number: number as NSString)) {
+        if !(isPhoneNumberValid(person)) { continue }
+        if (listContactHasMatchingNumber(person, number: number as NSString)) {
           var newFriend: PinFriend = PinFriend(friendName: person["name"] as? NSString, friendNumber: number as? NSString, friendLocation: nil)
           friendList.insert(newFriend, atIndex: 0)
           break
@@ -84,8 +84,8 @@ class PinFriendUtil : NSObject {
   
   func getFriendWithNumber(contactList: NSArray, number: NSString) -> PinFriend {
     for person in contactList {
-      if !(self.isPhoneNumberValid(person)) { continue }
-      if (self.listContactHasMatchingNumber(person, number: number)) {
+      if !(isPhoneNumberValid(person)) { continue }
+      if (listContactHasMatchingNumber(person, number: number)) {
         return PinFriend(friendName: person["name"] as? NSString, friendNumber: number as NSString, friendLocation: nil)
       }
     }

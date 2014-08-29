@@ -20,6 +20,8 @@ class MainViewController: UITableViewController {
   let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
   var silentRefreshTimer: NSTimer = NSTimer()
 
+
+// MARK: - UITableViewController Methods -
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,7 +51,8 @@ class MainViewController: UITableViewController {
 }
 
 
-//#pragma mark - UITableViewCell Subclass and UITableViewDataSource
+// MARK: - UITableViewCell Subclass and UITableViewDataSource -
+
 extension MainViewController {
 
   func setupAddTextBox(tag: Int) {
@@ -165,7 +168,8 @@ extension MainViewController {
 }
 
 
-//#pragma mark - Private View Methods -
+// MARK: - Private View Methods -
+
 extension MainViewController {
   
   func addFriend(friend: PinFriend) {
@@ -185,12 +189,13 @@ extension MainViewController {
     var rowsToRemove: [NSIndexPath] = []
     var foundAtIndex: Int = 0
     var foundYet: Bool = false
-    
-    currentFriend.updateLocation(friend.location)
-    
+
     func indexPathRow(index: Int) -> NSIndexPath {
       return NSIndexPath(forRow: index, inSection: 0)
     }
+
+
+    currentFriend.updateLocation(friend.location)
     
     for (index, myFriend: PinFriend) in enumerate(friendList) {
       let frnd: PinFriend = myFriend as PinFriend
@@ -235,56 +240,13 @@ extension MainViewController {
   }
   
   
-  func silentRefresh() {
-    silentRefreshTimer.invalidate()
-    UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
-    silentRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "refreshTable", userInfo: nil, repeats: false)
-    NSRunLoop.currentRunLoop().addTimer(silentRefreshTimer, forMode: NSRunLoopCommonModes)
+  func addRefreshControl() {
+    var refresher = UIRefreshControl()
+    refresher.addTarget(self, action: "refreshContacts", forControlEvents: UIControlEvents.ValueChanged)
+    refreshControl = refresher
   }
-  
-  
-  func showTourRefresh() {
-    var tooltip = CMPopTipView(message: TourGuide.tip.refresh)
-    DefaultTooltipStyle().stylize(tooltip)
-    
-    tooltip.presentPointingAtView(refreshControl, inView: self.view, animated: true)
-    TourGuide().setSeen(TGTip.refresh)
-  }
-  
-  
-  func showTourSend() {
-    var tooltip = CMPopTipView(message: TourGuide.tip.send)
-    DefaultTooltipStyle().stylize(tooltip)
-    
-    var firstIndex = NSIndexPath(forRow: 0, inSection: 0)
-    var firstCell = self.tableView.cellForRowAtIndexPath(firstIndex)
-    
-    tooltip.presentPointingAtView(firstCell, inView: self.view, animated: true)
-    TourGuide().setSeen(TGTip.send)
-  }
-  
-  
-  func showTourPin() {
-    var tooltip = CMPopTipView(message: TourGuide.tip.pin)
-    DefaultTooltipStyle().stylize(tooltip)
-    
-    var firstIndex = NSIndexPath(forRow: 0, inSection: 0)
-    var firstCell = self.tableView.cellForRowAtIndexPath(firstIndex)
-    
-    tooltip.presentPointingAtView(firstCell, inView: self.view, animated: true)
-    TourGuide().setSeen(TGTip.pin)
-  }
-  
-  
-  func showTourContacts() {
-    var tooltip = CMPopTipView(message: TourGuide.tip.contacts)
-    DefaultTooltipStyle().stylize(tooltip)
-    
-    tooltip.presentPointingAtView(refreshControl, inView: self.view, animated: true)
-    TourGuide().setSeen(TGTip.contacts)
-  }
-  
-  
+
+
   func showPushAlert(from: PinFriend) {
     if UIApplication.sharedApplication().applicationState != UIApplicationState.Background { return }
     
@@ -297,48 +259,108 @@ extension MainViewController {
     
     pushAlert.alertBody = "from \(from.name!.uppercaseString)"
     pushAlert.fireDate = now.dateByAddingTimeInterval(0)
-    pushAlert.userInfo = from.location?.location as NSDictionary!
+    pushAlert.userInfo = from.location?.asDictionary() as NSDictionary!
     
     UIApplication.sharedApplication().scheduleLocalNotification(pushAlert)
     UIApplication.sharedApplication().applicationIconBadgeNumber += 1
   }
-  
-  
-  func addRefreshControl() {
-    var refresher = UIRefreshControl()
-    refresher.addTarget(self, action: "refreshContacts", forControlEvents: UIControlEvents.ValueChanged)
-    refreshControl = refresher
+
+// MARK: Tour
+
+  func silentRefresh() {
+    silentRefreshTimer.invalidate()
+    UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
+    silentRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "refreshTable", userInfo: nil, repeats: false)
+    NSRunLoop.currentRunLoop().addTimer(silentRefreshTimer, forMode: NSRunLoopCommonModes)
   }
   
+  
+  func showTourRefresh() {
+    var tooltip = CMPopTipView(message: TourGuide.tip.refresh)
+
+    DefaultTooltipStyle().stylize(tooltip)
+    tooltip.presentPointingAtView(refreshControl, inView: self.view, animated: true)
+    TourGuide().setSeen(TGTip.refresh)
+  }
+  
+  
+  func showTourSend() {
+    var tooltip = CMPopTipView(message: TourGuide.tip.send)
+
+    DefaultTooltipStyle().stylize(tooltip)
+    displayTooltipOnFirstCell(tooltip)
+    TourGuide().setSeen(TGTip.send)
+  }
+  
+  
+  func showTourPin() {
+    var tooltip = CMPopTipView(message: TourGuide.tip.pin)
+
+    DefaultTooltipStyle().stylize(tooltip)
+    displayTooltipOnFirstCell(tooltip)
+    TourGuide().setSeen(TGTip.pin)
+  }
+  
+  
+  func showTourContacts() {
+    var tooltip = CMPopTipView(message: TourGuide.tip.contacts)
+
+    DefaultTooltipStyle().stylize(tooltip)
+    tooltip.presentPointingAtView(refreshControl, inView: self.view, animated: true)
+    TourGuide().setSeen(TGTip.contacts)
+  }
+
+
+  func displayTooltipOnFirstCell(tooltip: CMPopTipView) {
+    var firstIndex = NSIndexPath(forRow: 0, inSection: 0)
+    var firstCell = self.tableView.cellForRowAtIndexPath(firstIndex)
+    
+    tooltip.presentPointingAtView(firstCell, inView: self.view, animated: true)
+  }
+  
+// MARK: Footer
   
   func makeFooter() {
     var logoAndVersionView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 130))
     logoAndVersionView.backgroundColor = DefaultFooterStyle().backgroundColor
     
+    self.createAndAddLogo(logoAndVersionView)
+    self.createAndAddTagline(logoAndVersionView)
+    self.createAndAddVersion(logoAndVersionView)
+
+    self.tableView.tableFooterView = logoAndVersionView
+  }
+
+  func createAndAddLogo(view: UIView) {
     var imageLogo = UIImage(named: "logo-pin-100.png")
     var imageLogoView = UIImageView(image: imageLogo)
     imageLogoView.frame = CGRectMake(0, 0, 50, 50)
     imageLogoView.center = CGPointMake(self.view.frame.width/2, 40)
-    
+
+    view.addSubview(imageLogoView)
+  }
+
+  func createAndAddTagline(view: UIView) {
     var labelTagline = UILabel(frame: CGRectMake(0, 60, self.view.frame.width, 30))
     labelTagline.text = "Made in Brazil"
     DefaultFooterStyle.tagline().stylize(labelTagline)
-    
+
+    view.addSubview(labelTagline)
+  }
+
+  func createAndAddVersion(view: UIView) {
     var labelVersion = UILabel(frame: CGRectMake(0, 77, self.view.frame.width, 30))
     var versionNumber = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as NSString
     labelVersion.text = "Version \(versionNumber)"
     DefaultFooterStyle.version().stylize(labelVersion)
-    
-    logoAndVersionView.addSubview(imageLogoView)
-    logoAndVersionView.addSubview(labelTagline)
-    logoAndVersionView.addSubview(labelVersion)
-    
-    self.tableView.tableFooterView = logoAndVersionView
+
+    view.addSubview(labelVersion)
   }
 }
 
 
-//#pragma mark - Private Methods -
+// MARK: - Private Methods -
+
 extension MainViewController {
   
   func initiateConnection() {
@@ -419,7 +441,7 @@ extension MainViewController {
     
     if pinResponse.count == 0 {
       refreshTable()
-      if !TourGuide().seenContactsTip{
+      if !TourGuide().seenContactsTip {
         var delayedTipContacts = NSTimer.scheduledTimerWithTimeInterval(TourGuide().tipDelay, target: self, selector: "showTourContacts", userInfo: nil, repeats: false)
         NSRunLoop.currentRunLoop().addTimer(delayedTipContacts, forMode: NSRunLoopCommonModes)
         
@@ -430,7 +452,7 @@ extension MainViewController {
     }
     
     var newFriendList = PinFriendUtil().numberArrayToFriendList(self.addressBook.contactList, numbersArray: pinResponse)
-    var updatedFriendList = PinFriendUtil().mergeFriendList(friendList, newList: newFriendList)
+    var updatedFriendList = PinFriendUtil().mergeFriendList(friendList, rightList: newFriendList)
     friendList = updatedFriendList
     PinFriendUtil().syncFriends(friendList)
     friendListToDict()
@@ -465,7 +487,8 @@ extension MainViewController {
 }
 
 
-//#pragma mark - UITextFieldDelegate
+// MARK: - UITextFieldDelegate -
+
 extension MainViewController: UITextFieldDelegate {
 
   func textFieldDidEndEditing(textField: UITextField!) {
@@ -479,25 +502,6 @@ extension MainViewController: UITextFieldDelegate {
 
   func textFieldShouldReturn(textField: UITextField!) -> Bool {
     textField.resignFirstResponder()
-    return false
-  }
-}
-
-
-//#pragma mark - Array Methods
-extension Array {
-  
-  mutating func exists(friend: T) -> Bool {
-    var currentFriend: PinFriend = friend as PinFriend
-
-    if isEmpty { return false }
-    for (index, myFriend: T) in enumerate(self) {
-      let frnd: PinFriend = myFriend as PinFriend
-      if frnd.number == currentFriend.number {
-        return true
-      }
-    }
-    
     return false
   }
 }

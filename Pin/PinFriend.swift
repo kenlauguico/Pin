@@ -55,7 +55,7 @@ class PinFriend: NSObject {
 
 
   func updateLocation(newLocation: Location!) {
-    if !(self.isLocationValid(newLocation!)) { return }
+    if !(isLocationValid(newLocation!)) { return }
 
     map = MapUtil().makeMapThumb(cellImageSize, location: newLocation, zoom: 16)
     MapUtil().getCity(newLocation, gotCity: { (cityname: NSString?) in

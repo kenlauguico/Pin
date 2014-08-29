@@ -27,6 +27,8 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
 
+// MARK: - UITableViewController Methods -
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -52,7 +54,8 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   }
 
   
-  //#pragma mark - UITextFieldDelegate
+// MARK: - UITextFieldDelegate
+
   func textFieldDidEndEditing(textField: UITextField!) {
     if textField == phoneTextBox {
       userPhone = phoneTextBox.phoneNumber()
@@ -68,15 +71,14 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   }
 
 
-  //#pragma mark - UITableViewDataSource
+// MARK: - UITableViewDataSource
+
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
 
     DefaultCellStyle().stylize(cell)
     cell.backgroundColor = cellColors[indexPath.row % cellColors.count]
-
     cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: cell.bounds.size.width*2)
-
 
     if let currentCell = RegistrationCellTypes.fromRaw(indexPath.row) {
       var textBoxFrame = CGRectMake(0, 0, cell.bounds.size.width, cellImageSize.height)
@@ -84,24 +86,8 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
       switch currentCell {
       case .PhoneTextbox:
         phoneTextBox = SHSPhoneTextField(frame: textBoxFrame)
-
-        if NSTimeZone.localTimeZone().name == "America/Sao_Paulo" {
-          phoneTextBox.formatter.setDefaultOutputPattern("+## (##) ####-####")
-        } else {
-          phoneTextBox.formatter.setDefaultOutputPattern("+# (###) ###-####")
-        }
-
-        phoneTextBox.font = DefaultCellStyle.title().font
-        phoneTextBox.textColor = DefaultCellStyle.title().color
-        phoneTextBox.textAlignment = DefaultCellStyle.title().alignment
-        phoneTextBox.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-        phoneTextBox.backgroundColor = UIColor.clearColor()
-        phoneTextBox.keyboardType = UIKeyboardType.PhonePad
         phoneTextBox.placeholder = cellPlaceholders[indexPath.row].lowercaseString
-        phoneTextBox.adjustsFontSizeToFitWidth = true
-        phoneTextBox.delegate = self
-
-        cell.addSubview(phoneTextBox)
+        createAndAddPhoneTextBox(cell)
 
       case .Button:
         cell.textLabel.text = cellPlaceholders[indexPath.row].lowercaseString
@@ -119,17 +105,10 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
     closeKeyboard()
 
     if indexPath.row == RegistrationCellTypes.Button.toRaw() {
-      if userPhone == nil || userPhone == "" { return }
+      if !(isNumberValid(userPhone)) { return }
       var currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell
-      var loader: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
-
-      loader.center = CGPointMake(currentCell.frame.width/2, currentCell.frame.height/2)
-      loader.startAnimating()
-
-      // change cell to a loader
-      currentCell.textLabel.text = ""
-      currentCell.addSubview(loader)
-
+      
+      showLoaderInCell(currentCell)
       appDelegate.sendingFrom = "+\(userPhone)"
       performSegueWithIdentifier("toMain", sender: nil)
 
@@ -153,15 +132,16 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
 }
 
 
-//#pragma mark - Private Methods -
+// MARK: - Private Methods -
+
 extension RegisterViewController {
   
-  func closeKeyboard() {
+  private func closeKeyboard() {
     phoneTextBox.resignFirstResponder()
   }
   
   
-  func showTour() {
+  private func showTour() {
     var tooltip = CMPopTipView(message: TourGuide.tip.phone)
     DefaultTooltipStyle().stylize(tooltip)
 
@@ -170,4 +150,41 @@ extension RegisterViewController {
       TourGuide().setSeen(TGTip.phone)
     })
   }
+
+
+  private func isNumberValid(number: NSString!) -> Bool {
+    return !(number == nil || number == "")
+  }
+
+
+  private func createAndAddPhoneTextBox(cell: UITableViewCell) {
+    if NSTimeZone.localTimeZone().name == "America/Sao_Paulo" {
+      phoneTextBox.formatter.setDefaultOutputPattern("+## (##) ####-####")
+    } else {
+      phoneTextBox.formatter.setDefaultOutputPattern("+# (###) ###-####")
+    }
+
+    phoneTextBox.font = DefaultCellStyle.title().font
+    phoneTextBox.textColor = DefaultCellStyle.title().color
+    phoneTextBox.textAlignment = DefaultCellStyle.title().alignment
+    phoneTextBox.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+    phoneTextBox.backgroundColor = UIColor.clearColor()
+    phoneTextBox.keyboardType = UIKeyboardType.PhonePad
+    phoneTextBox.adjustsFontSizeToFitWidth = true
+    phoneTextBox.delegate = self
+
+    cell.addSubview(phoneTextBox)
+  }
+
+
+  private func showLoaderInCell(cell: UITableViewCell) {
+    var loader: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+
+    loader.center = CGPointMake(cell.frame.width/2, cell.frame.height/2)
+    loader.startAnimating()
+
+    cell.textLabel.text = ""
+    cell.addSubview(loader)
+  }
+
 }
