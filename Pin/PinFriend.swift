@@ -101,7 +101,8 @@ class PinFriend: NSObject {
     number = friendNumber
     location = friendLocation
 
-    if friendLocation?.latitude == 0 || friendLocation?.latitude == nil { return }
+    if friendLocation?.location.coordinate.latitude == 0 ||
+      friendLocation?.location.coordinate.latitude == nil { return }
 
     map = MapUtil().makeMapThumb(cellImageSize, location: friendLocation, zoom: 16)
     
@@ -117,7 +118,8 @@ class PinFriend: NSObject {
     number = friendNumber
     location = friendLocation
 
-    if friendLocation?.latitude == 0 || friendLocation?.latitude == nil { return }
+    if friendLocation?.location.coordinate.latitude == 0 ||
+      friendLocation?.location.coordinate.latitude == nil { return }
 
     map = MapUtil().makeMapThumb(cellImageSize, location: friendLocation, zoom: 16)
     
@@ -130,7 +132,8 @@ class PinFriend: NSObject {
   func updateLocation(friendLocation: Location!) {
     location = friendLocation
 
-    if friendLocation?.latitude == 0 || friendLocation?.latitude == nil { return }
+    if friendLocation?.location.coordinate.latitude == 0 ||
+      friendLocation?.location.coordinate.latitude == nil { return }
 
     map = MapUtil().makeMapThumb(cellImageSize, location: friendLocation, zoom: 16)
     

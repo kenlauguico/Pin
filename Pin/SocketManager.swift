@@ -17,6 +17,7 @@ class SocketManager: SocketIO {
   var userPhone: NSString! = nil
   var reconnectTimer: NSTimer = NSTimer()
 
+
   override init() {
     super.init()
     socketManager = SocketIO(delegate: self)
@@ -44,7 +45,7 @@ class SocketManager: SocketIO {
   func sendLocation(to: NSString!, let position: Location!) {
     var params = [
       "to_cellphone_number": to,
-      "location": position.location
+      "location": position.asDictionary()
     ]
 
     socketManager.sendEvent("location", withData: params)

@@ -7,50 +7,50 @@
 //
 
 import Foundation
-
+import CoreLocation
 
 class Location: NSObject {
 
-  var latitude: Double = 0
-  var longitude: Double = 0
-  var accuracy: Int = 0
-  var location: NSDictionary = [:]
+  var location: CLLocation
 
-  override init() {}
-
-  init(lat: Double, long: Double, acc: Int) {
-    latitude = lat
-    longitude = long
-    accuracy = acc
-    location = [
-      "latitude": lat,
-      "longitude": long,
-      "accuracy": acc
-    ]
+  
+  override init() {
+    location = CLLocation()
   }
 
+  init(lat: Double, long: Double, acc: Double) {
+    var coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
+    location = CLLocation(coordinate: coordinates, altitude: 0, horizontalAccuracy: acc, verticalAccuracy: acc, timestamp: nil)
+  }
+
+  init(loc: CLLocation) {
+    location = loc
+  }
+  
   init(dictionary: NSDictionary) {
-    latitude = dictionary["latitude"] as Double
-    longitude = dictionary["longitude"] as Double
-    accuracy = dictionary["accuracy"] as Int
-    location = [
-      "latitude": latitude,
-      "longitude": longitude,
-      "accuracy": accuracy
+    var latitude = dictionary["latitude"] as Double
+    var longitude = dictionary["longitude"] as Double
+    var accuracy = dictionary["accuracy"] as Double
+    var coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    
+    location = CLLocation(coordinate: coordinates, altitude: 0, horizontalAccuracy: accuracy, verticalAccuracy: accuracy, timestamp: nil)
+  }
+  
+  func asDictionary() -> NSDictionary {
+    return [
+      "latitude": location.coordinate.latitude,
+      "longitude": location.coordinate.longitude,
+      "accuracy": location.verticalAccuracy
     ]
   }
 
+  
   init(coder aDecoder: NSCoder!) {
-    latitude = aDecoder.decodeObjectForKey("latitude") as Double
-    longitude = aDecoder.decodeObjectForKey("longitude") as Double
-    accuracy = aDecoder.decodeObjectForKey("accuracy") as Int
-    location = aDecoder.decodeObjectForKey("location") as NSDictionary
+    location = aDecoder.decodeObjectForKey("location") as CLLocation
   }
 
-  func encodeWithCoder(aCoder: NSCoder!) {
-    aCoder.encodeObject(latitude, forKey: "latitude")
-    aCoder.encodeObject(longitude, forKey: "longitude")
-    aCoder.encodeObject(accuracy, forKey: "accuracy")
+  private func encodeWithCoder(aCoder: NSCoder!) {
     aCoder.encodeObject(location, forKey: "location")
   }
+  
 }

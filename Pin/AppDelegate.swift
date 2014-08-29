@@ -161,12 +161,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
   //#pragma mark - CLLocationManagerDelegate -
 
   func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-    var coordinates: CLLocationCoordinate2D! = locationManager.location.coordinate
+    var coordinates: CLLocationCoordinate2D! = newLocation.coordinate
     var accuracy: Int = Int(locationManager.location.verticalAccuracy);
 
     if (coordinates.latitude != 0 && !didGetLocation && sendingTo != nil) {
 
-      var currentPosition = Location(lat: coordinates.latitude, long: coordinates.longitude, acc: accuracy)
+      var currentPosition = Location(loc: newLocation)
 
       socketManager.sendLocation(sendingTo, position: currentPosition)
       gotLocation()
