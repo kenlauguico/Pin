@@ -58,7 +58,7 @@ class Location: NSObject {
   }
 
   
-  private func encodeWithCoder(aCoder: NSCoder!) {
+  func encodeWithCoder(aCoder: NSCoder!) {
     aCoder.encodeObject(location, forKey: "location")
   }
   

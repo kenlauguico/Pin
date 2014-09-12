@@ -73,7 +73,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
 
 // MARK: - UITableViewDataSource
 
-  override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
 
     DefaultCellStyle().stylize(cell)
@@ -90,7 +90,7 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
         createAndAddPhoneTextBox(cell)
 
       case .Button:
-        cell.textLabel.text = cellPlaceholders[indexPath.row].lowercaseString
+        cell.textLabel?.text = cellPlaceholders[indexPath.row].lowercaseString
 
       }
     }
@@ -99,16 +99,16 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   }
 
   
-  override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
     closeKeyboard()
 
     if indexPath.row == RegistrationCellTypes.Button.toRaw() {
       if !(isNumberValid(userPhone)) { return }
-      var currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell
+      var currentCell = tableView.cellForRowAtIndexPath(indexPath)
       
-      showLoaderInCell(currentCell)
+      showLoaderInCell(currentCell!)
       appDelegate.sendingFrom = "+\(userPhone)"
       performSegueWithIdentifier("toMain", sender: nil)
 
@@ -121,12 +121,12 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
   }
 
   
-  override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+  override func tableView(tableView: UITableView,heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return cellImageSize.height
   }
 
   
-  override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return cellPlaceholders.count
   }
 }
@@ -141,7 +141,7 @@ extension RegisterViewController {
   }
   
   
-  private func showTour() {
+  func showTour() {
     var tooltip = CMPopTipView(message: TourGuide.tip.phone)
     DefaultTooltipStyle().stylize(tooltip)
 
@@ -183,7 +183,7 @@ extension RegisterViewController {
     loader.center = CGPointMake(cell.frame.width/2, cell.frame.height/2)
     loader.startAnimating()
 
-    cell.textLabel.text = ""
+    cell.textLabel?.text = ""
     cell.addSubview(loader)
   }
 

@@ -54,8 +54,8 @@ class PinFriend: NSObject {
   }
 
 
-  func updateLocation(newLocation: Location!) {
-    if !(isLocationValid(newLocation!)) { return }
+  func updateLocation(newLocation: Location?) {
+    if !(isLocationValid(newLocation)) { return }
 
     map = MapUtil().makeMapThumb(cellImageSize, location: newLocation, zoom: 16)
     MapUtil().getCity(newLocation, gotCity: { (cityname: NSString?) in
@@ -68,7 +68,7 @@ class PinFriend: NSObject {
   
 // MARK: - Private Methods -
   
-  private init(coder aDecoder: NSCoder!) {
+  init(coder aDecoder: NSCoder!) {
     super.init()
     name = aDecoder.decodeObjectForKey("name") as? NSString
     number = aDecoder.decodeObjectForKey("number") as? NSString
@@ -78,7 +78,7 @@ class PinFriend: NSObject {
   }
   
 
-  private func encodeWithCoder(aCoder: NSCoder!) {
+  func encodeWithCoder(aCoder: NSCoder!) {
     aCoder.encodeObject(name!, forKey: "name")
     aCoder.encodeObject(number!, forKey: "number")
     
@@ -93,8 +93,8 @@ class PinFriend: NSObject {
     }
   }
   
-  private func isLocationValid(location: Location) -> Bool {
-    return !(location.location.coordinate.latitude == 0.0)
+  private func isLocationValid(location: Location?) -> Bool {
+    return !(location?.location.coordinate.latitude == 0.0 || location? == nil)
   }
   
 }

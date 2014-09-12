@@ -83,17 +83,17 @@ extension MainViewController {
     override func layoutSubviews() {
       super.layoutSubviews()
 
-      var imageFrame: CGRect = imageView.frame
-      imageFrame.origin = CGPointZero
-      imageFrame.size = cellImageSize
-      imageFrame.size.width += 12
+      var imageFrame = imageView?.frame
+      imageFrame?.origin = CGPointZero
+      imageFrame?.size = cellImageSize
+      imageFrame?.size.width += 12
 
-      imageView.frame = imageFrame
+      imageView?.frame = imageFrame!
     }
   }
 
   
-  override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = UITableViewCellFix(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
     var currentFriend = friendList[indexPath.row] as PinFriend
     var uniqueColor = ((currentFriend.number as NSString!).substringWithRange(NSMakeRange(1, 9)) as NSString).integerValue
@@ -104,17 +104,17 @@ extension MainViewController {
       if (currentFriend.city != nil) {
         cell = UITableViewCellFix(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         DefaultCellStyle.subtitle().stylize(cell)
-        cell.textLabel.text = currentFriend.city
-        cell.detailTextLabel.text = "from \(who.lowercaseString)"
+        cell.textLabel?.text = currentFriend.city
+        cell.detailTextLabel?.text = "from \(who.lowercaseString)"
       } else {
-        cell.textLabel.text = who.lowercaseString
+        cell.textLabel?.text = who.lowercaseString
       }
-      cell.imageView.image = currentFriend.map
-      cell.imageView.contentMode = UIViewContentMode.ScaleToFill
+      cell.imageView?.image = currentFriend.map
+      cell.imageView?.contentMode = UIViewContentMode.ScaleToFill
 
-      cell.imageView.tag = indexPath.row
-      cell.imageView.userInteractionEnabled = true
-      cell.imageView.addGestureRecognizer(tapped)
+      cell.imageView?.tag = indexPath.row
+      cell.imageView?.userInteractionEnabled = true
+      cell.imageView?.addGestureRecognizer(tapped)
     } else {
       setupAddTextBox(indexPath.row)
       cell.addSubview(addTextBox)
@@ -130,7 +130,7 @@ extension MainViewController {
   }
 
   
-  override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
     var friendTapped: PinFriend = friendList[indexPath.row] as PinFriend
@@ -144,22 +144,22 @@ extension MainViewController {
   }
 
   
-  override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return cellImageSize.height
   }
 
   
-  override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return friendList.count
   }
 
   
-  override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     return true
   }
 
   
-  override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     friendList.removeAtIndex(indexPath.row)
     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     PinFriendUtil().syncFriends(friendList)
@@ -216,9 +216,10 @@ extension MainViewController {
     
     if mentionSent {
       var currentCell = tableView.cellForRowAtIndexPath(rowToHandle)
-      currentCell.textLabel.text = "Sent".lowercaseString
-      if (currentCell.detailTextLabel != nil) {
-        currentCell.detailTextLabel.text = "to \(currentFriend.name?.lowercaseString)"
+      currentCell?.textLabel?.text = "Sent".lowercaseString
+      if (currentCell?.detailTextLabel != nil) {
+        var who: NSString! = (currentFriend.name != nil) ? currentFriend.name as NSString! : currentFriend.number as NSString!
+        currentCell?.detailTextLabel?.text = "to \(who.lowercaseString)"
       }
     } else {
       tableView.reloadRowsAtIndexPaths([rowToHandle], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -269,7 +270,7 @@ extension MainViewController {
 
   func silentRefresh() {
     silentRefreshTimer.invalidate()
-    UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
+    UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in }
     silentRefreshTimer = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "refreshTable", userInfo: nil, repeats: false)
     NSRunLoop.currentRunLoop().addTimer(silentRefreshTimer, forMode: NSRunLoopCommonModes)
   }
@@ -437,7 +438,7 @@ extension MainViewController {
   func gotContacts(notification: NSNotification) {
     var pinResponse: NSArray = notification.userInfo!["numbers"] as NSArray
 
-    refreshControl.endRefreshing()
+    refreshControl?.endRefreshing()
     
     if pinResponse.count == 0 {
       refreshTable()

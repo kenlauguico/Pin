@@ -23,18 +23,18 @@ struct DefaultCellStyle {
     var alignment = NSTextAlignment.Center
     
     func stylize(cell: UITableViewCell) {
-      cell.detailTextLabel.font = subtitle().font
-      cell.detailTextLabel.textColor = subtitle().color
-      cell.detailTextLabel.textAlignment = subtitle().alignment
-      cell.detailTextLabel.adjustsFontSizeToFitWidth = true
+      cell.detailTextLabel?.font = subtitle().font
+      cell.detailTextLabel?.textColor = subtitle().color
+      cell.detailTextLabel?.textAlignment = subtitle().alignment
+      cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
     }
   }
   
   func stylize(cell: UITableViewCell) {
-    cell.textLabel.font = title().font
-    cell.textLabel.textColor = title().color
-    cell.textLabel.textAlignment = title().alignment
-    cell.textLabel.adjustsFontSizeToFitWidth = true
+    cell.textLabel?.font = title().font
+    cell.textLabel?.textColor = title().color
+    cell.textLabel?.textAlignment = title().alignment
+    cell.textLabel?.adjustsFontSizeToFitWidth = true
   }
 }
 

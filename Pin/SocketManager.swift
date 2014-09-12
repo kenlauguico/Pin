@@ -64,7 +64,7 @@ class SocketManager: SocketIO {
 
   func startTimer() {
     reconnectTimer.invalidate()
-    UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler(nil)
+    UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in }
     reconnectTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "reconnect", userInfo: nil, repeats: true)
     NSRunLoop.currentRunLoop().addTimer(reconnectTimer, forMode: NSRunLoopCommonModes)
   }
